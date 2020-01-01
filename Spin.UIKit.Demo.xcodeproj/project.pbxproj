@@ -107,6 +107,8 @@
 		743BE56523BD4845000BE177 /* PlanetsFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 743BE56023BD4845000BE177 /* PlanetsFlow.swift */; };
 		743BE56623BD4845000BE177 /* AppFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 743BE56123BD4845000BE177 /* AppFlow.swift */; };
 		743BE56723BD4845000BE177 /* StarshipsFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 743BE56223BD4845000BE177 /* StarshipsFlow.swift */; };
+		743BE56A23BD4889000BE177 /* FeatureAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 743BE56823BD4889000BE177 /* FeatureAssembly.swift */; };
+		743BE56B23BD4889000BE177 /* FeedbackAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 743BE56923BD4889000BE177 /* FeedbackAssembly.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -199,6 +201,8 @@
 		743BE56023BD4845000BE177 /* PlanetsFlow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlanetsFlow.swift; sourceTree = "<group>"; };
 		743BE56123BD4845000BE177 /* AppFlow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppFlow.swift; sourceTree = "<group>"; };
 		743BE56223BD4845000BE177 /* StarshipsFlow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StarshipsFlow.swift; sourceTree = "<group>"; };
+		743BE56823BD4889000BE177 /* FeatureAssembly.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeatureAssembly.swift; sourceTree = "<group>"; };
+		743BE56923BD4889000BE177 /* FeedbackAssembly.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedbackAssembly.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -394,6 +398,8 @@
 				743BE4FC23BD45B0000BE177 /* ServiceAssembly.swift */,
 				743BE4FE23BD45B0000BE177 /* ApisAssembly.swift */,
 				743BE50123BD45B0000BE177 /* EntityAssembly.swift */,
+				743BE56923BD4889000BE177 /* FeedbackAssembly.swift */,
+				743BE56823BD4889000BE177 /* FeatureAssembly.swift */,
 			);
 			path = Assemblies;
 			sourceTree = "<group>";
@@ -644,6 +650,7 @@
 				743BE55423BD477F000BE177 /* PeopleState.swift in Sources */,
 				743BE4F723BD4419000BE177 /* Species.swift in Sources */,
 				743BE4B323BD4101000BE177 /* Route+URLRequestConvertible.swift in Sources */,
+				743BE56B23BD4889000BE177 /* FeedbackAssembly.swift in Sources */,
 				743BE54E23BD477F000BE177 /* StarshipState.swift in Sources */,
 				743BE55823BD477F000BE177 /* PlanetsState.swift in Sources */,
 				743BE53B23BD477F000BE177 /* PlanetState.swift in Sources */,
@@ -672,6 +679,7 @@
 				743BE55923BD477F000BE177 /* PlanetsReducer.swift in Sources */,
 				743BE50223BD45B0000BE177 /* ServiceAssembly.swift in Sources */,
 				743BE54523BD477F000BE177 /* PeoplesReducer.swift in Sources */,
+				743BE56A23BD4889000BE177 /* FeatureAssembly.swift in Sources */,
 				743BE4C623BD41D0000BE177 /* AppEndpoints.swift in Sources */,
 				743BE49E23BD4085000BE177 /* Observable+merge.swift in Sources */,
 				743BE49D23BD4085000BE177 /* Curry.swift in Sources */,
