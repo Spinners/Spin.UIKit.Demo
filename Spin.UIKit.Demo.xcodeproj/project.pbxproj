@@ -63,6 +63,50 @@
 		743BE50223BD45B0000BE177 /* ServiceAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 743BE4FC23BD45B0000BE177 /* ServiceAssembly.swift */; };
 		743BE50423BD45B0000BE177 /* ApisAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 743BE4FE23BD45B0000BE177 /* ApisAssembly.swift */; };
 		743BE50723BD45B0000BE177 /* EntityAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 743BE50123BD45B0000BE177 /* EntityAssembly.swift */; };
+		743BE53623BD477F000BE177 /* PlanetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 743BE50A23BD477F000BE177 /* PlanetViewController.swift */; };
+		743BE53723BD477F000BE177 /* PlanetSpin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 743BE50B23BD477F000BE177 /* PlanetSpin.swift */; };
+		743BE53823BD477F000BE177 /* PlanetFeedback.swift in Sources */ = {isa = PBXBuildFile; fileRef = 743BE50C23BD477F000BE177 /* PlanetFeedback.swift */; };
+		743BE53923BD477F000BE177 /* PlanetAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 743BE50D23BD477F000BE177 /* PlanetAction.swift */; };
+		743BE53A23BD477F000BE177 /* PlanetViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 743BE50E23BD477F000BE177 /* PlanetViewController.storyboard */; };
+		743BE53B23BD477F000BE177 /* PlanetState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 743BE50F23BD477F000BE177 /* PlanetState.swift */; };
+		743BE53C23BD477F000BE177 /* PlanetReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 743BE51023BD477F000BE177 /* PlanetReducer.swift */; };
+		743BE53D23BD477F000BE177 /* StarshipsAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 743BE51223BD477F000BE177 /* StarshipsAction.swift */; };
+		743BE53E23BD477F000BE177 /* StarshipsFeedback.swift in Sources */ = {isa = PBXBuildFile; fileRef = 743BE51323BD477F000BE177 /* StarshipsFeedback.swift */; };
+		743BE53F23BD477F000BE177 /* StarshipsState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 743BE51423BD477F000BE177 /* StarshipsState.swift */; };
+		743BE54023BD477F000BE177 /* StarshipsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 743BE51523BD477F000BE177 /* StarshipsViewController.swift */; };
+		743BE54123BD477F000BE177 /* StarshipsReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 743BE51623BD477F000BE177 /* StarshipsReducer.swift */; };
+		743BE54223BD477F000BE177 /* StarshipsViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 743BE51723BD477F000BE177 /* StarshipsViewController.storyboard */; };
+		743BE54323BD477F000BE177 /* PeoplesViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 743BE51923BD477F000BE177 /* PeoplesViewController.storyboard */; };
+		743BE54423BD477F000BE177 /* PeoplesAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 743BE51A23BD477F000BE177 /* PeoplesAction.swift */; };
+		743BE54523BD477F000BE177 /* PeoplesReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 743BE51B23BD477F000BE177 /* PeoplesReducer.swift */; };
+		743BE54623BD477F000BE177 /* PeoplesState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 743BE51C23BD477F000BE177 /* PeoplesState.swift */; };
+		743BE54723BD477F000BE177 /* PeoplesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 743BE51D23BD477F000BE177 /* PeoplesViewController.swift */; };
+		743BE54823BD477F000BE177 /* PeoplesFeedback.swift in Sources */ = {isa = PBXBuildFile; fileRef = 743BE51E23BD477F000BE177 /* PeoplesFeedback.swift */; };
+		743BE54923BD477F000BE177 /* StarshipReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 743BE52023BD477F000BE177 /* StarshipReducer.swift */; };
+		743BE54A23BD477F000BE177 /* StarshipSpin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 743BE52123BD477F000BE177 /* StarshipSpin.swift */; };
+		743BE54B23BD477F000BE177 /* StarshipAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 743BE52223BD477F000BE177 /* StarshipAction.swift */; };
+		743BE54C23BD477F000BE177 /* StarshipViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 743BE52323BD477F000BE177 /* StarshipViewController.swift */; };
+		743BE54D23BD477F000BE177 /* StarshipFeedback.swift in Sources */ = {isa = PBXBuildFile; fileRef = 743BE52423BD477F000BE177 /* StarshipFeedback.swift */; };
+		743BE54E23BD477F000BE177 /* StarshipState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 743BE52523BD477F000BE177 /* StarshipState.swift */; };
+		743BE54F23BD477F000BE177 /* StarshipViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 743BE52623BD477F000BE177 /* StarshipViewController.storyboard */; };
+		743BE55023BD477F000BE177 /* PeopleFeedback.swift in Sources */ = {isa = PBXBuildFile; fileRef = 743BE52823BD477F000BE177 /* PeopleFeedback.swift */; };
+		743BE55123BD477F000BE177 /* PeopleViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 743BE52923BD477F000BE177 /* PeopleViewController.storyboard */; };
+		743BE55223BD477F000BE177 /* PeopleSpin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 743BE52A23BD477F000BE177 /* PeopleSpin.swift */; };
+		743BE55323BD477F000BE177 /* PeopleReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 743BE52B23BD477F000BE177 /* PeopleReducer.swift */; };
+		743BE55423BD477F000BE177 /* PeopleState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 743BE52C23BD477F000BE177 /* PeopleState.swift */; };
+		743BE55523BD477F000BE177 /* PeopleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 743BE52D23BD477F000BE177 /* PeopleViewController.swift */; };
+		743BE55623BD477F000BE177 /* PeopleAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 743BE52E23BD477F000BE177 /* PeopleAction.swift */; };
+		743BE55723BD477F000BE177 /* PlanetsViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 743BE53023BD477F000BE177 /* PlanetsViewController.storyboard */; };
+		743BE55823BD477F000BE177 /* PlanetsState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 743BE53123BD477F000BE177 /* PlanetsState.swift */; };
+		743BE55923BD477F000BE177 /* PlanetsReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 743BE53223BD477F000BE177 /* PlanetsReducer.swift */; };
+		743BE55A23BD477F000BE177 /* PlanetsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 743BE53323BD477F000BE177 /* PlanetsViewController.swift */; };
+		743BE55B23BD477F000BE177 /* PlanetsFeedback.swift in Sources */ = {isa = PBXBuildFile; fileRef = 743BE53423BD477F000BE177 /* PlanetsFeedback.swift */; };
+		743BE55C23BD477F000BE177 /* PlanetsAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 743BE53523BD477F000BE177 /* PlanetsAction.swift */; };
+		743BE56323BD4845000BE177 /* PeoplesFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 743BE55E23BD4845000BE177 /* PeoplesFlow.swift */; };
+		743BE56423BD4845000BE177 /* AppSteps.swift in Sources */ = {isa = PBXBuildFile; fileRef = 743BE55F23BD4845000BE177 /* AppSteps.swift */; };
+		743BE56523BD4845000BE177 /* PlanetsFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 743BE56023BD4845000BE177 /* PlanetsFlow.swift */; };
+		743BE56623BD4845000BE177 /* AppFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 743BE56123BD4845000BE177 /* AppFlow.swift */; };
+		743BE56723BD4845000BE177 /* StarshipsFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 743BE56223BD4845000BE177 /* StarshipsFlow.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -111,6 +155,50 @@
 		743BE4FC23BD45B0000BE177 /* ServiceAssembly.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceAssembly.swift; sourceTree = "<group>"; };
 		743BE4FE23BD45B0000BE177 /* ApisAssembly.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApisAssembly.swift; sourceTree = "<group>"; };
 		743BE50123BD45B0000BE177 /* EntityAssembly.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EntityAssembly.swift; sourceTree = "<group>"; };
+		743BE50A23BD477F000BE177 /* PlanetViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlanetViewController.swift; sourceTree = "<group>"; };
+		743BE50B23BD477F000BE177 /* PlanetSpin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlanetSpin.swift; sourceTree = "<group>"; };
+		743BE50C23BD477F000BE177 /* PlanetFeedback.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlanetFeedback.swift; sourceTree = "<group>"; };
+		743BE50D23BD477F000BE177 /* PlanetAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlanetAction.swift; sourceTree = "<group>"; };
+		743BE50E23BD477F000BE177 /* PlanetViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = PlanetViewController.storyboard; sourceTree = "<group>"; };
+		743BE50F23BD477F000BE177 /* PlanetState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlanetState.swift; sourceTree = "<group>"; };
+		743BE51023BD477F000BE177 /* PlanetReducer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlanetReducer.swift; sourceTree = "<group>"; };
+		743BE51223BD477F000BE177 /* StarshipsAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StarshipsAction.swift; sourceTree = "<group>"; };
+		743BE51323BD477F000BE177 /* StarshipsFeedback.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StarshipsFeedback.swift; sourceTree = "<group>"; };
+		743BE51423BD477F000BE177 /* StarshipsState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StarshipsState.swift; sourceTree = "<group>"; };
+		743BE51523BD477F000BE177 /* StarshipsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StarshipsViewController.swift; sourceTree = "<group>"; };
+		743BE51623BD477F000BE177 /* StarshipsReducer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StarshipsReducer.swift; sourceTree = "<group>"; };
+		743BE51723BD477F000BE177 /* StarshipsViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = StarshipsViewController.storyboard; sourceTree = "<group>"; };
+		743BE51923BD477F000BE177 /* PeoplesViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = PeoplesViewController.storyboard; sourceTree = "<group>"; };
+		743BE51A23BD477F000BE177 /* PeoplesAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PeoplesAction.swift; sourceTree = "<group>"; };
+		743BE51B23BD477F000BE177 /* PeoplesReducer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PeoplesReducer.swift; sourceTree = "<group>"; };
+		743BE51C23BD477F000BE177 /* PeoplesState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PeoplesState.swift; sourceTree = "<group>"; };
+		743BE51D23BD477F000BE177 /* PeoplesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PeoplesViewController.swift; sourceTree = "<group>"; };
+		743BE51E23BD477F000BE177 /* PeoplesFeedback.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PeoplesFeedback.swift; sourceTree = "<group>"; };
+		743BE52023BD477F000BE177 /* StarshipReducer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StarshipReducer.swift; sourceTree = "<group>"; };
+		743BE52123BD477F000BE177 /* StarshipSpin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StarshipSpin.swift; sourceTree = "<group>"; };
+		743BE52223BD477F000BE177 /* StarshipAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StarshipAction.swift; sourceTree = "<group>"; };
+		743BE52323BD477F000BE177 /* StarshipViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StarshipViewController.swift; sourceTree = "<group>"; };
+		743BE52423BD477F000BE177 /* StarshipFeedback.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StarshipFeedback.swift; sourceTree = "<group>"; };
+		743BE52523BD477F000BE177 /* StarshipState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StarshipState.swift; sourceTree = "<group>"; };
+		743BE52623BD477F000BE177 /* StarshipViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = StarshipViewController.storyboard; sourceTree = "<group>"; };
+		743BE52823BD477F000BE177 /* PeopleFeedback.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PeopleFeedback.swift; sourceTree = "<group>"; };
+		743BE52923BD477F000BE177 /* PeopleViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = PeopleViewController.storyboard; sourceTree = "<group>"; };
+		743BE52A23BD477F000BE177 /* PeopleSpin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PeopleSpin.swift; sourceTree = "<group>"; };
+		743BE52B23BD477F000BE177 /* PeopleReducer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PeopleReducer.swift; sourceTree = "<group>"; };
+		743BE52C23BD477F000BE177 /* PeopleState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PeopleState.swift; sourceTree = "<group>"; };
+		743BE52D23BD477F000BE177 /* PeopleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PeopleViewController.swift; sourceTree = "<group>"; };
+		743BE52E23BD477F000BE177 /* PeopleAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PeopleAction.swift; sourceTree = "<group>"; };
+		743BE53023BD477F000BE177 /* PlanetsViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = PlanetsViewController.storyboard; sourceTree = "<group>"; };
+		743BE53123BD477F000BE177 /* PlanetsState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlanetsState.swift; sourceTree = "<group>"; };
+		743BE53223BD477F000BE177 /* PlanetsReducer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlanetsReducer.swift; sourceTree = "<group>"; };
+		743BE53323BD477F000BE177 /* PlanetsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlanetsViewController.swift; sourceTree = "<group>"; };
+		743BE53423BD477F000BE177 /* PlanetsFeedback.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlanetsFeedback.swift; sourceTree = "<group>"; };
+		743BE53523BD477F000BE177 /* PlanetsAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlanetsAction.swift; sourceTree = "<group>"; };
+		743BE55E23BD4845000BE177 /* PeoplesFlow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PeoplesFlow.swift; sourceTree = "<group>"; };
+		743BE55F23BD4845000BE177 /* AppSteps.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppSteps.swift; sourceTree = "<group>"; };
+		743BE56023BD4845000BE177 /* PlanetsFlow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlanetsFlow.swift; sourceTree = "<group>"; };
+		743BE56123BD4845000BE177 /* AppFlow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppFlow.swift; sourceTree = "<group>"; };
+		743BE56223BD4845000BE177 /* StarshipsFlow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StarshipsFlow.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -159,6 +247,8 @@
 				743BE4FB23BD45B0000BE177 /* Assemblies */,
 				743BE4E723BD436F000BE177 /* Apis */,
 				743BE4EE23BD4419000BE177 /* Entity */,
+				743BE50823BD477F000BE177 /* Features */,
+				743BE55D23BD4845000BE177 /* Flows */,
 				743BE4C723BD41FB000BE177 /* Models */,
 				743BE4C023BD41D0000BE177 /* Routes */,
 				743BE4A223BD4101000BE177 /* Services */,
@@ -308,6 +398,112 @@
 			path = Assemblies;
 			sourceTree = "<group>";
 		};
+		743BE50823BD477F000BE177 /* Features */ = {
+			isa = PBXGroup;
+			children = (
+				743BE50923BD477F000BE177 /* Planet */,
+				743BE51123BD477F000BE177 /* Starships */,
+				743BE51823BD477F000BE177 /* Peoples */,
+				743BE51F23BD477F000BE177 /* Starship */,
+				743BE52723BD477F000BE177 /* People */,
+				743BE52F23BD477F000BE177 /* Planets */,
+			);
+			path = Features;
+			sourceTree = "<group>";
+		};
+		743BE50923BD477F000BE177 /* Planet */ = {
+			isa = PBXGroup;
+			children = (
+				743BE50A23BD477F000BE177 /* PlanetViewController.swift */,
+				743BE50B23BD477F000BE177 /* PlanetSpin.swift */,
+				743BE50C23BD477F000BE177 /* PlanetFeedback.swift */,
+				743BE50D23BD477F000BE177 /* PlanetAction.swift */,
+				743BE50E23BD477F000BE177 /* PlanetViewController.storyboard */,
+				743BE50F23BD477F000BE177 /* PlanetState.swift */,
+				743BE51023BD477F000BE177 /* PlanetReducer.swift */,
+			);
+			path = Planet;
+			sourceTree = "<group>";
+		};
+		743BE51123BD477F000BE177 /* Starships */ = {
+			isa = PBXGroup;
+			children = (
+				743BE51223BD477F000BE177 /* StarshipsAction.swift */,
+				743BE51323BD477F000BE177 /* StarshipsFeedback.swift */,
+				743BE51423BD477F000BE177 /* StarshipsState.swift */,
+				743BE51523BD477F000BE177 /* StarshipsViewController.swift */,
+				743BE51623BD477F000BE177 /* StarshipsReducer.swift */,
+				743BE51723BD477F000BE177 /* StarshipsViewController.storyboard */,
+			);
+			path = Starships;
+			sourceTree = "<group>";
+		};
+		743BE51823BD477F000BE177 /* Peoples */ = {
+			isa = PBXGroup;
+			children = (
+				743BE51923BD477F000BE177 /* PeoplesViewController.storyboard */,
+				743BE51A23BD477F000BE177 /* PeoplesAction.swift */,
+				743BE51B23BD477F000BE177 /* PeoplesReducer.swift */,
+				743BE51C23BD477F000BE177 /* PeoplesState.swift */,
+				743BE51D23BD477F000BE177 /* PeoplesViewController.swift */,
+				743BE51E23BD477F000BE177 /* PeoplesFeedback.swift */,
+			);
+			path = Peoples;
+			sourceTree = "<group>";
+		};
+		743BE51F23BD477F000BE177 /* Starship */ = {
+			isa = PBXGroup;
+			children = (
+				743BE52023BD477F000BE177 /* StarshipReducer.swift */,
+				743BE52123BD477F000BE177 /* StarshipSpin.swift */,
+				743BE52223BD477F000BE177 /* StarshipAction.swift */,
+				743BE52323BD477F000BE177 /* StarshipViewController.swift */,
+				743BE52423BD477F000BE177 /* StarshipFeedback.swift */,
+				743BE52523BD477F000BE177 /* StarshipState.swift */,
+				743BE52623BD477F000BE177 /* StarshipViewController.storyboard */,
+			);
+			path = Starship;
+			sourceTree = "<group>";
+		};
+		743BE52723BD477F000BE177 /* People */ = {
+			isa = PBXGroup;
+			children = (
+				743BE52823BD477F000BE177 /* PeopleFeedback.swift */,
+				743BE52923BD477F000BE177 /* PeopleViewController.storyboard */,
+				743BE52A23BD477F000BE177 /* PeopleSpin.swift */,
+				743BE52B23BD477F000BE177 /* PeopleReducer.swift */,
+				743BE52C23BD477F000BE177 /* PeopleState.swift */,
+				743BE52D23BD477F000BE177 /* PeopleViewController.swift */,
+				743BE52E23BD477F000BE177 /* PeopleAction.swift */,
+			);
+			path = People;
+			sourceTree = "<group>";
+		};
+		743BE52F23BD477F000BE177 /* Planets */ = {
+			isa = PBXGroup;
+			children = (
+				743BE53023BD477F000BE177 /* PlanetsViewController.storyboard */,
+				743BE53123BD477F000BE177 /* PlanetsState.swift */,
+				743BE53223BD477F000BE177 /* PlanetsReducer.swift */,
+				743BE53323BD477F000BE177 /* PlanetsViewController.swift */,
+				743BE53423BD477F000BE177 /* PlanetsFeedback.swift */,
+				743BE53523BD477F000BE177 /* PlanetsAction.swift */,
+			);
+			path = Planets;
+			sourceTree = "<group>";
+		};
+		743BE55D23BD4845000BE177 /* Flows */ = {
+			isa = PBXGroup;
+			children = (
+				743BE55E23BD4845000BE177 /* PeoplesFlow.swift */,
+				743BE55F23BD4845000BE177 /* AppSteps.swift */,
+				743BE56023BD4845000BE177 /* PlanetsFlow.swift */,
+				743BE56123BD4845000BE177 /* AppFlow.swift */,
+				743BE56223BD4845000BE177 /* StarshipsFlow.swift */,
+			);
+			path = Flows;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -391,8 +587,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				743BE54323BD477F000BE177 /* PeoplesViewController.storyboard in Resources */,
 				743BE44B23BCF52A000BE177 /* LaunchScreen.storyboard in Resources */,
+				743BE55123BD477F000BE177 /* PeopleViewController.storyboard in Resources */,
+				743BE54223BD477F000BE177 /* StarshipsViewController.storyboard in Resources */,
+				743BE54F23BD477F000BE177 /* StarshipViewController.storyboard in Resources */,
+				743BE53A23BD477F000BE177 /* PlanetViewController.storyboard in Resources */,
 				743BE44823BCF52A000BE177 /* Assets.xcassets in Resources */,
+				743BE55723BD477F000BE177 /* PlanetsViewController.storyboard in Resources */,
 				743BE44623BCF52A000BE177 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -408,39 +610,77 @@
 				743BE4E323BD42C0000BE177 /* Film.swift in Sources */,
 				743BE4F523BD4419000BE177 /* Films.swift in Sources */,
 				743BE4E223BD42C0000BE177 /* Vehicle.swift in Sources */,
+				743BE54123BD477F000BE177 /* StarshipsReducer.swift in Sources */,
 				743BE4A123BD4085000BE177 /* String+URLComponents.swift in Sources */,
 				743BE4F923BD4419000BE177 /* Peoples.swift in Sources */,
+				743BE53C23BD477F000BE177 /* PlanetReducer.swift in Sources */,
 				743BE4D323BD41FB000BE177 /* ListRequest.swift in Sources */,
+				743BE54D23BD477F000BE177 /* StarshipFeedback.swift in Sources */,
+				743BE54B23BD477F000BE177 /* StarshipAction.swift in Sources */,
+				743BE53E23BD477F000BE177 /* StarshipsFeedback.swift in Sources */,
 				743BE4EB23BD436F000BE177 /* StarshipsApi.swift in Sources */,
 				743BE4C423BD41D0000BE177 /* AppPolicies.swift in Sources */,
+				743BE56623BD4845000BE177 /* AppFlow.swift in Sources */,
+				743BE53723BD477F000BE177 /* PlanetSpin.swift in Sources */,
+				743BE54823BD477F000BE177 /* PeoplesFeedback.swift in Sources */,
+				743BE55023BD477F000BE177 /* PeopleFeedback.swift in Sources */,
+				743BE53623BD477F000BE177 /* PlanetViewController.swift in Sources */,
 				743BE4E423BD42C0000BE177 /* Planet.swift in Sources */,
 				743BE4B223BD4101000BE177 /* Encodable+Dictionary.swift in Sources */,
+				743BE54923BD477F000BE177 /* StarshipReducer.swift in Sources */,
 				743BE4E123BD42C0000BE177 /* Specie.swift in Sources */,
 				743BE4B823BD4101000BE177 /* FavoriteService.swift in Sources */,
 				743BE4E523BD42C0000BE177 /* Starship.swift in Sources */,
+				743BE55623BD477F000BE177 /* PeopleAction.swift in Sources */,
+				743BE54023BD477F000BE177 /* StarshipsViewController.swift in Sources */,
 				743BE49F23BD4085000BE177 /* Weakify.swift in Sources */,
+				743BE54C23BD477F000BE177 /* StarshipViewController.swift in Sources */,
 				743BE4B623BD4101000BE177 /* Route.swift in Sources */,
 				743BE44323BCF52A000BE177 /* ViewController.swift in Sources */,
+				743BE53923BD477F000BE177 /* PlanetAction.swift in Sources */,
 				743BE4B123BD4101000BE177 /* ReactiveNetworkService.swift in Sources */,
+				743BE56323BD4845000BE177 /* PeoplesFlow.swift in Sources */,
+				743BE54A23BD477F000BE177 /* StarshipSpin.swift in Sources */,
+				743BE55423BD477F000BE177 /* PeopleState.swift in Sources */,
 				743BE4F723BD4419000BE177 /* Species.swift in Sources */,
 				743BE4B323BD4101000BE177 /* Route+URLRequestConvertible.swift in Sources */,
+				743BE54E23BD477F000BE177 /* StarshipState.swift in Sources */,
+				743BE55823BD477F000BE177 /* PlanetsState.swift in Sources */,
+				743BE53B23BD477F000BE177 /* PlanetState.swift in Sources */,
+				743BE55C23BD477F000BE177 /* PlanetsAction.swift in Sources */,
 				743BE4D223BD41FB000BE177 /* ListResponse.swift in Sources */,
+				743BE54723BD477F000BE177 /* PeoplesViewController.swift in Sources */,
+				743BE55523BD477F000BE177 /* PeopleViewController.swift in Sources */,
+				743BE56423BD4845000BE177 /* AppSteps.swift in Sources */,
 				743BE43F23BCF52A000BE177 /* AppDelegate.swift in Sources */,
 				743BE4B023BD4101000BE177 /* NetworkService.swift in Sources */,
+				743BE56523BD4845000BE177 /* PlanetsFlow.swift in Sources */,
+				743BE53823BD477F000BE177 /* PlanetFeedback.swift in Sources */,
 				743BE4B523BD4101000BE177 /* Path.swift in Sources */,
+				743BE55223BD477F000BE177 /* PeopleSpin.swift in Sources */,
 				743BE4B723BD4101000BE177 /* Endpoint.swift in Sources */,
 				743BE4E623BD42C0000BE177 /* People.swift in Sources */,
 				743BE4F623BD4419000BE177 /* Planets.swift in Sources */,
+				743BE56723BD4845000BE177 /* StarshipsFlow.swift in Sources */,
+				743BE53F23BD477F000BE177 /* StarshipsState.swift in Sources */,
 				743BE4EC23BD436F000BE177 /* PlanetsApi.swift in Sources */,
+				743BE55B23BD477F000BE177 /* PlanetsFeedback.swift in Sources */,
+				743BE55323BD477F000BE177 /* PeopleReducer.swift in Sources */,
 				743BE4ED23BD436F000BE177 /* PeoplesApi.swift in Sources */,
 				743BE44123BCF52A000BE177 /* SceneDelegate.swift in Sources */,
+				743BE54423BD477F000BE177 /* PeoplesAction.swift in Sources */,
+				743BE55923BD477F000BE177 /* PlanetsReducer.swift in Sources */,
 				743BE50223BD45B0000BE177 /* ServiceAssembly.swift in Sources */,
+				743BE54523BD477F000BE177 /* PeoplesReducer.swift in Sources */,
 				743BE4C623BD41D0000BE177 /* AppEndpoints.swift in Sources */,
 				743BE49E23BD4085000BE177 /* Observable+merge.swift in Sources */,
 				743BE49D23BD4085000BE177 /* Curry.swift in Sources */,
 				743BE50423BD45B0000BE177 /* ApisAssembly.swift in Sources */,
+				743BE53D23BD477F000BE177 /* StarshipsAction.swift in Sources */,
 				743BE4B423BD4101000BE177 /* Policy.swift in Sources */,
 				743BE4C523BD41D0000BE177 /* AppPaths.swift in Sources */,
+				743BE54623BD477F000BE177 /* PeoplesState.swift in Sources */,
+				743BE55A23BD477F000BE177 /* PlanetsViewController.swift in Sources */,
 				743BE4FA23BD4419000BE177 /* Starships.swift in Sources */,
 				743BE4F823BD4419000BE177 /* Vehicles.swift in Sources */,
 				743BE4A023BD4085000BE177 /* UIViewController+Rx.swift in Sources */,
