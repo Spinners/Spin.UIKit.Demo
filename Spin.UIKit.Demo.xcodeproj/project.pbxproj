@@ -40,6 +40,11 @@
 		743BE4B623BD4101000BE177 /* Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = 743BE4AC23BD4101000BE177 /* Route.swift */; };
 		743BE4B723BD4101000BE177 /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 743BE4AD23BD4101000BE177 /* Endpoint.swift */; };
 		743BE4B823BD4101000BE177 /* FavoriteService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 743BE4AF23BD4101000BE177 /* FavoriteService.swift */; };
+		743BE4C423BD41D0000BE177 /* AppPolicies.swift in Sources */ = {isa = PBXBuildFile; fileRef = 743BE4C123BD41D0000BE177 /* AppPolicies.swift */; };
+		743BE4C523BD41D0000BE177 /* AppPaths.swift in Sources */ = {isa = PBXBuildFile; fileRef = 743BE4C223BD41D0000BE177 /* AppPaths.swift */; };
+		743BE4C623BD41D0000BE177 /* AppEndpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 743BE4C323BD41D0000BE177 /* AppEndpoints.swift */; };
+		743BE4D223BD41FB000BE177 /* ListResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 743BE4C923BD41FB000BE177 /* ListResponse.swift */; };
+		743BE4D323BD41FB000BE177 /* ListRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 743BE4CA23BD41FB000BE177 /* ListRequest.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -65,6 +70,11 @@
 		743BE4AC23BD4101000BE177 /* Route.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Route.swift; sourceTree = "<group>"; };
 		743BE4AD23BD4101000BE177 /* Endpoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
 		743BE4AF23BD4101000BE177 /* FavoriteService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteService.swift; sourceTree = "<group>"; };
+		743BE4C123BD41D0000BE177 /* AppPolicies.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppPolicies.swift; sourceTree = "<group>"; };
+		743BE4C223BD41D0000BE177 /* AppPaths.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppPaths.swift; sourceTree = "<group>"; };
+		743BE4C323BD41D0000BE177 /* AppEndpoints.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppEndpoints.swift; sourceTree = "<group>"; };
+		743BE4C923BD41FB000BE177 /* ListResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListResponse.swift; sourceTree = "<group>"; };
+		743BE4CA23BD41FB000BE177 /* ListRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListRequest.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,6 +120,8 @@
 		743BE43D23BCF52A000BE177 /* Spin.UIKit.Demo */ = {
 			isa = PBXGroup;
 			children = (
+				743BE4C723BD41FB000BE177 /* Models */,
+				743BE4C023BD41D0000BE177 /* Routes */,
 				743BE4A223BD4101000BE177 /* Services */,
 				743BE49723BD4085000BE177 /* Tools */,
 				743BE43E23BCF52A000BE177 /* AppDelegate.swift */,
@@ -181,6 +193,33 @@
 				743BE4AF23BD4101000BE177 /* FavoriteService.swift */,
 			);
 			path = Persistence;
+			sourceTree = "<group>";
+		};
+		743BE4C023BD41D0000BE177 /* Routes */ = {
+			isa = PBXGroup;
+			children = (
+				743BE4C123BD41D0000BE177 /* AppPolicies.swift */,
+				743BE4C223BD41D0000BE177 /* AppPaths.swift */,
+				743BE4C323BD41D0000BE177 /* AppEndpoints.swift */,
+			);
+			path = Routes;
+			sourceTree = "<group>";
+		};
+		743BE4C723BD41FB000BE177 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				743BE4C823BD41FB000BE177 /* Request */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		743BE4C823BD41FB000BE177 /* Request */ = {
+			isa = PBXGroup;
+			children = (
+				743BE4C923BD41FB000BE177 /* ListResponse.swift */,
+				743BE4CA23BD41FB000BE177 /* ListRequest.swift */,
+			);
+			path = Request;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -280,6 +319,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				743BE4A123BD4085000BE177 /* String+URLComponents.swift in Sources */,
+				743BE4D323BD41FB000BE177 /* ListRequest.swift in Sources */,
+				743BE4C423BD41D0000BE177 /* AppPolicies.swift in Sources */,
 				743BE4B223BD4101000BE177 /* Encodable+Dictionary.swift in Sources */,
 				743BE4B823BD4101000BE177 /* FavoriteService.swift in Sources */,
 				743BE49F23BD4085000BE177 /* Weakify.swift in Sources */,
@@ -287,14 +328,17 @@
 				743BE44323BCF52A000BE177 /* ViewController.swift in Sources */,
 				743BE4B123BD4101000BE177 /* ReactiveNetworkService.swift in Sources */,
 				743BE4B323BD4101000BE177 /* Route+URLRequestConvertible.swift in Sources */,
+				743BE4D223BD41FB000BE177 /* ListResponse.swift in Sources */,
 				743BE43F23BCF52A000BE177 /* AppDelegate.swift in Sources */,
 				743BE4B023BD4101000BE177 /* NetworkService.swift in Sources */,
 				743BE4B523BD4101000BE177 /* Path.swift in Sources */,
 				743BE4B723BD4101000BE177 /* Endpoint.swift in Sources */,
 				743BE44123BCF52A000BE177 /* SceneDelegate.swift in Sources */,
+				743BE4C623BD41D0000BE177 /* AppEndpoints.swift in Sources */,
 				743BE49E23BD4085000BE177 /* Observable+merge.swift in Sources */,
 				743BE49D23BD4085000BE177 /* Curry.swift in Sources */,
 				743BE4B423BD4101000BE177 /* Policy.swift in Sources */,
+				743BE4C523BD41D0000BE177 /* AppPaths.swift in Sources */,
 				743BE4A023BD4085000BE177 /* UIViewController+Rx.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
