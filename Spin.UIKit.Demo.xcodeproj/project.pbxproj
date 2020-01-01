@@ -26,6 +26,11 @@
 		743BE46E23BD0F2B000BE177 /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 743BE46D23BD0F2B000BE177 /* RxSwift */; };
 		743BE47023BD0F2B000BE177 /* RxRelay in Frameworks */ = {isa = PBXBuildFile; productRef = 743BE46F23BD0F2B000BE177 /* RxRelay */; };
 		743BE47323BD115E000BE177 /* ReactiveCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 743BE47223BD115E000BE177 /* ReactiveCocoa */; };
+		743BE49D23BD4085000BE177 /* Curry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 743BE49823BD4085000BE177 /* Curry.swift */; };
+		743BE49E23BD4085000BE177 /* Observable+merge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 743BE49923BD4085000BE177 /* Observable+merge.swift */; };
+		743BE49F23BD4085000BE177 /* Weakify.swift in Sources */ = {isa = PBXBuildFile; fileRef = 743BE49A23BD4085000BE177 /* Weakify.swift */; };
+		743BE4A023BD4085000BE177 /* UIViewController+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 743BE49B23BD4085000BE177 /* UIViewController+Rx.swift */; };
+		743BE4A123BD4085000BE177 /* String+URLComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 743BE49C23BD4085000BE177 /* String+URLComponents.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,6 +42,11 @@
 		743BE44723BCF52A000BE177 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		743BE44A23BCF52A000BE177 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		743BE44C23BCF52A000BE177 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		743BE49823BD4085000BE177 /* Curry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Curry.swift; sourceTree = "<group>"; };
+		743BE49923BD4085000BE177 /* Observable+merge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Observable+merge.swift"; sourceTree = "<group>"; };
+		743BE49A23BD4085000BE177 /* Weakify.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Weakify.swift; sourceTree = "<group>"; };
+		743BE49B23BD4085000BE177 /* UIViewController+Rx.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Rx.swift"; sourceTree = "<group>"; };
+		743BE49C23BD4085000BE177 /* String+URLComponents.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+URLComponents.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,6 +92,7 @@
 		743BE43D23BCF52A000BE177 /* Spin.UIKit.Demo */ = {
 			isa = PBXGroup;
 			children = (
+				743BE49723BD4085000BE177 /* Tools */,
 				743BE43E23BCF52A000BE177 /* AppDelegate.swift */,
 				743BE44023BCF52A000BE177 /* SceneDelegate.swift */,
 				743BE44223BCF52A000BE177 /* ViewController.swift */,
@@ -91,6 +102,18 @@
 				743BE44C23BCF52A000BE177 /* Info.plist */,
 			);
 			path = Spin.UIKit.Demo;
+			sourceTree = "<group>";
+		};
+		743BE49723BD4085000BE177 /* Tools */ = {
+			isa = PBXGroup;
+			children = (
+				743BE49823BD4085000BE177 /* Curry.swift */,
+				743BE49923BD4085000BE177 /* Observable+merge.swift */,
+				743BE49A23BD4085000BE177 /* Weakify.swift */,
+				743BE49B23BD4085000BE177 /* UIViewController+Rx.swift */,
+				743BE49C23BD4085000BE177 /* String+URLComponents.swift */,
+			);
+			path = Tools;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -189,9 +212,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				743BE4A123BD4085000BE177 /* String+URLComponents.swift in Sources */,
+				743BE49F23BD4085000BE177 /* Weakify.swift in Sources */,
 				743BE44323BCF52A000BE177 /* ViewController.swift in Sources */,
 				743BE43F23BCF52A000BE177 /* AppDelegate.swift in Sources */,
 				743BE44123BCF52A000BE177 /* SceneDelegate.swift in Sources */,
+				743BE49E23BD4085000BE177 /* Observable+merge.swift in Sources */,
+				743BE49D23BD4085000BE177 /* Curry.swift in Sources */,
+				743BE4A023BD4085000BE177 /* UIViewController+Rx.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
