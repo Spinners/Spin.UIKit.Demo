@@ -60,6 +60,9 @@
 		743BE4F823BD4419000BE177 /* Vehicles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 743BE4F223BD4419000BE177 /* Vehicles.swift */; };
 		743BE4F923BD4419000BE177 /* Peoples.swift in Sources */ = {isa = PBXBuildFile; fileRef = 743BE4F323BD4419000BE177 /* Peoples.swift */; };
 		743BE4FA23BD4419000BE177 /* Starships.swift in Sources */ = {isa = PBXBuildFile; fileRef = 743BE4F423BD4419000BE177 /* Starships.swift */; };
+		743BE50223BD45B0000BE177 /* ServiceAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 743BE4FC23BD45B0000BE177 /* ServiceAssembly.swift */; };
+		743BE50423BD45B0000BE177 /* ApisAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 743BE4FE23BD45B0000BE177 /* ApisAssembly.swift */; };
+		743BE50723BD45B0000BE177 /* EntityAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 743BE50123BD45B0000BE177 /* EntityAssembly.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -105,6 +108,9 @@
 		743BE4F223BD4419000BE177 /* Vehicles.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Vehicles.swift; sourceTree = "<group>"; };
 		743BE4F323BD4419000BE177 /* Peoples.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Peoples.swift; sourceTree = "<group>"; };
 		743BE4F423BD4419000BE177 /* Starships.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Starships.swift; sourceTree = "<group>"; };
+		743BE4FC23BD45B0000BE177 /* ServiceAssembly.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceAssembly.swift; sourceTree = "<group>"; };
+		743BE4FE23BD45B0000BE177 /* ApisAssembly.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApisAssembly.swift; sourceTree = "<group>"; };
+		743BE50123BD45B0000BE177 /* EntityAssembly.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EntityAssembly.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -150,6 +156,7 @@
 		743BE43D23BCF52A000BE177 /* Spin.UIKit.Demo */ = {
 			isa = PBXGroup;
 			children = (
+				743BE4FB23BD45B0000BE177 /* Assemblies */,
 				743BE4E723BD436F000BE177 /* Apis */,
 				743BE4EE23BD4419000BE177 /* Entity */,
 				743BE4C723BD41FB000BE177 /* Models */,
@@ -291,6 +298,16 @@
 			path = Entity;
 			sourceTree = "<group>";
 		};
+		743BE4FB23BD45B0000BE177 /* Assemblies */ = {
+			isa = PBXGroup;
+			children = (
+				743BE4FC23BD45B0000BE177 /* ServiceAssembly.swift */,
+				743BE4FE23BD45B0000BE177 /* ApisAssembly.swift */,
+				743BE50123BD45B0000BE177 /* EntityAssembly.swift */,
+			);
+			path = Assemblies;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -387,6 +404,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				743BE50723BD45B0000BE177 /* EntityAssembly.swift in Sources */,
 				743BE4E323BD42C0000BE177 /* Film.swift in Sources */,
 				743BE4F523BD4419000BE177 /* Films.swift in Sources */,
 				743BE4E223BD42C0000BE177 /* Vehicle.swift in Sources */,
@@ -416,9 +434,11 @@
 				743BE4EC23BD436F000BE177 /* PlanetsApi.swift in Sources */,
 				743BE4ED23BD436F000BE177 /* PeoplesApi.swift in Sources */,
 				743BE44123BCF52A000BE177 /* SceneDelegate.swift in Sources */,
+				743BE50223BD45B0000BE177 /* ServiceAssembly.swift in Sources */,
 				743BE4C623BD41D0000BE177 /* AppEndpoints.swift in Sources */,
 				743BE49E23BD4085000BE177 /* Observable+merge.swift in Sources */,
 				743BE49D23BD4085000BE177 /* Curry.swift in Sources */,
+				743BE50423BD45B0000BE177 /* ApisAssembly.swift in Sources */,
 				743BE4B423BD4101000BE177 /* Policy.swift in Sources */,
 				743BE4C523BD41D0000BE177 /* AppPaths.swift in Sources */,
 				743BE4FA23BD4419000BE177 /* Starships.swift in Sources */,
