@@ -51,6 +51,9 @@
 		743BE4E423BD42C0000BE177 /* Planet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 743BE4DE23BD42C0000BE177 /* Planet.swift */; };
 		743BE4E523BD42C0000BE177 /* Starship.swift in Sources */ = {isa = PBXBuildFile; fileRef = 743BE4DF23BD42C0000BE177 /* Starship.swift */; };
 		743BE4E623BD42C0000BE177 /* People.swift in Sources */ = {isa = PBXBuildFile; fileRef = 743BE4E023BD42C0000BE177 /* People.swift */; };
+		743BE4EB23BD436F000BE177 /* StarshipsApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 743BE4E823BD436F000BE177 /* StarshipsApi.swift */; };
+		743BE4EC23BD436F000BE177 /* PlanetsApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 743BE4E923BD436F000BE177 /* PlanetsApi.swift */; };
+		743BE4ED23BD436F000BE177 /* PeoplesApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 743BE4EA23BD436F000BE177 /* PeoplesApi.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -87,6 +90,9 @@
 		743BE4DE23BD42C0000BE177 /* Planet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Planet.swift; sourceTree = "<group>"; };
 		743BE4DF23BD42C0000BE177 /* Starship.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Starship.swift; sourceTree = "<group>"; };
 		743BE4E023BD42C0000BE177 /* People.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = People.swift; sourceTree = "<group>"; };
+		743BE4E823BD436F000BE177 /* StarshipsApi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StarshipsApi.swift; sourceTree = "<group>"; };
+		743BE4E923BD436F000BE177 /* PlanetsApi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlanetsApi.swift; sourceTree = "<group>"; };
+		743BE4EA23BD436F000BE177 /* PeoplesApi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PeoplesApi.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -132,6 +138,7 @@
 		743BE43D23BCF52A000BE177 /* Spin.UIKit.Demo */ = {
 			isa = PBXGroup;
 			children = (
+				743BE4E723BD436F000BE177 /* Apis */,
 				743BE4C723BD41FB000BE177 /* Models */,
 				743BE4C023BD41D0000BE177 /* Routes */,
 				743BE4A223BD4101000BE177 /* Services */,
@@ -248,6 +255,16 @@
 			path = Domain;
 			sourceTree = "<group>";
 		};
+		743BE4E723BD436F000BE177 /* Apis */ = {
+			isa = PBXGroup;
+			children = (
+				743BE4E823BD436F000BE177 /* StarshipsApi.swift */,
+				743BE4E923BD436F000BE177 /* PlanetsApi.swift */,
+				743BE4EA23BD436F000BE177 /* PeoplesApi.swift */,
+			);
+			path = Apis;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -348,6 +365,7 @@
 				743BE4E223BD42C0000BE177 /* Vehicle.swift in Sources */,
 				743BE4A123BD4085000BE177 /* String+URLComponents.swift in Sources */,
 				743BE4D323BD41FB000BE177 /* ListRequest.swift in Sources */,
+				743BE4EB23BD436F000BE177 /* StarshipsApi.swift in Sources */,
 				743BE4C423BD41D0000BE177 /* AppPolicies.swift in Sources */,
 				743BE4E423BD42C0000BE177 /* Planet.swift in Sources */,
 				743BE4B223BD4101000BE177 /* Encodable+Dictionary.swift in Sources */,
@@ -365,6 +383,8 @@
 				743BE4B523BD4101000BE177 /* Path.swift in Sources */,
 				743BE4B723BD4101000BE177 /* Endpoint.swift in Sources */,
 				743BE4E623BD42C0000BE177 /* People.swift in Sources */,
+				743BE4EC23BD436F000BE177 /* PlanetsApi.swift in Sources */,
+				743BE4ED23BD436F000BE177 /* PeoplesApi.swift in Sources */,
 				743BE44123BCF52A000BE177 /* SceneDelegate.swift in Sources */,
 				743BE4C623BD41D0000BE177 /* AppEndpoints.swift in Sources */,
 				743BE49E23BD4085000BE177 /* Observable+merge.swift in Sources */,
