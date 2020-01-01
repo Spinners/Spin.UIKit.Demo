@@ -44,7 +44,7 @@ final class StarshipsFlow: Flow {
 extension StarshipsFlow {
     func navigateToStarships() -> FlowContributors {
         let viewController = self.resolver.resolve(StarshipsViewController.self)!
-        self.rootViewController.pushViewController(viewController, animated: true)
+        self.rootViewController.pushViewController(viewController, animated: false)
         return .one(flowContributor: .contribute(withNext: viewController))
     }
 

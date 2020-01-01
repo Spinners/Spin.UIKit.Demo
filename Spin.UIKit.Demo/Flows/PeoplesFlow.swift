@@ -46,7 +46,7 @@ final class PeoplesFlow: Flow {
 extension PeoplesFlow {
     func navigateToPeoples() -> FlowContributors {
         let viewController = self.resolver.resolve(PeoplesViewController.self)!
-        self.rootViewController.pushViewController(viewController, animated: true)
+        self.rootViewController.pushViewController(viewController, animated: false)
         return .one(flowContributor: .contribute(withNext: viewController))
     }
 

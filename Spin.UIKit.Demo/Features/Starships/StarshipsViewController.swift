@@ -41,8 +41,8 @@ class StarshipsViewController: UIViewController, StoryboardBased, Stepper {
         self.tableView.delegate = self
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         self.actionSubject.send(StarshipsFeature.Action.load)
     }
 }

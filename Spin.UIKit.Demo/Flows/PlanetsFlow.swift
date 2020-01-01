@@ -44,7 +44,7 @@ final class PlanetsFlow: Flow {
 extension PlanetsFlow {
     func navigateToPlanets() -> FlowContributors {
         let viewController = self.resolver.resolve(PlanetsViewController.self)!
-        self.rootViewController.pushViewController(viewController, animated: true)
+        self.rootViewController.pushViewController(viewController, animated: false)
         return .one(flowContributor: .contribute(withNext: viewController))
     }
 
