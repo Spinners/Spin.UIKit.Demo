@@ -9,8 +9,6 @@
 /* Begin PBXBuildFile section */
 		743BE43F23BCF52A000BE177 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 743BE43E23BCF52A000BE177 /* AppDelegate.swift */; };
 		743BE44123BCF52A000BE177 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 743BE44023BCF52A000BE177 /* SceneDelegate.swift */; };
-		743BE44323BCF52A000BE177 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 743BE44223BCF52A000BE177 /* ViewController.swift */; };
-		743BE44623BCF52A000BE177 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 743BE44423BCF52A000BE177 /* Main.storyboard */; };
 		743BE44823BCF52A000BE177 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 743BE44723BCF52A000BE177 /* Assets.xcassets */; };
 		743BE44B23BCF52A000BE177 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 743BE44923BCF52A000BE177 /* LaunchScreen.storyboard */; };
 		743BE45423BCF900000BE177 /* Spin.Combine in Frameworks */ = {isa = PBXBuildFile; productRef = 743BE45323BCF900000BE177 /* Spin.Combine */; };
@@ -109,14 +107,13 @@
 		743BE56723BD4845000BE177 /* StarshipsFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 743BE56223BD4845000BE177 /* StarshipsFlow.swift */; };
 		743BE56A23BD4889000BE177 /* FeatureAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 743BE56823BD4889000BE177 /* FeatureAssembly.swift */; };
 		743BE56B23BD4889000BE177 /* FeedbackAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 743BE56923BD4889000BE177 /* FeedbackAssembly.swift */; };
+		743BE56D23BD4962000BE177 /* FlowAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 743BE56C23BD4962000BE177 /* FlowAssembly.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		743BE43B23BCF52A000BE177 /* Spin.UIKit.Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Spin.UIKit.Demo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		743BE43E23BCF52A000BE177 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		743BE44023BCF52A000BE177 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		743BE44223BCF52A000BE177 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		743BE44523BCF52A000BE177 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		743BE44723BCF52A000BE177 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		743BE44A23BCF52A000BE177 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		743BE44C23BCF52A000BE177 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -203,6 +200,7 @@
 		743BE56223BD4845000BE177 /* StarshipsFlow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StarshipsFlow.swift; sourceTree = "<group>"; };
 		743BE56823BD4889000BE177 /* FeatureAssembly.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeatureAssembly.swift; sourceTree = "<group>"; };
 		743BE56923BD4889000BE177 /* FeedbackAssembly.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedbackAssembly.swift; sourceTree = "<group>"; };
+		743BE56C23BD4962000BE177 /* FlowAssembly.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlowAssembly.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -259,8 +257,6 @@
 				743BE49723BD4085000BE177 /* Tools */,
 				743BE43E23BCF52A000BE177 /* AppDelegate.swift */,
 				743BE44023BCF52A000BE177 /* SceneDelegate.swift */,
-				743BE44223BCF52A000BE177 /* ViewController.swift */,
-				743BE44423BCF52A000BE177 /* Main.storyboard */,
 				743BE44723BCF52A000BE177 /* Assets.xcassets */,
 				743BE44923BCF52A000BE177 /* LaunchScreen.storyboard */,
 				743BE44C23BCF52A000BE177 /* Info.plist */,
@@ -372,9 +368,9 @@
 		743BE4E723BD436F000BE177 /* Apis */ = {
 			isa = PBXGroup;
 			children = (
-				743BE4E823BD436F000BE177 /* StarshipsApi.swift */,
 				743BE4E923BD436F000BE177 /* PlanetsApi.swift */,
 				743BE4EA23BD436F000BE177 /* PeoplesApi.swift */,
+				743BE4E823BD436F000BE177 /* StarshipsApi.swift */,
 			);
 			path = Apis;
 			sourceTree = "<group>";
@@ -382,12 +378,12 @@
 		743BE4EE23BD4419000BE177 /* Entity */ = {
 			isa = PBXGroup;
 			children = (
-				743BE4EF23BD4419000BE177 /* Films.swift */,
 				743BE4F023BD4419000BE177 /* Planets.swift */,
-				743BE4F123BD4419000BE177 /* Species.swift */,
-				743BE4F223BD4419000BE177 /* Vehicles.swift */,
 				743BE4F323BD4419000BE177 /* Peoples.swift */,
 				743BE4F423BD4419000BE177 /* Starships.swift */,
+				743BE4EF23BD4419000BE177 /* Films.swift */,
+				743BE4F123BD4419000BE177 /* Species.swift */,
+				743BE4F223BD4419000BE177 /* Vehicles.swift */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -400,6 +396,7 @@
 				743BE50123BD45B0000BE177 /* EntityAssembly.swift */,
 				743BE56923BD4889000BE177 /* FeedbackAssembly.swift */,
 				743BE56823BD4889000BE177 /* FeatureAssembly.swift */,
+				743BE56C23BD4962000BE177 /* FlowAssembly.swift */,
 			);
 			path = Assemblies;
 			sourceTree = "<group>";
@@ -407,12 +404,12 @@
 		743BE50823BD477F000BE177 /* Features */ = {
 			isa = PBXGroup;
 			children = (
-				743BE50923BD477F000BE177 /* Planet */,
-				743BE51123BD477F000BE177 /* Starships */,
-				743BE51823BD477F000BE177 /* Peoples */,
-				743BE51F23BD477F000BE177 /* Starship */,
-				743BE52723BD477F000BE177 /* People */,
 				743BE52F23BD477F000BE177 /* Planets */,
+				743BE51823BD477F000BE177 /* Peoples */,
+				743BE51123BD477F000BE177 /* Starships */,
+				743BE50923BD477F000BE177 /* Planet */,
+				743BE52723BD477F000BE177 /* People */,
+				743BE51F23BD477F000BE177 /* Starship */,
 			);
 			path = Features;
 			sourceTree = "<group>";
@@ -420,13 +417,13 @@
 		743BE50923BD477F000BE177 /* Planet */ = {
 			isa = PBXGroup;
 			children = (
+				743BE50E23BD477F000BE177 /* PlanetViewController.storyboard */,
 				743BE50A23BD477F000BE177 /* PlanetViewController.swift */,
 				743BE50B23BD477F000BE177 /* PlanetSpin.swift */,
 				743BE50C23BD477F000BE177 /* PlanetFeedback.swift */,
 				743BE50D23BD477F000BE177 /* PlanetAction.swift */,
-				743BE50E23BD477F000BE177 /* PlanetViewController.storyboard */,
-				743BE50F23BD477F000BE177 /* PlanetState.swift */,
 				743BE51023BD477F000BE177 /* PlanetReducer.swift */,
+				743BE50F23BD477F000BE177 /* PlanetState.swift */,
 			);
 			path = Planet;
 			sourceTree = "<group>";
@@ -434,12 +431,12 @@
 		743BE51123BD477F000BE177 /* Starships */ = {
 			isa = PBXGroup;
 			children = (
-				743BE51223BD477F000BE177 /* StarshipsAction.swift */,
-				743BE51323BD477F000BE177 /* StarshipsFeedback.swift */,
-				743BE51423BD477F000BE177 /* StarshipsState.swift */,
-				743BE51523BD477F000BE177 /* StarshipsViewController.swift */,
-				743BE51623BD477F000BE177 /* StarshipsReducer.swift */,
 				743BE51723BD477F000BE177 /* StarshipsViewController.storyboard */,
+				743BE51523BD477F000BE177 /* StarshipsViewController.swift */,
+				743BE51323BD477F000BE177 /* StarshipsFeedback.swift */,
+				743BE51223BD477F000BE177 /* StarshipsAction.swift */,
+				743BE51623BD477F000BE177 /* StarshipsReducer.swift */,
+				743BE51423BD477F000BE177 /* StarshipsState.swift */,
 			);
 			path = Starships;
 			sourceTree = "<group>";
@@ -448,11 +445,11 @@
 			isa = PBXGroup;
 			children = (
 				743BE51923BD477F000BE177 /* PeoplesViewController.storyboard */,
+				743BE51D23BD477F000BE177 /* PeoplesViewController.swift */,
+				743BE51E23BD477F000BE177 /* PeoplesFeedback.swift */,
 				743BE51A23BD477F000BE177 /* PeoplesAction.swift */,
 				743BE51B23BD477F000BE177 /* PeoplesReducer.swift */,
 				743BE51C23BD477F000BE177 /* PeoplesState.swift */,
-				743BE51D23BD477F000BE177 /* PeoplesViewController.swift */,
-				743BE51E23BD477F000BE177 /* PeoplesFeedback.swift */,
 			);
 			path = Peoples;
 			sourceTree = "<group>";
@@ -460,13 +457,13 @@
 		743BE51F23BD477F000BE177 /* Starship */ = {
 			isa = PBXGroup;
 			children = (
-				743BE52023BD477F000BE177 /* StarshipReducer.swift */,
-				743BE52123BD477F000BE177 /* StarshipSpin.swift */,
-				743BE52223BD477F000BE177 /* StarshipAction.swift */,
-				743BE52323BD477F000BE177 /* StarshipViewController.swift */,
-				743BE52423BD477F000BE177 /* StarshipFeedback.swift */,
-				743BE52523BD477F000BE177 /* StarshipState.swift */,
 				743BE52623BD477F000BE177 /* StarshipViewController.storyboard */,
+				743BE52323BD477F000BE177 /* StarshipViewController.swift */,
+				743BE52123BD477F000BE177 /* StarshipSpin.swift */,
+				743BE52423BD477F000BE177 /* StarshipFeedback.swift */,
+				743BE52223BD477F000BE177 /* StarshipAction.swift */,
+				743BE52023BD477F000BE177 /* StarshipReducer.swift */,
+				743BE52523BD477F000BE177 /* StarshipState.swift */,
 			);
 			path = Starship;
 			sourceTree = "<group>";
@@ -474,12 +471,12 @@
 		743BE52723BD477F000BE177 /* People */ = {
 			isa = PBXGroup;
 			children = (
-				743BE52823BD477F000BE177 /* PeopleFeedback.swift */,
 				743BE52923BD477F000BE177 /* PeopleViewController.storyboard */,
-				743BE52A23BD477F000BE177 /* PeopleSpin.swift */,
-				743BE52B23BD477F000BE177 /* PeopleReducer.swift */,
-				743BE52C23BD477F000BE177 /* PeopleState.swift */,
 				743BE52D23BD477F000BE177 /* PeopleViewController.swift */,
+				743BE52A23BD477F000BE177 /* PeopleSpin.swift */,
+				743BE52823BD477F000BE177 /* PeopleFeedback.swift */,
+				743BE52C23BD477F000BE177 /* PeopleState.swift */,
+				743BE52B23BD477F000BE177 /* PeopleReducer.swift */,
 				743BE52E23BD477F000BE177 /* PeopleAction.swift */,
 			);
 			path = People;
@@ -489,11 +486,11 @@
 			isa = PBXGroup;
 			children = (
 				743BE53023BD477F000BE177 /* PlanetsViewController.storyboard */,
-				743BE53123BD477F000BE177 /* PlanetsState.swift */,
-				743BE53223BD477F000BE177 /* PlanetsReducer.swift */,
 				743BE53323BD477F000BE177 /* PlanetsViewController.swift */,
 				743BE53423BD477F000BE177 /* PlanetsFeedback.swift */,
 				743BE53523BD477F000BE177 /* PlanetsAction.swift */,
+				743BE53223BD477F000BE177 /* PlanetsReducer.swift */,
+				743BE53123BD477F000BE177 /* PlanetsState.swift */,
 			);
 			path = Planets;
 			sourceTree = "<group>";
@@ -501,11 +498,11 @@
 		743BE55D23BD4845000BE177 /* Flows */ = {
 			isa = PBXGroup;
 			children = (
-				743BE55E23BD4845000BE177 /* PeoplesFlow.swift */,
-				743BE55F23BD4845000BE177 /* AppSteps.swift */,
 				743BE56023BD4845000BE177 /* PlanetsFlow.swift */,
-				743BE56123BD4845000BE177 /* AppFlow.swift */,
+				743BE55E23BD4845000BE177 /* PeoplesFlow.swift */,
 				743BE56223BD4845000BE177 /* StarshipsFlow.swift */,
+				743BE55F23BD4845000BE177 /* AppSteps.swift */,
+				743BE56123BD4845000BE177 /* AppFlow.swift */,
 			);
 			path = Flows;
 			sourceTree = "<group>";
@@ -601,7 +598,6 @@
 				743BE53A23BD477F000BE177 /* PlanetViewController.storyboard in Resources */,
 				743BE44823BCF52A000BE177 /* Assets.xcassets in Resources */,
 				743BE55723BD477F000BE177 /* PlanetsViewController.storyboard in Resources */,
-				743BE44623BCF52A000BE177 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -637,12 +633,12 @@
 				743BE4E123BD42C0000BE177 /* Specie.swift in Sources */,
 				743BE4B823BD4101000BE177 /* FavoriteService.swift in Sources */,
 				743BE4E523BD42C0000BE177 /* Starship.swift in Sources */,
+				743BE56D23BD4962000BE177 /* FlowAssembly.swift in Sources */,
 				743BE55623BD477F000BE177 /* PeopleAction.swift in Sources */,
 				743BE54023BD477F000BE177 /* StarshipsViewController.swift in Sources */,
 				743BE49F23BD4085000BE177 /* Weakify.swift in Sources */,
 				743BE54C23BD477F000BE177 /* StarshipViewController.swift in Sources */,
 				743BE4B623BD4101000BE177 /* Route.swift in Sources */,
-				743BE44323BCF52A000BE177 /* ViewController.swift in Sources */,
 				743BE53923BD477F000BE177 /* PlanetAction.swift in Sources */,
 				743BE4B123BD4101000BE177 /* ReactiveNetworkService.swift in Sources */,
 				743BE56323BD4845000BE177 /* PeoplesFlow.swift in Sources */,
@@ -698,14 +694,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		743BE44423BCF52A000BE177 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				743BE44523BCF52A000BE177 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		743BE44923BCF52A000BE177 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -750,6 +738,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
@@ -772,6 +761,7 @@
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
+				STRIP_INSTALLED_PRODUCT = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -810,6 +800,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -825,6 +816,7 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
+				STRIP_INSTALLED_PRODUCT = YES;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				VALIDATE_PRODUCT = YES;
