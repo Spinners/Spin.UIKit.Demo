@@ -24,7 +24,7 @@ final class FeatureAssembly: Assembly {
             let renderStateFeedback = weakify(viewController) { $0.stateFeedback(state: $1) }
             let emitActionFeedback = weakify(viewController, nilValue: .empty) { $0.actionFeedback() }
 
-            // build Spin
+            // build Spin with a Builder pattern
             Spinner
                 .from(initialState: PlanetsFeature.State.idle)
                 .add(feedback: ReactiveFeedback(uiFeedbacks: renderStateFeedback, emitActionFeedback, on: UIScheduler()))
@@ -42,7 +42,7 @@ final class FeatureAssembly: Assembly {
             let renderStateFeedback = weakify(viewController) { $0.stateFeedback(state: $1) }
             let emitActionFeedback = weakify(viewController, nilValue: .empty()) { $0.actionFeedback() }
 
-            // build Spin
+            // build Spin with a Builder pattern
             Spinner
                 .from(initialState: PeoplesFeature.State.idle)
                 .add(feedback: RxFeedback(uiFeedbacks: renderStateFeedback, emitActionFeedback, on: MainScheduler.instance))
@@ -60,7 +60,7 @@ final class FeatureAssembly: Assembly {
             let renderStateFeedback = weakify(viewController) { $0.stateFeedback(state: $1) }
             let emitActionFeedback = weakify(viewController, nilValue: Empty().eraseToAnyPublisher()) { $0.actionFeedback() }
 
-            // build Spin
+            // build Spin with a Builder pattern
             Spinner
                 .from(initialState: StarshipsFeature.State.idle)
                 .add(feedback: CombineFeedback(uiFeedbacks: renderStateFeedback, emitActionFeedback, on: DispatchQueue.main.eraseToAnyScheduler()))
@@ -79,7 +79,7 @@ final class FeatureAssembly: Assembly {
             let renderStateFeedback = weakify(viewController) { $0.stateFeedback(state: $1) }
             let emitActionFeedback = weakify(viewController, nilValue: .empty) { $0.actionFeedback() }
 
-            // build Spin
+            // build Spin with a declarative "SwiftUI" pattern
             PlanetFeature.Spin(planet: planet,
                                loadFavoriteFeedback: loadFavoriteFeedback,
                                persistFavoriteFeedback: persistFavoriteFeedback,
@@ -103,7 +103,7 @@ final class FeatureAssembly: Assembly {
             let renderStateFeedback = weakify(viewController) { $0.stateFeedback(state: $1) }
             let emitActionFeedback = weakify(viewController, nilValue: .empty()) { $0.actionFeedback() }
 
-            // build Spin
+            // build Spin with a declarative "SwiftUI" pattern
             PeopleFeature.Spin(people: people,
                                loadFavoriteFeedback: loadFavoriteFeedback,
                                persistFavoriteFeedback: persistFavoriteFeedback,
@@ -124,7 +124,7 @@ final class FeatureAssembly: Assembly {
             let renderStateFeedback = weakify(viewController) { $0.stateFeedback(state: $1) }
             let emitActionFeedback = weakify(viewController, nilValue: Empty().eraseToAnyPublisher()) { $0.actionFeedback() }
 
-            // build Spin
+            // build Spin with a declarative "SwiftUI" pattern
             StarshipFeature.Spin(starship: starship,
                                  loadFavoriteFeedback: loadFavoriteFeedback,
                                  persistFavoriteFeedback: persistFavoriteFeedback,
