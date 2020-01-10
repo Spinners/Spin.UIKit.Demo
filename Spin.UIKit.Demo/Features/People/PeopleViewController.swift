@@ -10,8 +10,11 @@ import UIKit
 import RxSwift
 import RxCocoa
 import Reusable
+import Spin_RxSwift
 
 class PeopleViewController: UIViewController, StoryboardBased {
+
+    fileprivate var viewContext: RxViewContext<PeopleFeature.State, PeopleFeature.Action>!
 
     @IBOutlet private weak var peopleNameLabel: UILabel!
     @IBOutlet private weak var peopleGenderLabel: UILabel!
@@ -24,22 +27,14 @@ class PeopleViewController: UIViewController, StoryboardBased {
     @IBOutlet private weak var peopleFavoriteIsLoadingActivity: UIActivityIndicatorView!
 
     let disposeBag = DisposeBag()
-}
 
-/////////////////////////
-// FEEDBACKS
-/////////////////////////
-extension PeopleViewController {
-    func stateFeedback(state: PeopleFeature.State) {
-        self.interpret(state: state)
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.viewContext.render(on: self) { $0.interpret(state:) }
     }
 
-    func actionFeedback() -> Observable<PeopleFeature.Action> {
-        return self.peopleFavoriteSwitch
-        .rx
-        .controlEvent(.valueChanged)
-        .map { [weak self] in self?.peopleFavoriteSwitch.isOn ?? false}
-        .map { PeopleFeature.Action.setFavorite(favorite: $0) }
+    @IBAction func changeFavorite(_ sender: UISwitch) {
+        self.viewContext.perform(.setFavorite(favorite: sender.isOn))
     }
 }
 
@@ -73,5 +68,13 @@ extension PeopleViewController {
         self.peopleMassLabel.text = people.mass
         self.peopleHeightLabel.text = people.height
         self.peopleHairColorLabel.text = people.hairColor
+    }
+}
+
+extension PeopleViewController {
+    static func make(context: RxViewContext<PeopleFeature.State, PeopleFeature.Action>) -> PeopleViewController {
+        let viewController = PeopleViewController.instantiate()
+        viewController.viewContext = context
+        return viewController
     }
 }

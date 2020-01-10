@@ -16,8 +16,7 @@ extension PlanetFeature {
         let planet: Planet
         let loadFavoriteFeedback: (PlanetFeature.State) -> SignalProducer<PlanetFeature.Action, Never>
         let persistFavoriteFeedback: (PlanetFeature.State) -> SignalProducer<PlanetFeature.Action, Never>
-        let renderStateFeedback: (PlanetFeature.State) -> Void
-        let emitActionFeedback: () -> SignalProducer<PlanetFeature.Action, Never>
+        let uiFeedback: ReactiveFeedback<PlanetFeature.State, PlanetFeature.Action>
         let reducerFunction: (PlanetFeature.State, PlanetFeature.Action) -> PlanetFeature.State
 
         var spin: ReactiveSpin<PlanetFeature.State> {
@@ -25,7 +24,7 @@ extension PlanetFeature {
                          reducer: ReactiveReducer(reducer: reducerFunction)) {
                 ReactiveFeedback(feedback: loadFavoriteFeedback).execute(on: QueueScheduler())
                 ReactiveFeedback(feedback: persistFavoriteFeedback).execute(on: QueueScheduler())
-                ReactiveFeedback(uiFeedbacks: renderStateFeedback, emitActionFeedback).execute(on: UIScheduler())
+                uiFeedback
             }
         }
     }

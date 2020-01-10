@@ -6,13 +6,18 @@
 //  Copyright © 2019 Spinners. All rights reserved.
 //
 
+import Combine
 import ReactiveSwift
 import Reusable
 import RxFlow
 import RxRelay
+import Spin_ReactiveSwift
 import UIKit
 
 class PlanetsViewController: UIViewController, StoryboardBased, Stepper {
+
+    fileprivate var viewContext: ReactiveViewContext<PlanetsFeature.State, PlanetsFeature.Action>!
+
     let steps = PublishRelay<Step>()
 
     @IBOutlet private weak var tableView: UITableView!
@@ -22,42 +27,30 @@ class PlanetsViewController: UIViewController, StoryboardBased, Stepper {
     @IBOutlet private weak var failureLabel: UILabel!
 
     let disposeBag = CompositeDisposable()
-    
+
     private var datasource = [(Planet, Bool)]()
-    
-    let actionSignal = Signal<PlanetsFeature.Action, Never>.pipe()
 
     @IBAction func previousTapped(_ sender: UIButton) {
-        self.actionSignal.input.send(value: PlanetsFeature.Action.loadPrevious)
+        self.viewContext.perform(.loadPrevious)
     }
     
     @IBAction func nextTapped(_ sender: Any) {
-        self.actionSignal.input.send(value: PlanetsFeature.Action.loadNext)
+        self.viewContext.perform(.loadNext)
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableView.dataSource = self
         self.tableView.delegate = self
+        self.viewContext.render(on: self) { $0.interpret(state:) }
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.actionSignal.input.send(value: PlanetsFeature.Action.load)
-    }
-}
-
-/////////////////////////
-// FEEDBACKS
-/////////////////////////
-extension PlanetsViewController {
-    func stateFeedback(state: PlanetsFeature.State) {
-        self.interpret(state: state)
+        self.viewContext.perform(.load)
     }
 
-    func actionFeedback() -> SignalProducer<PlanetsFeature.Action, Never> {
-        return self.actionSignal.output.producer
-    }
+
 }
 
 extension PlanetsViewController {
@@ -122,6 +115,14 @@ extension PlanetsViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let planet = self.datasource[indexPath.row].0
         self.steps.accept(AppSteps.planet(planet: planet))
+    }
+}
+
+extension PlanetsViewController {
+    static func make(context: ReactiveViewContext<PlanetsFeature.State, PlanetsFeature.Action>) -> PlanetsViewController {
+        let viewController = PlanetsViewController.instantiate()
+        viewController.viewContext = context
+        return viewController
     }
 }
 

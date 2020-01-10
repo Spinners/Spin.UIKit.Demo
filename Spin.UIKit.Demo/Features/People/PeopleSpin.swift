@@ -16,8 +16,7 @@ extension PeopleFeature {
         let people: People
         let loadFavoriteFeedback: (PeopleFeature.State) -> Observable<PeopleFeature.Action>
         let persistFavoriteFeedback: (PeopleFeature.State) -> Observable<PeopleFeature.Action>
-        let renderStateFeedback: (PeopleFeature.State) -> Void
-        let emitActionFeedback: () -> Observable<PeopleFeature.Action>
+        let uiFeedback: RxFeedback<PeopleFeature.State, PeopleFeature.Action>
         let reducerFunction: (PeopleFeature.State, PeopleFeature.Action) -> PeopleFeature.State
 
         var spin: RxSpin<PeopleFeature.State> {
@@ -25,7 +24,7 @@ extension PeopleFeature {
                    reducer: RxReducer(reducer: reducerFunction)) {
                     RxFeedback(feedback: loadFavoriteFeedback).execute(on: SerialDispatchQueueScheduler(qos: .userInitiated))
                     RxFeedback(feedback: persistFavoriteFeedback).execute(on: SerialDispatchQueueScheduler(qos: .userInitiated))
-                    RxFeedback(uiFeedbacks: renderStateFeedback, emitActionFeedback).execute(on: MainScheduler.instance)
+                    uiFeedback
             }
         }
     }

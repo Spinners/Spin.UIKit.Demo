@@ -17,8 +17,8 @@ extension StarshipFeature {
         let starship: Starship
         let loadFavoriteFeedback: (StarshipFeature.State) -> AnyPublisher<StarshipFeature.Action, Never>
         let persistFavoriteFeedback: (StarshipFeature.State) -> AnyPublisher<StarshipFeature.Action, Never>
-        let renderStateFeedback: (StarshipFeature.State) -> Void
-        let emitActionFeedback: () -> AnyPublisher<StarshipFeature.Action, Never>
+        let uiFeedback: DispatchQueueCombineFeedback<StarshipFeature.State, StarshipFeature.Action>
+
         let reducerFunction: (StarshipFeature.State, StarshipFeature.Action) -> StarshipFeature.State
 
         var spin: CombineSpin<StarshipFeature.State> {
@@ -26,7 +26,7 @@ extension StarshipFeature {
                         reducer: CombineReducer(reducer: reducerFunction)) {
                             CombineFeedback(feedback: loadFavoriteFeedback).execute(on: DispatchQueue(label: "background").eraseToAnyScheduler())
                             CombineFeedback(feedback: persistFavoriteFeedback).execute(on: DispatchQueue(label: "background").eraseToAnyScheduler())
-                            CombineFeedback(uiFeedbacks: renderStateFeedback, emitActionFeedback).execute(on: DispatchQueue.main.eraseToAnyScheduler())
+                            uiFeedback
             }
         }
     }

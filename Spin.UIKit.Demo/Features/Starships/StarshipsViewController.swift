@@ -10,9 +10,13 @@ import Combine
 import Reusable
 import RxFlow
 import RxRelay
+import Spin_Combine
 import UIKit
 
 class StarshipsViewController: UIViewController, StoryboardBased, Stepper {
+
+    fileprivate var viewContext: CombineViewContext<StarshipsFeature.State, StarshipsFeature.Action>!
+
     let steps = PublishRelay<Step>()
 
     @IBOutlet private weak var tableView: UITableView!
@@ -24,43 +28,25 @@ class StarshipsViewController: UIViewController, StoryboardBased, Stepper {
     var disposeBag = [AnyCancellable]()
     
     private var datasource = [(Starship, Bool)]()
-    
-    let actionSubject = PassthroughSubject<StarshipsFeature.Action, Never>()
-        
+
     @IBAction func previousTapped(_ sender: UIButton) {
-        self.actionSubject.send(StarshipsFeature.Action.loadPrevious)
+        self.viewContext.perform(.loadPrevious)
     }
     
     @IBAction func nextTapped(_ sender: Any) {
-        self.actionSubject.send(StarshipsFeature.Action.loadNext)
+        self.viewContext.perform(.loadNext)
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableView.dataSource = self
         self.tableView.delegate = self
+        self.viewContext.render(on: self) { $0.interpret(state:) }
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.actionSubject.send(StarshipsFeature.Action.load)
-    }
-}
-
-/////////////////////////
-// FEEDBACKS
-/////////////////////////
-extension StarshipsViewController {
-    func stateFeedback(state: StarshipsFeature.State) {
-        print("<UI FEEDBACK> interpret state: \(state)")
-        self.interpret(state: state)
-    }
-
-    func actionFeedback() -> AnyPublisher<StarshipsFeature.Action, Never> {
-        print("<UI FEEDBACK> mutate with user actions")
-        return self.actionSubject.handleEvents(receiveSubscription: { _ in
-            print("<UI FEEDBACK> action subject has been subscribed")
-        }, receiveOutput: { mutation in print("<UI FEEDBACK> action emitted: \(mutation)") }).eraseToAnyPublisher()
+        self.viewContext.perform(.load)
     }
 }
 
@@ -126,5 +112,13 @@ extension StarshipsViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let starship = self.datasource[indexPath.row].0
         self.steps.accept(AppSteps.starship(starship: starship))
+    }
+}
+
+extension StarshipsViewController {
+    static func make(context: CombineViewContext<StarshipsFeature.State, StarshipsFeature.Action>) -> StarshipsViewController {
+        let viewController = StarshipsViewController.instantiate()
+        viewController.viewContext = context
+        return viewController
     }
 }

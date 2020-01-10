@@ -19,15 +19,14 @@ import Swinject
 final class FeatureAssembly: Assembly {
     func assemble(container: Container) {
         container.register(PlanetsViewController.self) { resolver in
-            let viewController = PlanetsViewController.instantiate()
+            let viewContext = ReactiveViewContext<PlanetsFeature.State, PlanetsFeature.Action>(state: PlanetsFeature.State.idle)
+            let viewController = PlanetsViewController.make(context: viewContext)
             let loadFeedback = resolver.resolve(PlanetsFeedbackFunction.self)!
-            let renderStateFeedback = weakify(viewController) { $0.stateFeedback(state: $1) }
-            let emitActionFeedback = weakify(viewController, nilValue: .empty) { $0.actionFeedback() }
 
             // build Spin with a Builder pattern
             Spinner
                 .from(initialState: PlanetsFeature.State.idle)
-                .add(feedback: ReactiveFeedback(uiFeedbacks: renderStateFeedback, emitActionFeedback, on: UIScheduler()))
+                .add(feedback: viewContext.toFeedback())
                 .add(feedback: ReactiveFeedback(feedback: loadFeedback, on: QueueScheduler()))
                 .reduce(with: ReactiveReducer(reducer: PlanetsFeature.reducer))
                 .spin()
@@ -37,15 +36,14 @@ final class FeatureAssembly: Assembly {
         }
 
         container.register(PeoplesViewController.self) { resolver in
-            let viewController = PeoplesViewController.instantiate()
+            let viewContext = RxViewContext<PeoplesFeature.State, PeoplesFeature.Action>(state: PeoplesFeature.State.idle)
+            let viewController = PeoplesViewController.make(context: viewContext)
             let loadFeedback = resolver.resolve(PeoplesFeedbackFunction.self)!
-            let renderStateFeedback = weakify(viewController) { $0.stateFeedback(state: $1) }
-            let emitActionFeedback = weakify(viewController, nilValue: .empty()) { $0.actionFeedback() }
 
             // build Spin with a Builder pattern
             Spinner
                 .from(initialState: PeoplesFeature.State.idle)
-                .add(feedback: RxFeedback(uiFeedbacks: renderStateFeedback, emitActionFeedback, on: MainScheduler.instance))
+                .add(feedback: viewContext.toFeedback())
                 .add(feedback: RxFeedback(feedback: loadFeedback, on: SerialDispatchQueueScheduler(qos: .userInitiated)))
                 .reduce(with: RxReducer(reducer: PeoplesFeature.reducer))
                 .spin()
@@ -55,15 +53,14 @@ final class FeatureAssembly: Assembly {
         }
 
         container.register(StarshipsViewController.self) { resolver in
-            let viewController = StarshipsViewController.instantiate()
+            let viewContext = CombineViewContext<StarshipsFeature.State, StarshipsFeature.Action>(state: StarshipsFeature.State.idle)
+            let viewController = StarshipsViewController.make(context: viewContext)
             let loadFeedback = resolver.resolve(StarshipsFeedbackFunction.self)!
-            let renderStateFeedback = weakify(viewController) { $0.stateFeedback(state: $1) }
-            let emitActionFeedback = weakify(viewController, nilValue: Empty().eraseToAnyPublisher()) { $0.actionFeedback() }
 
             // build Spin with a Builder pattern
             Spinner
                 .from(initialState: StarshipsFeature.State.idle)
-                .add(feedback: CombineFeedback(uiFeedbacks: renderStateFeedback, emitActionFeedback, on: DispatchQueue.main.eraseToAnyScheduler()))
+                .add(feedback: viewContext.toFeedback())
                 .add(feedback: CombineFeedback(feedback: loadFeedback, on: DispatchQueue(label: "background").eraseToAnyScheduler()))
                 .reduce(with: CombineReducer(reducer: StarshipsFeature.reducer))
                 .spin()
@@ -73,23 +70,18 @@ final class FeatureAssembly: Assembly {
         }
 
         container.register(PlanetViewController.self) { (resolver, planet: Planet) in
-            let viewController = PlanetViewController.instantiate()
+            let viewContext = ReactiveViewContext<PlanetFeature.State, PlanetFeature.Action>(state: .loading(planet: planet))
+            let viewController = PlanetViewController.make(context: viewContext)
             let loadFavoriteFeedback = resolver.resolve(PlanetLoadFavoriteFeedbackFunction.self, name: "PlanetLoadFavoriteFeedbackFunction")!
             let persistFavoriteFeedback = resolver.resolve(PlanetPersistFavoriteFeedbackFunction.self, name: "PlanetPersistFavoriteFeedbackFunction")!
-            let renderStateFeedback = weakify(viewController) { $0.stateFeedback(state: $1) }
-            let emitActionFeedback = weakify(viewController, nilValue: .empty) { $0.actionFeedback() }
 
             // build Spin with a declarative "SwiftUI" pattern
             PlanetFeature.Spin(planet: planet,
                                loadFavoriteFeedback: loadFavoriteFeedback,
                                persistFavoriteFeedback: persistFavoriteFeedback,
-                               renderStateFeedback: renderStateFeedback,
-                               emitActionFeedback: emitActionFeedback,
+                               uiFeedback: viewContext.toFeedback(),
                                reducerFunction: PlanetFeature.reducer)
                 .toReactiveStream()
-                .on(disposed: {
-                    print("---------------------- PLANET SPIN DISPOSED")
-                })
                 .spin(after: viewController.reactive.viewWillAppear.producer)
                 .disposed(by: viewController.disposeBag)
 
@@ -97,18 +89,16 @@ final class FeatureAssembly: Assembly {
         }
 
         container.register(PeopleViewController.self) { (resolver, people: People) in
-            let viewController = PeopleViewController.instantiate()
+            let viewContext = RxViewContext<PeopleFeature.State, PeopleFeature.Action>(state: .loading(people: people))
+            let viewController = PeopleViewController.make(context: viewContext)
             let loadFavoriteFeedback = resolver.resolve(PeopleLoadFavoriteFeedbackFunction.self, name: "PeopleLoadFavoriteFeedbackFunction")!
             let persistFavoriteFeedback = resolver.resolve(PeoplePersistFavoriteFeedbackFunction.self, name: "PeoplePersistFavoriteFeedbackFunction")!
-            let renderStateFeedback = weakify(viewController) { $0.stateFeedback(state: $1) }
-            let emitActionFeedback = weakify(viewController, nilValue: .empty()) { $0.actionFeedback() }
 
             // build Spin with a declarative "SwiftUI" pattern
             PeopleFeature.Spin(people: people,
                                loadFavoriteFeedback: loadFavoriteFeedback,
                                persistFavoriteFeedback: persistFavoriteFeedback,
-                               renderStateFeedback: renderStateFeedback,
-                               emitActionFeedback: emitActionFeedback,
+                               uiFeedback: viewContext.toFeedback(),
                                reducerFunction: PeopleFeature.reducer)
                 .toReactiveStream()
                 .spin(after: viewController.rx.viewWillAppear)
@@ -118,21 +108,19 @@ final class FeatureAssembly: Assembly {
         }
 
         container.register(StarshipViewController.self) { (resolver, starship: Starship) in
-            let viewController = StarshipViewController.instantiate()
+            let viewContext = CombineViewContext<StarshipFeature.State, StarshipFeature.Action>(state: .loading(starship: starship))
+            let viewController = StarshipViewController.make(context: viewContext)
             let loadFavoriteFeedback = resolver.resolve(StarshipLoadFavoriteFeedbackFunction.self, name: "StarshipLoadFavoriteFeedbackFunction")!
             let persistFavoriteFeedback = resolver.resolve(StarshipPersistFavoriteFeedbackFunction.self, name: "StarshipPersistFavoriteFeedbackFunction")!
-            let renderStateFeedback = weakify(viewController) { $0.stateFeedback(state: $1) }
-            let emitActionFeedback = weakify(viewController, nilValue: Empty().eraseToAnyPublisher()) { $0.actionFeedback() }
 
             // build Spin with a declarative "SwiftUI" pattern
             StarshipFeature.Spin(starship: starship,
                                  loadFavoriteFeedback: loadFavoriteFeedback,
                                  persistFavoriteFeedback: persistFavoriteFeedback,
-                                 renderStateFeedback: renderStateFeedback,
-                                 emitActionFeedback: emitActionFeedback,
+                                 uiFeedback: viewContext.toFeedback(),
                                  reducerFunction: StarshipFeature.reducer)
                 .toReactiveStream()
-                .spin(after: viewController.viewWillAppearSubject.eraseToAnyPublisher())
+                .spin(after: viewController.viewWillAppearPublisher)
                 .disposed(by: &viewController.disposeBag)
 
             return viewController

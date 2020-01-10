@@ -10,9 +10,13 @@ import Reusable
 import RxFlow
 import RxSwift
 import RxRelay
+import Spin_RxSwift
 import UIKit
 
 class PeoplesViewController: UIViewController, StoryboardBased, Stepper {
+
+    fileprivate var viewContext: RxViewContext<PeoplesFeature.State, PeoplesFeature.Action>!
+
     let steps = PublishRelay<Step>()
 
     @IBOutlet private weak var tableView: UITableView!
@@ -24,39 +28,25 @@ class PeoplesViewController: UIViewController, StoryboardBased, Stepper {
     let disposeBag = DisposeBag()
     
     private var datasource = [(People, Bool)]()
-    
-    let actionRelay = PublishRelay<PeoplesFeature.Action>()
-        
+
     @IBAction func previousTapped(_ sender: UIButton) {
-        self.actionRelay.accept(PeoplesFeature.Action.loadPrevious)
+        self.viewContext.perform(.loadPrevious)
     }
     
     @IBAction func nextTapped(_ sender: Any) {
-        self.actionRelay.accept(PeoplesFeature.Action.loadNext)
+        self.viewContext.perform(.loadNext)
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableView.dataSource = self
         self.tableView.delegate = self
+        self.viewContext.render(on: self) { $0.interpret(state:) }
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.actionRelay.accept(PeoplesFeature.Action.load)
-    }
-}
-
-/////////////////////////
-// FEEDBACKS
-/////////////////////////
-extension PeoplesViewController {
-    func stateFeedback(state: PeoplesFeature.State) {
-        self.interpret(state: state)
-    }
-
-    func actionFeedback() -> Observable<PeoplesFeature.Action> {
-        return self.actionRelay.asObservable()
+        self.viewContext.perform(.load)
     }
 }
 
@@ -122,5 +112,13 @@ extension PeoplesViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let people = self.datasource[indexPath.row].0
         self.steps.accept(AppSteps.people(people: people))
+    }
+}
+
+extension PeoplesViewController {
+    static func make(context: RxViewContext<PeoplesFeature.State, PeoplesFeature.Action>) -> PeoplesViewController {
+        let viewController = PeoplesViewController.instantiate()
+        viewController.viewContext = context
+        return viewController
     }
 }

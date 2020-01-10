@@ -6,12 +6,16 @@
 //  Copyright © 2019 WarpFactor. All rights reserved.
 //
 
-import UIKit
+import Combine
 import ReactiveCocoa
 import ReactiveSwift
 import Reusable
+import Spin_ReactiveSwift
+import UIKit
 
 class PlanetViewController: UIViewController, StoryboardBased {
+
+    fileprivate var viewContext: ReactiveViewContext<PlanetFeature.State, PlanetFeature.Action>!
 
     @IBOutlet private weak var planetNameLabel: UILabel!
     @IBOutlet private weak var planetDiameterLabel: UILabel!
@@ -28,22 +32,14 @@ class PlanetViewController: UIViewController, StoryboardBased {
     deinit {
         disposeBag.dispose()
     }
-}
 
-/////////////////////////
-// FEEDBACKS
-/////////////////////////
-extension PlanetViewController {
-    func stateFeedback(state: PlanetFeature.State) {
-        self.interpret(state: state)
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.viewContext.render(on: self) { $0.interpret(state:) }
     }
 
-    func actionFeedback() -> SignalProducer<PlanetFeature.Action, Never> {
-        return self.planetFavoriteSwitch
-            .reactive
-            .isOnValues
-            .map { return PlanetFeature.Action.setFavorite(favorite: $0) }
-            .producer
+    @IBAction func changeFavorite(_ sender: UISwitch) {
+        self.viewContext.perform(.setFavorite(favorite: sender.isOn))
     }
 }
 
@@ -77,5 +73,13 @@ extension PlanetViewController {
         self.planetOrbitalPeriodLabel.text = planet.orbitalPeriod
         self.planetRotationPeriodLabel.text = planet.rotationPeriod
         self.planetClimateLabel.text = planet.climate
+    }
+}
+
+extension PlanetViewController {
+    static func make(context: ReactiveViewContext<PlanetFeature.State, PlanetFeature.Action>) -> PlanetViewController {
+        let viewController = PlanetViewController.instantiate()
+        viewController.viewContext = context
+        return viewController
     }
 }
