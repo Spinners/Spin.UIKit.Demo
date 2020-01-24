@@ -12,19 +12,19 @@ import Spin_Swift
 
 extension PlanetFeature {
     struct Spin: Spin_Swift.SpinDefinition {
-
+        
         let planet: Planet
         let loadFavoriteFeedback: (PlanetFeature.State) -> SignalProducer<PlanetFeature.Action, Never>
         let persistFavoriteFeedback: (PlanetFeature.State) -> SignalProducer<PlanetFeature.Action, Never>
         let uiFeedback: ReactiveFeedback<PlanetFeature.State, PlanetFeature.Action>
         let reducerFunction: (PlanetFeature.State, PlanetFeature.Action) -> PlanetFeature.State
-
+        
         var spin: ReactiveSpin<PlanetFeature.State> {
             ReactiveSpin(initialState: PlanetFeature.State.loading(planet: planet),
                          reducer: ReactiveReducer(reducer: reducerFunction)) {
-                ReactiveFeedback(feedback: loadFavoriteFeedback).execute(on: QueueScheduler())
-                ReactiveFeedback(feedback: persistFavoriteFeedback).execute(on: QueueScheduler())
-                uiFeedback
+                            uiFeedback
+                            ReactiveFeedback(feedback: loadFavoriteFeedback).execute(on: QueueScheduler())
+                            ReactiveFeedback(feedback: persistFavoriteFeedback).execute(on: QueueScheduler())
             }
         }
     }

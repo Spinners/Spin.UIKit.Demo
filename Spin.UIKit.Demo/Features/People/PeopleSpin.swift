@@ -22,9 +22,9 @@ extension PeopleFeature {
         var spin: RxSpin<PeopleFeature.State> {
             RxSpin(initialState: PeopleFeature.State.loading(people: people),
                    reducer: RxReducer(reducer: reducerFunction)) {
+                    uiFeedback
                     RxFeedback(feedback: loadFavoriteFeedback).execute(on: SerialDispatchQueueScheduler(qos: .userInitiated))
                     RxFeedback(feedback: persistFavoriteFeedback).execute(on: SerialDispatchQueueScheduler(qos: .userInitiated))
-                    uiFeedback
             }
         }
     }
