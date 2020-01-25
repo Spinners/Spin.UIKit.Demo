@@ -21,19 +21,19 @@ final class ApisAssembly: Assembly {
         container.register(PlanetsApiFunction.self) { resolver in
             let baseURL = resolver.resolve(String.self, name: "baseURL")!
             let networkService = resolver.resolve(NetworkService.self)!
-            return curry3(function: Planets.Apis.load)(baseURL)(networkService)
+            return partial(Planets.Apis.load, arg1: baseURL, arg2: networkService, arg3: .partial)
         }
 
         container.register(PeoplesApiFunction.self) { resolver in
             let baseURL = resolver.resolve(String.self, name: "baseURL")!
             let networkService = resolver.resolve(NetworkService.self)!
-            return curry3(function: Peoples.Apis.load)(baseURL)(networkService)
+            return partial(Peoples.Apis.load, arg1: baseURL, arg2: networkService, arg3: .partial)
         }
 
         container.register(StarshipsApiFunction.self) { resolver in
             let baseURL = resolver.resolve(String.self, name: "baseURL")!
             let networkService = resolver.resolve(NetworkService.self)!
-            return curry3(function: Starships.Apis.load)(baseURL)(networkService)
+            return partial(Starships.Apis.load, arg1: baseURL, arg2: networkService, arg3: .partial)
         }
     }
 }

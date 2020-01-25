@@ -16,7 +16,7 @@ import UIKit
 
 class PlanetsViewController: UIViewController, StoryboardBased, Stepper {
 
-    fileprivate var viewContext: ReactiveViewContext<PlanetsFeature.State, PlanetsFeature.Action>!
+    fileprivate var viewContext: ReactiveViewContext<PlanetsFeature.State, PlanetsFeature.Event>!
 
     let steps = PublishRelay<Step>()
 
@@ -31,11 +31,11 @@ class PlanetsViewController: UIViewController, StoryboardBased, Stepper {
     private var datasource = [(Planet, Bool)]()
 
     @IBAction func previousTapped(_ sender: UIButton) {
-        self.viewContext.perform(.loadPrevious)
+        self.viewContext.emit(.loadPrevious)
     }
     
     @IBAction func nextTapped(_ sender: Any) {
-        self.viewContext.perform(.loadNext)
+        self.viewContext.emit(.loadNext)
     }
     
     override func viewDidLoad() {
@@ -47,7 +47,7 @@ class PlanetsViewController: UIViewController, StoryboardBased, Stepper {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.viewContext.perform(.load)
+        self.viewContext.emit(.load)
     }
 
 
@@ -119,7 +119,7 @@ extension PlanetsViewController: UITableViewDelegate {
 }
 
 extension PlanetsViewController {
-    static func make(context: ReactiveViewContext<PlanetsFeature.State, PlanetsFeature.Action>) -> PlanetsViewController {
+    static func make(context: ReactiveViewContext<PlanetsFeature.State, PlanetsFeature.Event>) -> PlanetsViewController {
         let viewController = PlanetsViewController.instantiate()
         viewController.viewContext = context
         return viewController

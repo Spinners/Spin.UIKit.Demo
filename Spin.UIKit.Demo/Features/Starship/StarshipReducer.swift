@@ -7,8 +7,8 @@
 //
 
 extension StarshipFeature {
-    static func reducer(state: StarshipFeature.State, action: StarshipFeature.Action) -> StarshipFeature.State {
-        switch (state, action) {
+    static func reducer(state: StarshipFeature.State, event: StarshipFeature.Event) -> StarshipFeature.State {
+        switch (state, event) {
         case (.loading, .load(let starship, let favorite)), (.enablingFavorite, .load(let starship, let favorite)):
             return .loaded(starship: starship, favorite: favorite)
         case (.loaded(let starship, _), .setFavorite(let favorite)):

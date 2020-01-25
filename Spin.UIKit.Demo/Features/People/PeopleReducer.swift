@@ -7,8 +7,8 @@
 //
 
 extension PeopleFeature {
-    static func reducer(state: PeopleFeature.State, action: PeopleFeature.Action) -> PeopleFeature.State {
-        switch (state, action) {
+    static func reducer(state: PeopleFeature.State, event: PeopleFeature.Event) -> PeopleFeature.State {
+        switch (state, event) {
         case (.loading, .load(let people, let favorite)), (.enablingFavorite, .load(let people, let favorite)):
             return .loaded(people: people, favorite: favorite)
         case (.loaded(let people, _), .setFavorite(let favorite)):

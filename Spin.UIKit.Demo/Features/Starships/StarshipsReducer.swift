@@ -7,11 +7,11 @@
 //
 
 extension StarshipsFeature {
-    static func reducer(state: StarshipsFeature.State, action: StarshipsFeature.Action) -> StarshipsFeature.State {
+    static func reducer(state: StarshipsFeature.State, event: StarshipsFeature.Event) -> StarshipsFeature.State {
 
         let result: StarshipsFeature.State
 
-        switch (state, action) {
+        switch (state, event) {
         case (_, .failLoad):
             result = .failed
         case (_, .load):
@@ -25,8 +25,6 @@ extension StarshipsFeature {
         default:
             result = state
         }
-
-        print("<REDUCER> state: \(state), action: \(action), result state: \(result)")
 
         return result
     }

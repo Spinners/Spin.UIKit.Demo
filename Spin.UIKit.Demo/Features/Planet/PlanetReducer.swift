@@ -7,8 +7,8 @@
 //
 
 extension PlanetFeature {
-    static func reducer(state: PlanetFeature.State, action: PlanetFeature.Action) -> PlanetFeature.State {
-        switch (state, action) {
+    static func reducer(state: PlanetFeature.State, event: PlanetFeature.Event) -> PlanetFeature.State {
+        switch (state, event) {
         case (.loading, .load(let planet, let favorite)), (.enablingFavorite, .load(let planet, let favorite)):
             return .loaded(planet: planet, favorite: favorite)
         case (.loaded(let planet, _), .setFavorite(let favorite)):

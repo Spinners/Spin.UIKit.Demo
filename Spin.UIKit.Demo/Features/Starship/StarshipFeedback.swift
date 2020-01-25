@@ -17,7 +17,7 @@ extension StarshipFeature {
         // Loads a Starship and its favorite property when the state is .loading
         /////////////////////////////////////////////
         static func load(loadFavoriteFunction: (String) -> Bool,
-                         state: StarshipFeature.State) -> AnyPublisher<StarshipFeature.Action, Never> {
+                         state: StarshipFeature.State) -> AnyPublisher<StarshipFeature.Event, Never> {
             guard case let .loading(starship) = state else { return Empty().eraseToAnyPublisher() }
 
             let isStarshipFavorite = loadFavoriteFunction(starship.url)
@@ -27,10 +27,8 @@ extension StarshipFeature {
         /////////////////////////////////////////////
         // Persist a favorite property when the state is .enablingFavorite
         /////////////////////////////////////////////
-        static func persistFavorite(persistFavoriteFunction: (Bool, String) -> Void,
-                                    state: StarshipFeature.State) -> AnyPublisher<StarshipFeature.Action, Never> {
-            print("persist with state \(state)")
-
+        static func persist(persistFavoriteFunction: (Bool, String) -> Void,
+                            state: StarshipFeature.State) -> AnyPublisher<StarshipFeature.Event, Never> {
             guard case let .enablingFavorite(starship, favorite) = state else { return Empty().eraseToAnyPublisher() }
             
             persistFavoriteFunction(favorite, starship.url)

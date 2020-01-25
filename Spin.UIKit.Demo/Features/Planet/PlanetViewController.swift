@@ -15,7 +15,7 @@ import UIKit
 
 class PlanetViewController: UIViewController, StoryboardBased {
 
-    fileprivate var viewContext: ReactiveViewContext<PlanetFeature.State, PlanetFeature.Action>!
+    fileprivate var viewContext: ReactiveViewContext<PlanetFeature.State, PlanetFeature.Event>!
 
     @IBOutlet private weak var planetNameLabel: UILabel!
     @IBOutlet private weak var planetDiameterLabel: UILabel!
@@ -39,7 +39,7 @@ class PlanetViewController: UIViewController, StoryboardBased {
     }
 
     @IBAction func changeFavorite(_ sender: UISwitch) {
-        self.viewContext.perform(.setFavorite(favorite: sender.isOn))
+        self.viewContext.emit(.setFavorite(favorite: sender.isOn))
     }
 }
 
@@ -77,7 +77,7 @@ extension PlanetViewController {
 }
 
 extension PlanetViewController {
-    static func make(context: ReactiveViewContext<PlanetFeature.State, PlanetFeature.Action>) -> PlanetViewController {
+    static func make(context: ReactiveViewContext<PlanetFeature.State, PlanetFeature.Event>) -> PlanetViewController {
         let viewController = PlanetViewController.instantiate()
         viewController.viewContext = context
         return viewController

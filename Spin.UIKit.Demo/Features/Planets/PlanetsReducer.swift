@@ -7,8 +7,8 @@
 //
 
 extension PlanetsFeature {
-    static func reducer(state: PlanetsFeature.State, action: PlanetsFeature.Action) -> PlanetsFeature.State {
-        switch (state, action) {
+    static func reducer(state: PlanetsFeature.State, event: PlanetsFeature.Event) -> PlanetsFeature.State {
+        switch (state, event) {
         case (_, .failLoad):
             return .failed
         case (_, .load):

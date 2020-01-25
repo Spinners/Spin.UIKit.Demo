@@ -18,7 +18,7 @@ extension PeoplesFeature {
         /////////////////////////////////////////////
 
         static func loadPage(loadEntityFunction: (Int?) -> Single<([(People, Bool)], Int?, Int?)>,
-                             state: PeoplesFeature.State) -> Observable<PeoplesFeature.Action> {
+                             state: PeoplesFeature.State) -> Observable<PeoplesFeature.Event> {
             guard case let .loading(page) = state else { return .empty() }
 
             return loadEntityFunction(page)

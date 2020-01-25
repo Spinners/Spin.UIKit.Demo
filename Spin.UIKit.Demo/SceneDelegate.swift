@@ -35,7 +35,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
         let appFlow = AppFlow(resolver: self.assembler.resolver)
         Flows.whenReady(flow1: appFlow) { root in
-            print(root)
             window.rootViewController = root
         }
 

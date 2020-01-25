@@ -21,22 +21,19 @@ final class EntityAssembly: Assembly {
         container.register(PlanetsEntityFunction.self) { resolver in
             let planetsApiFunction = resolver.resolve(PlanetsApiFunction.self)!
             let favoriteService = resolver.resolve(FavoriteService.self)!
-
-            return curry3(function: Planets.Entity.load)(planetsApiFunction)(favoriteService.isFavorite(for:))
+            return partial(Planets.Entity.load, arg1: planetsApiFunction, arg2: favoriteService.isFavorite(for:), arg3: .partial)
         }
 
         container.register(PeoplesEntityFunction.self) { resolver in
             let peoplesApiFunction = resolver.resolve(PeoplesApiFunction.self)!
             let favoriteService = resolver.resolve(FavoriteService.self)!
-
-            return curry3(function: Peoples.Entity.load)(peoplesApiFunction)(favoriteService.isFavorite(for:))
+            return partial(Peoples.Entity.load, arg1: peoplesApiFunction, arg2: favoriteService.isFavorite(for:), arg3: .partial)
         }
 
         container.register(StarshipsEntityFunction.self) { resolver in
             let starshipsApiFunction = resolver.resolve(StarshipsApiFunction.self)!
             let favoriteService = resolver.resolve(FavoriteService.self)!
-
-            return curry3(function: Starships.Entity.load)(starshipsApiFunction)(favoriteService.isFavorite(for:))
+            return partial(Starships.Entity.load, arg1: starshipsApiFunction, arg2: favoriteService.isFavorite(for:), arg3: .partial)
         }
     }
 }

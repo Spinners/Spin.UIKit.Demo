@@ -7,10 +7,8 @@
 //
 
 extension PeoplesFeature {
-    static func reducer(state: PeoplesFeature.State, action: PeoplesFeature.Action) -> PeoplesFeature.State {
-        print("------- reducer peoples, state: \(state), action: \(action)")
-
-        switch (state, action) {
+    static func reducer(state: PeoplesFeature.State, event: PeoplesFeature.Event) -> PeoplesFeature.State {
+        switch (state, event) {
         case (_, .failLoad):
             return .failed
         case (_, .load):

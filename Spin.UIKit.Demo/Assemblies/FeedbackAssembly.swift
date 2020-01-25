@@ -11,17 +11,17 @@ import ReactiveSwift
 import RxSwift
 import Swinject
 
-typealias PlanetsFeedbackFunction = (PlanetsFeature.State) -> SignalProducer<PlanetsFeature.Action, Never>
-typealias PeoplesFeedbackFunction = (PeoplesFeature.State) -> Observable<PeoplesFeature.Action>
-typealias StarshipsFeedbackFunction = (StarshipsFeature.State) -> AnyPublisher<StarshipsFeature.Action, Never>
+typealias PlanetsFeedbackFunction = (PlanetsFeature.State) -> SignalProducer<PlanetsFeature.Event, Never>
+typealias PeoplesFeedbackFunction = (PeoplesFeature.State) -> Observable<PeoplesFeature.Event>
+typealias StarshipsFeedbackFunction = (StarshipsFeature.State) -> AnyPublisher<StarshipsFeature.Event, Never>
 
-typealias PlanetLoadFavoriteFeedbackFunction = (PlanetFeature.State) -> SignalProducer<PlanetFeature.Action, Never>
-typealias PeopleLoadFavoriteFeedbackFunction = (PeopleFeature.State) -> Observable<PeopleFeature.Action>
-typealias StarshipLoadFavoriteFeedbackFunction = (StarshipFeature.State) -> AnyPublisher<StarshipFeature.Action, Never>
+typealias PlanetLoadFavoriteFeedbackFunction = (PlanetFeature.State) -> SignalProducer<PlanetFeature.Event, Never>
+typealias PeopleLoadFavoriteFeedbackFunction = (PeopleFeature.State) -> Observable<PeopleFeature.Event>
+typealias StarshipLoadFavoriteFeedbackFunction = (StarshipFeature.State) -> AnyPublisher<StarshipFeature.Event, Never>
 
-typealias PlanetPersistFavoriteFeedbackFunction = (PlanetFeature.State) -> SignalProducer<PlanetFeature.Action, Never>
-typealias PeoplePersistFavoriteFeedbackFunction = (PeopleFeature.State) -> Observable<PeopleFeature.Action>
-typealias StarshipPersistFavoriteFeedbackFunction = (StarshipFeature.State) -> AnyPublisher<StarshipFeature.Action, Never>
+typealias PlanetPersistFavoriteFeedbackFunction = (PlanetFeature.State) -> SignalProducer<PlanetFeature.Event, Never>
+typealias PeoplePersistFavoriteFeedbackFunction = (PeopleFeature.State) -> Observable<PeopleFeature.Event>
+typealias StarshipPersistFavoriteFeedbackFunction = (StarshipFeature.State) -> AnyPublisher<StarshipFeature.Event, Never>
 
 final class FeedbackAssembly: Assembly {
 
@@ -31,17 +31,17 @@ final class FeedbackAssembly: Assembly {
         ///////////////////////////////////
         container.register(PlanetsFeedbackFunction.self) { resolver in
             let loadEntityFunction = resolver.resolve(PlanetsEntityFunction.self)!
-            return curry2(function: PlanetsFeature.FeedbackFunctions.loadPage)(loadEntityFunction)
+            return partial(PlanetsFeature.FeedbackFunctions.loadPage, arg1: loadEntityFunction, arg2: .partial)
         }
 
         container.register(PeoplesFeedbackFunction.self) { resolver in
             let loadEntityFunction = resolver.resolve(PeoplesEntityFunction.self)!
-            return curry2(function: PeoplesFeature.FeedbackFunctions.loadPage)(loadEntityFunction)
+            return partial(PeoplesFeature.FeedbackFunctions.loadPage, arg1: loadEntityFunction, arg2: .partial)
         }
 
         container.register(StarshipsFeedbackFunction.self) { resolver in
             let loadEntityFunction = resolver.resolve(StarshipsEntityFunction.self)!
-            return curry2(function: StarshipsFeature.FeedbackFunctions.loadPage)(loadEntityFunction)
+            return partial(StarshipsFeature.FeedbackFunctions.loadPage, arg1: loadEntityFunction, arg2: .partial)
         }
 
         ////////////////////////////////////
@@ -49,17 +49,17 @@ final class FeedbackAssembly: Assembly {
         ///////////////////////////////////
         container.register(PlanetLoadFavoriteFeedbackFunction.self, name: "PlanetLoadFavoriteFeedbackFunction") { resolver in
             let favoriteService = resolver.resolve(FavoriteService.self)!
-            return curry2(function: PlanetFeature.FeedbackFunctions.load)(favoriteService.isFavorite(for:))
+            return partial(PlanetFeature.FeedbackFunctions.load, arg1: favoriteService.isFavorite(for:), arg2: .partial)
         }
 
         container.register(PeopleLoadFavoriteFeedbackFunction.self, name: "PeopleLoadFavoriteFeedbackFunction") { resolver in
             let favoriteService = resolver.resolve(FavoriteService.self)!
-            return curry2(function: PeopleFeature.FeedbackFunctions.load)(favoriteService.isFavorite(for:))
+            return partial(PeopleFeature.FeedbackFunctions.load, arg1: favoriteService.isFavorite(for:), arg2: .partial)
         }
 
         container.register(StarshipLoadFavoriteFeedbackFunction.self, name: "StarshipLoadFavoriteFeedbackFunction") { resolver in
             let favoriteService = resolver.resolve(FavoriteService.self)!
-            return curry2(function: StarshipFeature.FeedbackFunctions.load)(favoriteService.isFavorite(for:))
+            return partial(StarshipFeature.FeedbackFunctions.load, arg1: favoriteService.isFavorite(for:), arg2: .partial)
         }
 
         ////////////////////////////////////
@@ -67,17 +67,17 @@ final class FeedbackAssembly: Assembly {
         ///////////////////////////////////
         container.register(PlanetPersistFavoriteFeedbackFunction.self, name: "PlanetPersistFavoriteFeedbackFunction") { resolver in
             let favoriteService = resolver.resolve(FavoriteService.self)!
-            return curry2(function: PlanetFeature.FeedbackFunctions.persistFavorite)(favoriteService.set(favorite:for:))
+            return partial(PlanetFeature.FeedbackFunctions.persist, arg1: favoriteService.set(favorite:for:), arg2: .partial)
         }
 
         container.register(PeoplePersistFavoriteFeedbackFunction.self, name: "PeoplePersistFavoriteFeedbackFunction") { resolver in
             let favoriteService = resolver.resolve(FavoriteService.self)!
-            return curry2(function: PeopleFeature.FeedbackFunctions.persistFavorite)(favoriteService.set(favorite:for:))
+            return partial(PeopleFeature.FeedbackFunctions.persist, arg1: favoriteService.set(favorite:for:), arg2: .partial)
         }
 
         container.register(StarshipPersistFavoriteFeedbackFunction.self, name: "StarshipPersistFavoriteFeedbackFunction") { resolver in
             let favoriteService = resolver.resolve(FavoriteService.self)!
-            return curry2(function: StarshipFeature.FeedbackFunctions.persistFavorite)(favoriteService.set(favorite:for:))
+            return partial(StarshipFeature.FeedbackFunctions.persist, arg1: favoriteService.set(favorite:for:), arg2: .partial)
         }
     }
 }

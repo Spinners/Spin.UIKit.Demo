@@ -13,7 +13,7 @@ import Spin_Combine
 
 class StarshipViewController: UIViewController, StoryboardBased {
 
-    fileprivate var viewContext: CombineViewContext<StarshipFeature.State, StarshipFeature.Action>!
+    fileprivate var viewContext: CombineViewContext<StarshipFeature.State, StarshipFeature.Event>!
 
     @IBOutlet private weak var starshipNameLabel: UILabel!
     @IBOutlet private weak var starshipModelLabel: UILabel!
@@ -44,7 +44,7 @@ class StarshipViewController: UIViewController, StoryboardBased {
     }
 
     @IBAction func changeFavorite(_ sender: UISwitch) {
-        self.viewContext.perform(.setFavorite(favorite: sender.isOn))
+        self.viewContext.emit(.setFavorite(favorite: sender.isOn))
     }
 }
 
@@ -82,7 +82,7 @@ extension StarshipViewController {
 }
 
 extension StarshipViewController {
-    static func make(context: CombineViewContext<StarshipFeature.State, StarshipFeature.Action>) -> StarshipViewController {
+    static func make(context: CombineViewContext<StarshipFeature.State, StarshipFeature.Event>) -> StarshipViewController {
         let viewController = StarshipViewController.instantiate()
         viewController.viewContext = context
         return viewController

@@ -15,7 +15,7 @@ import UIKit
 
 class PeoplesViewController: UIViewController, StoryboardBased, Stepper {
 
-    fileprivate var viewContext: RxViewContext<PeoplesFeature.State, PeoplesFeature.Action>!
+    fileprivate var viewContext: RxViewContext<PeoplesFeature.State, PeoplesFeature.Event>!
 
     let steps = PublishRelay<Step>()
 
@@ -30,11 +30,11 @@ class PeoplesViewController: UIViewController, StoryboardBased, Stepper {
     private var datasource = [(People, Bool)]()
 
     @IBAction func previousTapped(_ sender: UIButton) {
-        self.viewContext.perform(.loadPrevious)
+        self.viewContext.emit(.loadPrevious)
     }
     
     @IBAction func nextTapped(_ sender: Any) {
-        self.viewContext.perform(.loadNext)
+        self.viewContext.emit(.loadNext)
     }
     
     override func viewDidLoad() {
@@ -46,7 +46,7 @@ class PeoplesViewController: UIViewController, StoryboardBased, Stepper {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.viewContext.perform(.load)
+        self.viewContext.emit(.load)
     }
 }
 
@@ -116,7 +116,7 @@ extension PeoplesViewController: UITableViewDelegate {
 }
 
 extension PeoplesViewController {
-    static func make(context: RxViewContext<PeoplesFeature.State, PeoplesFeature.Action>) -> PeoplesViewController {
+    static func make(context: RxViewContext<PeoplesFeature.State, PeoplesFeature.Event>) -> PeoplesViewController {
         let viewController = PeoplesViewController.instantiate()
         viewController.viewContext = context
         return viewController

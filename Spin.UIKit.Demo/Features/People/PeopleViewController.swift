@@ -14,7 +14,7 @@ import Spin_RxSwift
 
 class PeopleViewController: UIViewController, StoryboardBased {
 
-    fileprivate var viewContext: RxViewContext<PeopleFeature.State, PeopleFeature.Action>!
+    fileprivate var viewContext: RxViewContext<PeopleFeature.State, PeopleFeature.Event>!
 
     @IBOutlet private weak var peopleNameLabel: UILabel!
     @IBOutlet private weak var peopleGenderLabel: UILabel!
@@ -34,7 +34,7 @@ class PeopleViewController: UIViewController, StoryboardBased {
     }
 
     @IBAction func changeFavorite(_ sender: UISwitch) {
-        self.viewContext.perform(.setFavorite(favorite: sender.isOn))
+        self.viewContext.emit(.setFavorite(favorite: sender.isOn))
     }
 }
 
@@ -72,7 +72,7 @@ extension PeopleViewController {
 }
 
 extension PeopleViewController {
-    static func make(context: RxViewContext<PeopleFeature.State, PeopleFeature.Action>) -> PeopleViewController {
+    static func make(context: RxViewContext<PeopleFeature.State, PeopleFeature.Event>) -> PeopleViewController {
         let viewController = PeopleViewController.instantiate()
         viewController.viewContext = context
         return viewController

@@ -16,7 +16,7 @@ extension PlanetFeature {
         /////////////////////////////////////////////
         // Loads a planet and its favorite property when the state is .loading
         /////////////////////////////////////////////
-        static func load(loadFavoriteFunction: (String) -> Bool, state: PlanetFeature.State) -> SignalProducer<PlanetFeature.Action, Never> {
+        static func load(loadFavoriteFunction: (String) -> Bool, state: PlanetFeature.State) -> SignalProducer<PlanetFeature.Event, Never> {
             guard case let .loading(planet) = state else { return .empty }
 
             let isPlanetFavorite = loadFavoriteFunction(planet.url)
@@ -26,7 +26,8 @@ extension PlanetFeature {
         /////////////////////////////////////////////
         // Persist a favorite property when the state is .enablingFavorite
         /////////////////////////////////////////////
-        static func persistFavorite(persistFavoriteFunction: (Bool, String) -> Void, state: PlanetFeature.State) -> SignalProducer<PlanetFeature.Action, Never> {
+        static func persist(persistFavoriteFunction: (Bool, String) -> Void,
+                            state: PlanetFeature.State) -> SignalProducer<PlanetFeature.Event, Never> {
             guard case let .enablingFavorite(planet, favorite) = state else { return .empty }
             
             persistFavoriteFunction(favorite, planet.url)

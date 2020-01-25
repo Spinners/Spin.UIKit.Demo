@@ -12,25 +12,23 @@ enum PeopleFeature {
 
 extension PeopleFeature {
     enum FeedbackFunctions {
-
+        
         /////////////////////////////////////////////
         // Loads a people and its favorite property when the state is .loading
         /////////////////////////////////////////////
         static func load(loadFavoriteFunction: (String) -> Bool,
-                         state: PeopleFeature.State) -> Observable<PeopleFeature.Action> {
+                         state: PeopleFeature.State) -> Observable<PeopleFeature.Event> {
             guard case let .loading(people) = state else { return .empty() }
-
+            
             let isPeopleFavorite = loadFavoriteFunction(people.url)
             return .just(.load(people: people, favorite: isPeopleFavorite))
         }
-
+        
         /////////////////////////////////////////////
         // Persist a favorite property when the state is .enablingFavorite
         /////////////////////////////////////////////
-        static func persistFavorite(persistFavoriteFunction: (Bool, String) -> Void,
-                                    state: PeopleFeature.State) -> Observable<PeopleFeature.Action> {
-            print("persist with state \(state)")
-
+        static func persist(persistFavoriteFunction: (Bool, String) -> Void,
+                            state: PeopleFeature.State) -> Observable<PeopleFeature.Event> {
             guard case let .enablingFavorite(people, favorite) = state else { return .empty() }
             
             persistFavoriteFunction(favorite, people.url)

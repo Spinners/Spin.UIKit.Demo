@@ -15,7 +15,7 @@ import UIKit
 
 class StarshipsViewController: UIViewController, StoryboardBased, Stepper {
 
-    fileprivate var viewContext: CombineViewContext<StarshipsFeature.State, StarshipsFeature.Action>!
+    fileprivate var viewContext: CombineViewContext<StarshipsFeature.State, StarshipsFeature.Event>!
 
     let steps = PublishRelay<Step>()
 
@@ -30,11 +30,11 @@ class StarshipsViewController: UIViewController, StoryboardBased, Stepper {
     private var datasource = [(Starship, Bool)]()
 
     @IBAction func previousTapped(_ sender: UIButton) {
-        self.viewContext.perform(.loadPrevious)
+        self.viewContext.emit(.loadPrevious)
     }
     
     @IBAction func nextTapped(_ sender: Any) {
-        self.viewContext.perform(.loadNext)
+        self.viewContext.emit(.loadNext)
     }
     
     override func viewDidLoad() {
@@ -46,7 +46,7 @@ class StarshipsViewController: UIViewController, StoryboardBased, Stepper {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.viewContext.perform(.load)
+        self.viewContext.emit(.load)
     }
 }
 
@@ -116,7 +116,7 @@ extension StarshipsViewController: UITableViewDelegate {
 }
 
 extension StarshipsViewController {
-    static func make(context: CombineViewContext<StarshipsFeature.State, StarshipsFeature.Action>) -> StarshipsViewController {
+    static func make(context: CombineViewContext<StarshipsFeature.State, StarshipsFeature.Event>) -> StarshipsViewController {
         let viewController = StarshipsViewController.instantiate()
         viewController.viewContext = context
         return viewController

@@ -17,13 +17,13 @@ extension PlanetsFeature {
         // Loads a page when the state is .loading
         /////////////////////////////////////////////
         static func loadPage(loadEntityFunction: (Int?) -> SignalProducer<([(Planet, Bool)], Int?, Int?), NetworkError>,
-                             state: PlanetsFeature.State) -> SignalProducer<PlanetsFeature.Action, Never> {
+                             state: PlanetsFeature.State) -> SignalProducer<PlanetsFeature.Event, Never> {
             guard case let .loading(page) = state else { return .empty }
 
             return loadEntityFunction(page)
                 .map { .succeedLoad(planets: $0.0, previousPage: $0.1, nextPage: $0.2) }
-                .flatMapError { (error) -> SignalProducer<PlanetsFeature.Action, Never> in
-                    return SignalProducer<PlanetsFeature.Action, Never>(value: .failLoad)
+                .flatMapError { (error) -> SignalProducer<PlanetsFeature.Event, Never> in
+                    return SignalProducer<PlanetsFeature.Event, Never>(value: .failLoad)
             }
         }
     }

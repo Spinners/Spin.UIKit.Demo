@@ -14,15 +14,12 @@ extension StarshipsFeature {
     enum FeedbackFunctions {
 
         static func loadPage(loadEntityFunction: (Int?) -> AnyPublisher<([(Starship, Bool)], Int?, Int?), NetworkError>,
-                             state: StarshipsFeature.State) -> AnyPublisher<StarshipsFeature.Action, Never> {
-
-            print("<FEEDBACK> loadPage, state: \(state)")
-
+                             state: StarshipsFeature.State) -> AnyPublisher<StarshipsFeature.Event, Never> {
             guard case let .loading(page) = state else { return Empty().eraseToAnyPublisher() }
 
             return loadEntityFunction(page)
-                .map { StarshipsFeature.Action.succeedLoad(starships: $0.0, previousPage: $0.1, nextPage: $0.2) }
-                .replaceError(with: StarshipsFeature.Action.failLoad)
+                .map { StarshipsFeature.Event.succeedLoad(starships: $0.0, previousPage: $0.1, nextPage: $0.2) }
+                .replaceError(with: StarshipsFeature.Event.failLoad)
                 .eraseToAnyPublisher()
         }
     }
