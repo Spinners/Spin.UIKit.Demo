@@ -20,15 +20,5 @@ extension Starships {
                 return (planetsAndFavorite, previousPage, nextPage)
             }.eraseToAnyPublisher()
         }
-        
-        static func search(baseUrl: String, networkService: NetworkService, query: String) -> AnyPublisher<[Starship], NetworkError> {
-            let route = Route<ListEndpoint<Starship>>(baseUrl: baseUrl, endpoint: ListEndpoint<Starship>(path: StarshipsPath.starshipSearch(query: query)))
-            return networkService.fetchCombine(route: route).map { $0.results }.eraseToAnyPublisher()
-        }
-        
-        static func loadDetail(baseUrl: String, networkService: NetworkService, id: String) -> AnyPublisher<Starship, NetworkError> {
-            let route = Route<EntityEndpoint<Starship>>(baseUrl: baseUrl, endpoint: EntityEndpoint<Starship>(path: StarshipsPath.starship(id: id)))
-            return networkService.fetchCombine(route: route).eraseToAnyPublisher()
-        }
     }
 }

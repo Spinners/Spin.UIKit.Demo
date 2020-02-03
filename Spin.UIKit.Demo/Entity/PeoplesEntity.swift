@@ -21,15 +21,5 @@ extension Peoples {
                 return (peoplesAndFavorite, previousPage, nextPage)
             }
         }
-        
-        static func search(baseUrl: String, networkService: NetworkService, query: String) -> Single<[People]> {
-            let route = Route<ListEndpoint<People>>(baseUrl: baseUrl, endpoint: ListEndpoint<People>(path: PeoplePath.peopleSearch(query: query)))
-            return networkService.fetchRx(route: route).map { $0.results }
-        }
-        
-        static func loadDetail(baseUrl: String, networkService: NetworkService, id: String) -> Single<People> {
-            let route = Route<EntityEndpoint<People>>(baseUrl: baseUrl, endpoint: EntityEndpoint<People>(path: PeoplePath.people(id: id)))
-            return networkService.fetchRx(route: route)
-        }
     }
 }

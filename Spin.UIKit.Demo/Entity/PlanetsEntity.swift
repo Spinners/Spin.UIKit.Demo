@@ -21,15 +21,5 @@ extension Planets {
                 return (planetsAndFavorite, previousPage, nextPage)
             }
         }
-
-        static func search(baseUrl: String, networkService: NetworkService, query: String) -> SignalProducer<[Planet], NetworkError> {
-            let route = Route<ListEndpoint<Planet>>(baseUrl: baseUrl, endpoint: ListEndpoint<Planet>(path: PlanetsPath.planetSearch(query: query)))
-            return networkService.fetchReactive(route: route).map { $0.results }
-        }
-
-        static func loadDetail(baseUrl: String, networkService: NetworkService, id: String) -> SignalProducer<Planet, NetworkError> {
-            let route = Route<EntityEndpoint<Planet>>(baseUrl: baseUrl, endpoint: EntityEndpoint<Planet>(path: PlanetsPath.planet(id: id)))
-            return networkService.fetchReactive(route: route)
-        }
     }
 }

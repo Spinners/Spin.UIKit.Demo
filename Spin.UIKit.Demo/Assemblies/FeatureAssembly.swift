@@ -26,7 +26,7 @@ final class FeatureAssembly: Assembly {
             // build Spin with a Builder pattern
             Spinner
                 .from(initialState: PlanetsFeature.State.idle)
-                .add(feedback: viewContext.toFeedback())
+                .add(feedback: ReactiveFeedback(viewContext: viewContext))
                 .add(feedback: ReactiveFeedback(effect: loadFeedback, on: QueueScheduler()))
                 .reduce(with: ReactiveReducer(reducer: PlanetsFeature.reducer))
                 .spin()
@@ -43,7 +43,7 @@ final class FeatureAssembly: Assembly {
             // build Spin with a Builder pattern
             Spinner
                 .from(initialState: PeoplesFeature.State.idle)
-                .add(feedback: viewContext.toFeedback())
+                .add(feedback: RxFeedback(viewContext: viewContext))
                 .add(feedback: RxFeedback(effect: loadFeedback, on: SerialDispatchQueueScheduler(qos: .userInitiated)))
                 .reduce(with: RxReducer(reducer: PeoplesFeature.reducer))
                 .spin()
@@ -60,7 +60,7 @@ final class FeatureAssembly: Assembly {
             // build Spin with a Builder pattern
             Spinner
                 .from(initialState: StarshipsFeature.State.idle)
-                .add(feedback: viewContext.toFeedback())
+                .add(feedback: CombineFeedback(viewContext: viewContext))
                 .add(feedback: CombineFeedback(effect: loadFeedback, on: DispatchQueue(label: "background").eraseToAnyScheduler()))
                 .reduce(with: CombineReducer(reducer: StarshipsFeature.reducer))
                 .spin()
@@ -78,7 +78,7 @@ final class FeatureAssembly: Assembly {
             // build Spin with a declarative "SwiftUI" pattern
             ReactiveSpin(initialState: PlanetFeature.State.loading(planet: planet),
                          reducer: ReactiveReducer(reducer: PlanetFeature.reducer)) {
-                            viewContext.toFeedback()
+                            ReactiveFeedback(viewContext: viewContext)
                             ReactiveFeedback(effect: loadFavoriteFeedback).execute(on: QueueScheduler())
                             ReactiveFeedback(effect: persistFavoriteFeedback).execute(on: QueueScheduler())
             }
@@ -98,7 +98,7 @@ final class FeatureAssembly: Assembly {
             // build Spin with a declarative "SwiftUI" pattern
             RxSpin(initialState: PeopleFeature.State.loading(people: people),
                    reducer: RxReducer(reducer: PeopleFeature.reducer)) {
-                    viewContext.toFeedback()
+                    RxFeedback(viewContext: viewContext)
                     RxFeedback(effect: loadFavoriteFeedback).execute(on: SerialDispatchQueueScheduler(qos: .userInitiated))
                     RxFeedback(effect: persistFavoriteFeedback).execute(on: SerialDispatchQueueScheduler(qos: .userInitiated))
             }
@@ -118,7 +118,7 @@ final class FeatureAssembly: Assembly {
             // build Spin with a declarative "SwiftUI" pattern
             CombineSpin(initialState: StarshipFeature.State.loading(starship: starship),
                         reducer: CombineReducer(reducer: StarshipFeature.reducer)) {
-                            viewContext.toFeedback()
+                            CombineFeedback(viewContext: viewContext)
                             CombineFeedback(effect: loadFavoriteFeedback).execute(on: DispatchQueue(label: "background").eraseToAnyScheduler())
                             CombineFeedback(effect: persistFavoriteFeedback).execute(on: DispatchQueue(label: "background").eraseToAnyScheduler())
             }
