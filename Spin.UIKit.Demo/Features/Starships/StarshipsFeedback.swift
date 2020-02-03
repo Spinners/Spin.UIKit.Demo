@@ -18,7 +18,10 @@ extension StarshipsFeature {
             guard case let .loading(page) = state else { return Empty().eraseToAnyPublisher() }
 
             return loadEntityFunction(page)
-                .map { StarshipsFeature.Event.succeedLoad(starships: $0.0, previousPage: $0.1, nextPage: $0.2) }
+                .map { StarshipsFeature.Event.succeedLoad(starships: $0.0,
+                                                          currentPage: page,
+                                                          previousPage: $0.1,
+                                                          nextPage: $0.2) }
                 .replaceError(with: StarshipsFeature.Event.failLoad)
                 .eraseToAnyPublisher()
         }

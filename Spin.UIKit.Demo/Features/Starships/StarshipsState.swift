@@ -10,7 +10,7 @@ extension StarshipsFeature {
     enum State {
         case idle
         case loading(page: Int? = nil)
-        case loaded(data: [(Starship, Bool)], previousPage: Int?, nextPage: Int?)
+        case loaded(data: [(Starship, Bool)], currentPage: Int?, previousPage: Int?, nextPage: Int?)
         case failed
 
         struct ViewItem {

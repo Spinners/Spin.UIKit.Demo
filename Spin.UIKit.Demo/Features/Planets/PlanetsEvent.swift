@@ -11,7 +11,7 @@ extension PlanetsFeature {
         case load
         case loadPrevious
         case loadNext
-        case succeedLoad(planets: [(Planet, Bool)], previousPage: Int?, nextPage: Int?)
+        case succeedLoad(planets: [(Planet, Bool)], currentPage: Int?, previousPage: Int?, nextPage: Int?)
         case failLoad
     }
 }

@@ -10,7 +10,7 @@ extension PlanetsFeature {
     enum State {
         case idle
         case loading(page: Int? = nil)
-        case loaded(data: [(Planet, Bool)], previousPage: Int?, nextPage: Int?)
+        case loaded(data: [(Planet, Bool)], currentPage: Int?, previousPage: Int?, nextPage: Int?)
         case failed
         
         struct ViewItem {

@@ -39,6 +39,7 @@ class StarshipsViewController: UIViewController, StoryboardBased, Stepper {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationItem.title = "Starships"
         self.tableView.dataSource = self
         self.tableView.delegate = self
         self.viewContext.render(on: self) { $0.interpret(state:) }
@@ -74,7 +75,7 @@ extension StarshipsViewController {
             self.previouxButton.isEnabled = false
             self.nextButton.isEnabled = false
             self.failureLabel.isHidden = true
-        case .loaded(let planets, let previous, let next):
+        case .loaded(let planets, _, let previous, let next):
             self.activityIndicator.stopAnimating()
             self.tableView.isHidden = false
             self.tableView.alpha = 1

@@ -11,7 +11,7 @@ extension StarshipsFeature {
         case load
         case loadPrevious
         case loadNext
-        case succeedLoad(starships: [(Starship, Bool)], previousPage: Int?, nextPage: Int?)
+        case succeedLoad(starships: [(Starship, Bool)], currentPage: Int?, previousPage: Int?, nextPage: Int?)
         case failLoad
     }
 }

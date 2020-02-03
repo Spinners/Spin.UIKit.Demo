@@ -8,24 +8,21 @@
 
 extension StarshipsFeature {
     static func reducer(state: StarshipsFeature.State, event: StarshipsFeature.Event) -> StarshipsFeature.State {
-
-        let result: StarshipsFeature.State
-
         switch (state, event) {
         case (_, .failLoad):
-            result = .failed
-        case (_, .load):
-            result = .loading(page: nil)
-        case (.loaded(_, let previousPage, _), .loadPrevious) where previousPage != nil:
-            result = .loading(page: previousPage)
-        case (.loaded(_, _, let nextPage), .loadNext) where nextPage != nil:
-            result = .loading(page: nextPage)
-        case (_, .succeedLoad(let starships, let previousPage, let nextPage)):
-            result = .loaded(data: starships, previousPage: previousPage, nextPage: nextPage)
+            return .failed
+        case (.idle, .load):
+            return .loading(page: nil)
+        case (.loaded(_, let currentPage, _, _), .load):
+            return .loading(page: currentPage)
+        case (.loaded(_, _, let previousPage, _), .loadPrevious) where previousPage != nil:
+            return .loading(page: previousPage)
+        case (.loaded(_, _, _, let nextPage), .loadNext) where nextPage != nil:
+            return .loading(page: nextPage)
+        case (_, .succeedLoad(let starships, let currentPage, let previousPage, let nextPage)):
+            return .loaded(data: starships, currentPage: currentPage, previousPage: previousPage, nextPage: nextPage)
         default:
-            result = state
+            return state
         }
-
-        return result
     }
 }

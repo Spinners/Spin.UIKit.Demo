@@ -11,14 +11,16 @@ extension PlanetsFeature {
         switch (state, event) {
         case (_, .failLoad):
             return .failed
-        case (_, .load):
+        case (.idle, .load):
             return .loading(page: nil)
-        case (.loaded(_, let previousPage, _), .loadPrevious) where previousPage != nil:
+        case (.loaded(_, let currentPage, _, _), .load):
+            return .loading(page: currentPage)
+        case (.loaded(_, _, let previousPage, _), .loadPrevious) where previousPage != nil:
             return .loading(page: previousPage)
-        case (.loaded(_, _, let nextPage), .loadNext) where nextPage != nil:
+        case (.loaded(_, _, _, let nextPage), .loadNext) where nextPage != nil:
             return .loading(page: nextPage)
-        case (_, .succeedLoad(let planets, let previousPage, let nextPage)):
-            return .loaded(data: planets, previousPage: previousPage, nextPage: nextPage)
+        case (_, .succeedLoad(let planets, let currentPage, let previousPage, let nextPage)):
+            return .loaded(data: planets, currentPage: currentPage, previousPage: previousPage, nextPage: nextPage)
         default:
             return state
         }

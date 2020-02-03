@@ -11,7 +11,7 @@ extension PeoplesFeature {
         case load
         case loadPrevious
         case loadNext
-        case succeedLoad(peoples: [(People, Bool)], previousPage: Int?, nextPage: Int?)
+        case succeedLoad(peoples: [(People, Bool)], currentPage: Int?, previousPage: Int?, nextPage: Int?)
         case failLoad
     }
 }

@@ -10,7 +10,7 @@ extension PeoplesFeature {
     enum State {
         case idle
         case loading(page: Int? = nil)
-        case loaded(data: [(People, Bool)], previousPage: Int?, nextPage: Int?)
+        case loaded(data: [(People, Bool)], currentPage: Int?, previousPage: Int?, nextPage: Int?)
         case failed
 
         struct ViewItem {

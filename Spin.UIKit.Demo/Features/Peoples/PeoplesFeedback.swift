@@ -22,7 +22,10 @@ extension PeoplesFeature {
             guard case let .loading(page) = state else { return .empty() }
 
             return loadEntityFunction(page)
-                .map { .succeedLoad(peoples: $0.0, previousPage: $0.1, nextPage: $0.2) }
+                .map { .succeedLoad(peoples: $0.0,
+                                    currentPage: page,
+                                    previousPage: $0.1,
+                                    nextPage: $0.2) }
                 .catchErrorJustReturn(.failLoad)
                 .asObservable()
         }

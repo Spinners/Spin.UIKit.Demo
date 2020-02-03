@@ -39,6 +39,7 @@ class PeoplesViewController: UIViewController, StoryboardBased, Stepper {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationItem.title = "Peoples"
         self.tableView.dataSource = self
         self.tableView.delegate = self
         self.viewContext.render(on: self) { $0.interpret(state:) }
@@ -74,7 +75,7 @@ extension PeoplesViewController {
             self.previouxButton.isEnabled = false
             self.nextButton.isEnabled = false
             self.failureLabel.isHidden = true
-        case .loaded(let peoples, let previous, let next):
+        case .loaded(let peoples, _, let previous, let next):
             self.activityIndicator.stopAnimating()
             self.tableView.isHidden = false
             self.tableView.alpha = 1

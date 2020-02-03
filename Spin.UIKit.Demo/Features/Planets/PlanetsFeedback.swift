@@ -21,7 +21,10 @@ extension PlanetsFeature {
             guard case let .loading(page) = state else { return .empty }
 
             return loadEntityFunction(page)
-                .map { .succeedLoad(planets: $0.0, previousPage: $0.1, nextPage: $0.2) }
+                .map { .succeedLoad(planets: $0.0,
+                                    currentPage: page,
+                                    previousPage: $0.1,
+                                    nextPage: $0.2) }
                 .flatMapError { (error) -> SignalProducer<PlanetsFeature.Event, Never> in
                     return SignalProducer<PlanetsFeature.Event, Never>(value: .failLoad)
             }
