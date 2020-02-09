@@ -15,7 +15,7 @@ import UIKit
 
 class StarshipsViewController: UIViewController, StoryboardBased, Stepper {
 
-    fileprivate var viewContext: CombineViewContext<StarshipsFeature.State, StarshipsFeature.Event>!
+    fileprivate var uiSpin: CombineUISpin<StarshipsFeature.State, StarshipsFeature.Event>!
 
     let steps = PublishRelay<Step>()
 
@@ -30,11 +30,11 @@ class StarshipsViewController: UIViewController, StoryboardBased, Stepper {
     private var datasource = [(Starship, Bool)]()
 
     @IBAction func previousTapped(_ sender: UIButton) {
-        self.viewContext.emit(.loadPrevious)
+        self.uiSpin.emit(.loadPrevious)
     }
     
     @IBAction func nextTapped(_ sender: Any) {
-        self.viewContext.emit(.loadNext)
+        self.uiSpin.emit(.loadNext)
     }
     
     override func viewDidLoad() {
@@ -42,12 +42,13 @@ class StarshipsViewController: UIViewController, StoryboardBased, Stepper {
         self.navigationItem.title = "Starships"
         self.tableView.dataSource = self
         self.tableView.delegate = self
-        self.viewContext.render(on: self) { $0.interpret(state:) }
+        self.uiSpin.render(on: self) { $0.interpret(state:) }
+        self.uiSpin.spin()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.viewContext.emit(.load)
+        self.uiSpin.emit(.load)
     }
 }
 
@@ -117,9 +118,9 @@ extension StarshipsViewController: UITableViewDelegate {
 }
 
 extension StarshipsViewController {
-    static func make(context: CombineViewContext<StarshipsFeature.State, StarshipsFeature.Event>) -> StarshipsViewController {
+    static func make(uiSpin: CombineUISpin<StarshipsFeature.State, StarshipsFeature.Event>) -> StarshipsViewController {
         let viewController = StarshipsViewController.instantiate()
-        viewController.viewContext = context
+        viewController.uiSpin = uiSpin
         return viewController
     }
 }

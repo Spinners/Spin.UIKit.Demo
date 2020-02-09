@@ -13,7 +13,7 @@ import Spin_Combine
 
 class StarshipViewController: UIViewController, StoryboardBased {
 
-    fileprivate var viewContext: CombineViewContext<StarshipFeature.State, StarshipFeature.Event>!
+    fileprivate var uiSpin: CombineUISpin<StarshipFeature.State, StarshipFeature.Event>!
 
     @IBOutlet private weak var starshipNameLabel: UILabel!
     @IBOutlet private weak var starshipModelLabel: UILabel!
@@ -25,26 +25,14 @@ class StarshipViewController: UIViewController, StoryboardBased {
     @IBOutlet private weak var starshipFavoriteSwitch: UISwitch!
     @IBOutlet private weak var starshipFavoriteIsLoadingActivity: UIActivityIndicatorView!
 
-    var disposeBag = [AnyCancellable]()
-
-    private let viewWillAppearSubject = PassthroughSubject<Void, Never>()
-
-    lazy var viewWillAppearPublisher: AnyPublisher<Void, Never> = {
-        self.viewWillAppearSubject.first().eraseToAnyPublisher()
-    }()
-
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        self.viewWillAppearSubject.send(())
-    }
-
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.viewContext.render(on: self) { $0.interpret(state:) }
+        self.uiSpin.render(on: self) { $0.interpret(state:) }
+        self.uiSpin.spin()
     }
 
     @IBAction func changeFavorite(_ sender: UISwitch) {
-        self.viewContext.emit(.setFavorite(favorite: sender.isOn))
+        self.uiSpin.emit(.setFavorite(favorite: sender.isOn))
     }
 }
 
@@ -82,9 +70,9 @@ extension StarshipViewController {
 }
 
 extension StarshipViewController {
-    static func make(context: CombineViewContext<StarshipFeature.State, StarshipFeature.Event>) -> StarshipViewController {
+    static func make(uiSpin: CombineUISpin<StarshipFeature.State, StarshipFeature.Event>) -> StarshipViewController {
         let viewController = StarshipViewController.instantiate()
-        viewController.viewContext = context
+        viewController.uiSpin = uiSpin
         return viewController
     }
 }

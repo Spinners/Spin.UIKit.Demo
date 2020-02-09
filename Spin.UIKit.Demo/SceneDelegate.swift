@@ -17,6 +17,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     private let coordinator = FlowCoordinator()
 
     private let assembler = Assembler([
+        SpinAssembly(),
         FlowAssembly(),
         ServiceAssembly(),
         ApisAssembly(),

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		740481D223EA33A100AAB59E /* SpinAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 740481D123EA33A100AAB59E /* SpinAssembly.swift */; };
 		7404A04723DCFEFE000B75DD /* Partial.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7404A04623DCFEFE000B75DD /* Partial.swift */; };
 		743BE43F23BCF52A000BE177 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 743BE43E23BCF52A000BE177 /* AppDelegate.swift */; };
 		743BE44123BCF52A000BE177 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 743BE44023BCF52A000BE177 /* SceneDelegate.swift */; };
@@ -103,6 +104,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		740481D123EA33A100AAB59E /* SpinAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpinAssembly.swift; sourceTree = "<group>"; };
 		7404A04623DCFEFE000B75DD /* Partial.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Partial.swift; sourceTree = "<group>"; };
 		743BE43B23BCF52A000BE177 /* Spin.UIKit.Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Spin.UIKit.Demo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		743BE43E23BCF52A000BE177 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -374,6 +376,7 @@
 				743BE4FE23BD45B0000BE177 /* ApisAssembly.swift */,
 				743BE50123BD45B0000BE177 /* EntityAssembly.swift */,
 				743BE56923BD4889000BE177 /* FeedbackAssembly.swift */,
+				740481D123EA33A100AAB59E /* SpinAssembly.swift */,
 				743BE56823BD4889000BE177 /* FeatureAssembly.swift */,
 				743BE56C23BD4962000BE177 /* FlowAssembly.swift */,
 			);
@@ -584,6 +587,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				740481D223EA33A100AAB59E /* SpinAssembly.swift in Sources */,
 				743BE50723BD45B0000BE177 /* EntityAssembly.swift in Sources */,
 				743BE4E323BD42C0000BE177 /* Film.swift in Sources */,
 				743BE4E223BD42C0000BE177 /* Vehicle.swift in Sources */,
@@ -856,7 +860,7 @@
 			repositoryURL = "https://github.com/Spinners/Spin.Swift";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 0.6.0;
+				minimumVersion = 0.7.2;
 			};
 		};
 		743BE45B23BD0A9F000BE177 /* XCRemoteSwiftPackageReference "Alamofire" */ = {

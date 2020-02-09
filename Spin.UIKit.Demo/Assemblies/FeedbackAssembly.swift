@@ -28,7 +28,7 @@ final class FeedbackAssembly: Assembly {
     func assemble(container: Container) {
         ////////////////////////////////////
         // LOAD PAGE FEEDBACKS
-        ///////////////////////////////////
+        ////////////////////////////////////
         container.register(PlanetsFeedbackFunction.self) { resolver in
             let loadEntityFunction = resolver.resolve(PlanetsEntityFunction.self)!
             return partial(PlanetsFeature.FeedbackFunctions.loadPage, arg1: loadEntityFunction, arg2: .partial)
@@ -46,7 +46,7 @@ final class FeedbackAssembly: Assembly {
 
         ////////////////////////////////////
         // LOAD FAVORITE FEEDBACKS
-        ///////////////////////////////////
+        ////////////////////////////////////
         container.register(PlanetLoadFavoriteFeedbackFunction.self, name: "PlanetLoadFavoriteFeedbackFunction") { resolver in
             let favoriteService = resolver.resolve(FavoriteService.self)!
             return partial(PlanetFeature.FeedbackFunctions.load, arg1: favoriteService.isFavorite(for:), arg2: .partial)
@@ -64,7 +64,7 @@ final class FeedbackAssembly: Assembly {
 
         ////////////////////////////////////
         // PERSIST FAVORITE FEEDBACKS
-        ///////////////////////////////////
+        ////////////////////////////////////
         container.register(PlanetPersistFavoriteFeedbackFunction.self, name: "PlanetPersistFavoriteFeedbackFunction") { resolver in
             let favoriteService = resolver.resolve(FavoriteService.self)!
             return partial(PlanetFeature.FeedbackFunctions.persist, arg1: favoriteService.set(favorite:for:), arg2: .partial)

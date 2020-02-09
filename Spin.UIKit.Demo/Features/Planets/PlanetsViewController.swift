@@ -16,7 +16,7 @@ import UIKit
 
 class PlanetsViewController: UIViewController, StoryboardBased, Stepper {
 
-    fileprivate var viewContext: ReactiveViewContext<PlanetsFeature.State, PlanetsFeature.Event>!
+    fileprivate var uiSpin: ReactiveUISpin<PlanetsFeature.State, PlanetsFeature.Event>!
 
     let steps = PublishRelay<Step>()
 
@@ -26,16 +26,14 @@ class PlanetsViewController: UIViewController, StoryboardBased, Stepper {
     @IBOutlet private weak var nextButton: UIButton!
     @IBOutlet private weak var failureLabel: UILabel!
 
-    let disposeBag = CompositeDisposable()
-
     private var datasource = [(Planet, Bool)]()
 
     @IBAction func previousTapped(_ sender: UIButton) {
-        self.viewContext.emit(.loadPrevious)
+        self.uiSpin.emit(.loadPrevious)
     }
     
     @IBAction func nextTapped(_ sender: Any) {
-        self.viewContext.emit(.loadNext)
+        self.uiSpin.emit(.loadNext)
     }
     
     override func viewDidLoad() {
@@ -43,12 +41,13 @@ class PlanetsViewController: UIViewController, StoryboardBased, Stepper {
         self.navigationItem.title = "Planets"
         self.tableView.dataSource = self
         self.tableView.delegate = self
-        self.viewContext.render(on: self) { $0.interpret(state:) }
+        self.uiSpin.render(on: self) { $0.interpret(state:) }
+        self.uiSpin.spin()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.viewContext.emit(.load)
+        self.uiSpin.emit(.load)
     }
 }
 
@@ -118,9 +117,9 @@ extension PlanetsViewController: UITableViewDelegate {
 }
 
 extension PlanetsViewController {
-    static func make(context: ReactiveViewContext<PlanetsFeature.State, PlanetsFeature.Event>) -> PlanetsViewController {
+    static func make(uiSpin: ReactiveUISpin<PlanetsFeature.State, PlanetsFeature.Event>) -> PlanetsViewController {
         let viewController = PlanetsViewController.instantiate()
-        viewController.viewContext = context
+        viewController.uiSpin = uiSpin
         return viewController
     }
 }

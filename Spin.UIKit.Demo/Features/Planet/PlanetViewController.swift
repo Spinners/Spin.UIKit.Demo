@@ -15,7 +15,7 @@ import UIKit
 
 class PlanetViewController: UIViewController, StoryboardBased {
 
-    fileprivate var viewContext: ReactiveViewContext<PlanetFeature.State, PlanetFeature.Event>!
+    fileprivate var uiSpin: ReactiveUISpin<PlanetFeature.State, PlanetFeature.Event>!
 
     @IBOutlet private weak var planetNameLabel: UILabel!
     @IBOutlet private weak var planetDiameterLabel: UILabel!
@@ -27,19 +27,14 @@ class PlanetViewController: UIViewController, StoryboardBased {
     @IBOutlet private weak var planetFavoriteSwitch: UISwitch!
     @IBOutlet private weak var planetFavoriteIsLoadingActivity: UIActivityIndicatorView!
 
-    let disposeBag = CompositeDisposable()
-
-    deinit {
-        disposeBag.dispose()
-    }
-
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.viewContext.render(on: self) { $0.interpret(state:) }
+        self.uiSpin.render(on: self) { $0.interpret(state:) }
+        self.uiSpin.spin()
     }
 
     @IBAction func changeFavorite(_ sender: UISwitch) {
-        self.viewContext.emit(.setFavorite(favorite: sender.isOn))
+        self.uiSpin.emit(.setFavorite(favorite: sender.isOn))
     }
 }
 
@@ -77,9 +72,9 @@ extension PlanetViewController {
 }
 
 extension PlanetViewController {
-    static func make(context: ReactiveViewContext<PlanetFeature.State, PlanetFeature.Event>) -> PlanetViewController {
+    static func make(uiSpin: ReactiveUISpin<PlanetFeature.State, PlanetFeature.Event>) -> PlanetViewController {
         let viewController = PlanetViewController.instantiate()
-        viewController.viewContext = context
+        viewController.uiSpin = uiSpin
         return viewController
     }
 }

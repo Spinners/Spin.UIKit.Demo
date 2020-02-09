@@ -15,7 +15,7 @@ import UIKit
 
 class PeoplesViewController: UIViewController, StoryboardBased, Stepper {
 
-    fileprivate var viewContext: RxViewContext<PeoplesFeature.State, PeoplesFeature.Event>!
+    fileprivate var uiSpin: RxUISpin<PeoplesFeature.State, PeoplesFeature.Event>!
 
     let steps = PublishRelay<Step>()
 
@@ -24,17 +24,15 @@ class PeoplesViewController: UIViewController, StoryboardBased, Stepper {
     @IBOutlet private weak var previouxButton: UIButton!
     @IBOutlet private weak var nextButton: UIButton!
     @IBOutlet private weak var failureLabel: UILabel!
-
-    let disposeBag = DisposeBag()
     
     private var datasource = [(People, Bool)]()
 
     @IBAction func previousTapped(_ sender: UIButton) {
-        self.viewContext.emit(.loadPrevious)
+        self.uiSpin.emit(.loadPrevious)
     }
     
     @IBAction func nextTapped(_ sender: Any) {
-        self.viewContext.emit(.loadNext)
+        self.uiSpin.emit(.loadNext)
     }
     
     override func viewDidLoad() {
@@ -42,12 +40,13 @@ class PeoplesViewController: UIViewController, StoryboardBased, Stepper {
         self.navigationItem.title = "Peoples"
         self.tableView.dataSource = self
         self.tableView.delegate = self
-        self.viewContext.render(on: self) { $0.interpret(state:) }
+        self.uiSpin.render(on: self) { $0.interpret(state:) }
+        self.uiSpin.spin()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.viewContext.emit(.load)
+        self.uiSpin.emit(.load)
     }
 }
 
@@ -117,9 +116,9 @@ extension PeoplesViewController: UITableViewDelegate {
 }
 
 extension PeoplesViewController {
-    static func make(context: RxViewContext<PeoplesFeature.State, PeoplesFeature.Event>) -> PeoplesViewController {
+    static func make(uiSpin: RxUISpin<PeoplesFeature.State, PeoplesFeature.Event>) -> PeoplesViewController {
         let viewController = PeoplesViewController.instantiate()
-        viewController.viewContext = context
+        viewController.uiSpin = uiSpin
         return viewController
     }
 }

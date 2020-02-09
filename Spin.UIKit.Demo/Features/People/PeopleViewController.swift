@@ -14,7 +14,7 @@ import Spin_RxSwift
 
 class PeopleViewController: UIViewController, StoryboardBased {
 
-    fileprivate var viewContext: RxViewContext<PeopleFeature.State, PeopleFeature.Event>!
+    fileprivate var uiSpin: RxUISpin<PeopleFeature.State, PeopleFeature.Event>!
 
     @IBOutlet private weak var peopleNameLabel: UILabel!
     @IBOutlet private weak var peopleGenderLabel: UILabel!
@@ -26,15 +26,14 @@ class PeopleViewController: UIViewController, StoryboardBased {
     @IBOutlet private weak var peopleFavoriteSwitch: UISwitch!
     @IBOutlet private weak var peopleFavoriteIsLoadingActivity: UIActivityIndicatorView!
 
-    let disposeBag = DisposeBag()
-
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.viewContext.render(on: self) { $0.interpret(state:) }
+        self.uiSpin.render(on: self) { $0.interpret(state:) }
+        self.uiSpin.spin()
     }
 
     @IBAction func changeFavorite(_ sender: UISwitch) {
-        self.viewContext.emit(.setFavorite(favorite: sender.isOn))
+        self.uiSpin.emit(.setFavorite(favorite: sender.isOn))
     }
 }
 
@@ -72,9 +71,9 @@ extension PeopleViewController {
 }
 
 extension PeopleViewController {
-    static func make(context: RxViewContext<PeopleFeature.State, PeopleFeature.Event>) -> PeopleViewController {
+    static func make(uiSpin: RxUISpin<PeopleFeature.State, PeopleFeature.Event>) -> PeopleViewController {
         let viewController = PeopleViewController.instantiate()
-        viewController.viewContext = context
+        viewController.uiSpin = uiSpin
         return viewController
     }
 }
