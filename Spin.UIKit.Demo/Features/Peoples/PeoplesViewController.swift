@@ -41,7 +41,7 @@ class PeoplesViewController: UIViewController, StoryboardBased, Stepper {
         self.tableView.dataSource = self
         self.tableView.delegate = self
         self.uiSpin.render(on: self) { $0.interpret(state:) }
-        self.uiSpin.spin()
+        self.uiSpin.start()
     }
     
     override func viewWillAppear(_ animated: Bool) {

@@ -28,7 +28,7 @@ class StarshipViewController: UIViewController, StoryboardBased {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.uiSpin.render(on: self) { $0.interpret(state:) }
-        self.uiSpin.spin()
+        self.uiSpin.start()
     }
 
     @IBAction func changeFavorite(_ sender: UISwitch) {

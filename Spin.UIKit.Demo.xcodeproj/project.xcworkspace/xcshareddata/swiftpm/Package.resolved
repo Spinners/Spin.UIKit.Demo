@@ -47,15 +47,6 @@
         }
       },
       {
-        "package": "ReactiveCocoa",
-        "repositoryURL": "https://github.com/ReactiveCocoa/ReactiveCocoa",
-        "state": {
-          "branch": "swiftpm",
-          "revision": "d9aba71df044d187561885be85f9b5592daa05b2",
-          "version": null
-        }
-      },
-      {
         "package": "ReactiveSwift",
         "repositoryURL": "https://github.com/ReactiveCocoa/ReactiveSwift",
         "state": {
@@ -96,8 +87,8 @@
         "repositoryURL": "https://github.com/Spinners/Spin.Swift",
         "state": {
           "branch": null,
-          "revision": "391515f7ca2d5f8c3c8fecf4c37a262bc53ea921",
-          "version": "0.9.0"
+          "revision": "9fda446432bf9f0aa10a152408aac9b2f42016b8",
+          "version": "0.10.0"
         }
       },
       {
