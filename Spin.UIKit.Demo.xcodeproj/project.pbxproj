@@ -871,8 +871,8 @@
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/AliSoftware/Reusable";
 			requirement = {
-				branch = master;
-				kind = branch;
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.1.1;
 			};
 		};
 		743BE46123BD0BC8000BE177 /* XCRemoteSwiftPackageReference "ReactiveSwift" */ = {

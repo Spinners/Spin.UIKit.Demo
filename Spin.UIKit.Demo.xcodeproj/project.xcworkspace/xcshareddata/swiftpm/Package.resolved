@@ -59,9 +59,9 @@
         "package": "Reusable",
         "repositoryURL": "https://github.com/AliSoftware/Reusable",
         "state": {
-          "branch": "master",
-          "revision": "8d05d4ff9684e42975d1f5efe54eeaa76fa924c5",
-          "version": null
+          "branch": null,
+          "revision": "86cd17aa27e80d20bfe2ea57dd08958cf64664f4",
+          "version": "4.1.1"
         }
       },
       {
