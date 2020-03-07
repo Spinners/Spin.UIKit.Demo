@@ -27,9 +27,9 @@ class SpinAssembly: Assembly {
             // build Spin with a Builder pattern
             return
                 Spinner
-                    .from(initialState: PlanetsFeature.State.idle)
-                    .add(feedback: ReactiveFeedback(effect: loadFeedback, on: QueueScheduler()))
-                    .reduce(with: ReactiveReducer(reducer: PlanetsFeature.reducer))
+                    .initialState(.idle)
+                    .feedback(ReactiveFeedback(effect: loadFeedback, on: QueueScheduler()))
+                    .reducer(ReactiveReducer(PlanetsFeature.reducer))
         }
         
         ////////////////////////////////////
@@ -42,9 +42,9 @@ class SpinAssembly: Assembly {
             // build Spin with a Builder pattern
             return
                 Spinner
-                    .from(initialState: PeoplesFeature.State.idle)
-                    .add(feedback: RxFeedback(effect: loadFeedback, on: SerialDispatchQueueScheduler(qos: .userInitiated)))
-                    .reduce(with: RxReducer(reducer: PeoplesFeature.reducer))
+                    .initialState(.idle)
+                    .feedback(RxFeedback(effect: loadFeedback, on: SerialDispatchQueueScheduler(qos: .userInitiated)))
+                    .reducer(RxReducer(PeoplesFeature.reducer))
         }
         
         ////////////////////////////////////
@@ -57,9 +57,9 @@ class SpinAssembly: Assembly {
             // build Spin with a Builder pattern
             return
                 Spinner
-                    .from(initialState: StarshipsFeature.State.idle)
-                    .add(feedback: CombineFeedback(effect: loadFeedback, on: DispatchQueue(label: "background").eraseToAnyScheduler()))
-                    .reduce(with: CombineReducer(reducer: StarshipsFeature.reducer))
+                    .initialState(.idle)
+                    .feedback(CombineFeedback(effect: loadFeedback, on: DispatchQueue(label: "background").eraseToAnyScheduler()))
+                    .reducer(CombineReducer(StarshipsFeature.reducer))
         }
         
         ////////////////////////////////////
@@ -72,9 +72,11 @@ class SpinAssembly: Assembly {
             
             // build Spin with a declarative "SwiftUI" pattern
             return
-                ReactiveSpin(initialState: .loading(planet: planet), reducer: ReactiveReducer(reducer: PlanetFeature.reducer)) {
-                    ReactiveFeedback(effect: loadFavoriteFeedback).execute(on: QueueScheduler())
-                    ReactiveFeedback(effect: persistFavoriteFeedback).execute(on: QueueScheduler())
+                ReactiveSpin(initialState: .loading(planet: planet), reducer: ReactiveReducer(PlanetFeature.reducer)) {
+                    ReactiveFeedback(effect: loadFavoriteFeedback)
+                        .execute(on: QueueScheduler())
+                    ReactiveFeedback(effect: persistFavoriteFeedback)
+                        .execute(on: QueueScheduler())
             }
         }
         
@@ -88,9 +90,11 @@ class SpinAssembly: Assembly {
             
             // build Spin with a declarative "SwiftUI" pattern
             return
-                RxSpin(initialState: .loading(people: people), reducer: RxReducer(reducer: PeopleFeature.reducer)) {
-                    RxFeedback(effect: loadFavoriteFeedback).execute(on: SerialDispatchQueueScheduler(qos: .userInitiated))
-                    RxFeedback(effect: persistFavoriteFeedback).execute(on: SerialDispatchQueueScheduler(qos: .userInitiated))
+                RxSpin(initialState: .loading(people: people), reducer: RxReducer(PeopleFeature.reducer)) {
+                    RxFeedback(effect: loadFavoriteFeedback)
+                        .execute(on: SerialDispatchQueueScheduler(qos: .userInitiated))
+                    RxFeedback(effect: persistFavoriteFeedback)
+                        .execute(on: SerialDispatchQueueScheduler(qos: .userInitiated))
             }
         }
         
@@ -104,9 +108,11 @@ class SpinAssembly: Assembly {
             
             // build Spin with a declarative "SwiftUI" pattern
             return
-                CombineSpin(initialState: .loading(starship: starship), reducer: CombineReducer(reducer: StarshipFeature.reducer)) {
-                    CombineFeedback(effect: loadFavoriteFeedback).execute(on: DispatchQueue(label: "background").eraseToAnyScheduler())
-                    CombineFeedback(effect: persistFavoriteFeedback).execute(on: DispatchQueue(label: "background").eraseToAnyScheduler())
+                CombineSpin(initialState: .loading(starship: starship), reducer: CombineReducer(StarshipFeature.reducer)) {
+                    CombineFeedback(effect: loadFavoriteFeedback)
+                        .execute(on: DispatchQueue(label: "background").eraseToAnyScheduler())
+                    CombineFeedback(effect: persistFavoriteFeedback)
+                        .execute(on: DispatchQueue(label: "background").eraseToAnyScheduler())
             }
         }
     }
