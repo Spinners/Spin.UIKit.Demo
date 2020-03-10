@@ -25,7 +25,7 @@ class StarshipsViewController: UIViewController, StoryboardBased, Stepper {
     @IBOutlet private weak var nextButton: UIButton!
     @IBOutlet private weak var failureLabel: UILabel!
 
-    var disposeBag = [AnyCancellable]()
+    private var disposeBag = [AnyCancellable]()
     
     private var datasource = [(Starship, Bool)]()
 
@@ -43,7 +43,9 @@ class StarshipsViewController: UIViewController, StoryboardBased, Stepper {
         self.tableView.dataSource = self
         self.tableView.delegate = self
         self.uiSpin.render(on: self) { $0.interpret(state:) }
-        self.uiSpin.start()
+        AnyPublisher
+            .start(spin: self.uiSpin)
+            .disposed(by: &self.disposeBag)
     }
     
     override func viewWillAppear(_ animated: Bool) {

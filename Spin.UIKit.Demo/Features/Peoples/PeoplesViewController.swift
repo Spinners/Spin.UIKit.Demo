@@ -16,6 +16,7 @@ import UIKit
 class PeoplesViewController: UIViewController, StoryboardBased, Stepper {
 
     fileprivate var uiSpin: RxUISpin<PeoplesFeature.State, PeoplesFeature.Event>!
+    private let disposeBag = DisposeBag()
 
     let steps = PublishRelay<Step>()
 
@@ -41,7 +42,9 @@ class PeoplesViewController: UIViewController, StoryboardBased, Stepper {
         self.tableView.dataSource = self
         self.tableView.delegate = self
         self.uiSpin.render(on: self) { $0.interpret(state:) }
-        self.uiSpin.start()
+        Observable
+            .start(spin: self.uiSpin)
+            .disposed(by: self.disposeBag)
     }
     
     override func viewWillAppear(_ animated: Bool) {
