@@ -15,7 +15,6 @@ import Spin_RxSwift
 class PeopleViewController: UIViewController, StoryboardBased {
 
     fileprivate var uiSpin: RxUISpin<PeopleFeature.State, PeopleFeature.Event>!
-    private let disposeBag = DisposeBag()
 
     @IBOutlet private weak var peopleNameLabel: UILabel!
     @IBOutlet private weak var peopleGenderLabel: UILabel!
@@ -30,9 +29,7 @@ class PeopleViewController: UIViewController, StoryboardBased {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.uiSpin.render(on: self) { $0.interpret(state:) }
-        Observable
-            .start(spin: self.uiSpin)
-            .disposed(by: self.disposeBag)
+        self.uiSpin.start()
     }
 
     @IBAction func changeFavorite(_ sender: UISwitch) {

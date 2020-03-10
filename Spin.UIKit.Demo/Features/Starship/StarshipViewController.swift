@@ -7,14 +7,12 @@
 //
 
 import UIKit
-import Combine
 import Reusable
 import Spin_Combine
 
 class StarshipViewController: UIViewController, StoryboardBased {
 
     fileprivate var uiSpin: CombineUISpin<StarshipFeature.State, StarshipFeature.Event>!
-    private var disposeBag = [AnyCancellable]()
 
     @IBOutlet private weak var starshipNameLabel: UILabel!
     @IBOutlet private weak var starshipModelLabel: UILabel!
@@ -29,9 +27,7 @@ class StarshipViewController: UIViewController, StoryboardBased {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.uiSpin.render(on: self) { $0.interpret(state:) }
-        AnyPublisher
-            .start(spin: self.uiSpin)
-            .disposed(by: &self.disposeBag)
+        self.uiSpin.start()
     }
 
     @IBAction func changeFavorite(_ sender: UISwitch) {

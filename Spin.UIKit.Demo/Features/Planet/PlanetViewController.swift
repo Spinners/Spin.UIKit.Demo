@@ -6,8 +6,6 @@
 //  Copyright © 2019 WarpFactor. All rights reserved.
 //
 
-import Combine
-import ReactiveSwift
 import Reusable
 import Spin_ReactiveSwift
 import UIKit
@@ -15,7 +13,6 @@ import UIKit
 class PlanetViewController: UIViewController, StoryboardBased {
 
     fileprivate var uiSpin: ReactiveUISpin<PlanetFeature.State, PlanetFeature.Event>!
-    private let disposeBag = CompositeDisposable()
 
     @IBOutlet private weak var planetNameLabel: UILabel!
     @IBOutlet private weak var planetDiameterLabel: UILabel!
@@ -30,17 +27,11 @@ class PlanetViewController: UIViewController, StoryboardBased {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.uiSpin.render(on: self) { $0.interpret(state:) }
-        SignalProducer
-            .start(spin: self.uiSpin)
-            .disposed(by: self.disposeBag)
+        self.uiSpin.start()
     }
 
     @IBAction func changeFavorite(_ sender: UISwitch) {
         self.uiSpin.emit(.setFavorite(favorite: sender.isOn))
-    }
-
-    deinit {
-        self.disposeBag.dispose()
     }
 }
 

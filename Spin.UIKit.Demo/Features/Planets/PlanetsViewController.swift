@@ -26,7 +26,6 @@ class PlanetsViewController: UIViewController, StoryboardBased, Stepper {
     @IBOutlet private weak var failureLabel: UILabel!
 
     private var datasource = [(Planet, Bool)]()
-    private let disposeBag = CompositeDisposable()
 
     @IBAction func previousTapped(_ sender: UIButton) {
         self.uiSpin.emit(.loadPrevious)
@@ -42,18 +41,12 @@ class PlanetsViewController: UIViewController, StoryboardBased, Stepper {
         self.tableView.dataSource = self
         self.tableView.delegate = self
         self.uiSpin.render(on: self) { $0.interpret(state:) }
-        SignalProducer
-            .start(spin: self.uiSpin)
-            .disposed(by: self.disposeBag)
+        self.uiSpin.start()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.uiSpin.emit(.load)
-    }
-
-    deinit {
-        self.disposeBag.dispose()
     }
 }
 

@@ -6,7 +6,6 @@
 //  Copyright © 2019 Spinners. All rights reserved.
 //
 
-import Combine
 import Reusable
 import RxFlow
 import RxRelay
@@ -25,8 +24,6 @@ class StarshipsViewController: UIViewController, StoryboardBased, Stepper {
     @IBOutlet private weak var nextButton: UIButton!
     @IBOutlet private weak var failureLabel: UILabel!
 
-    private var disposeBag = [AnyCancellable]()
-    
     private var datasource = [(Starship, Bool)]()
 
     @IBAction func previousTapped(_ sender: UIButton) {
@@ -43,9 +40,7 @@ class StarshipsViewController: UIViewController, StoryboardBased, Stepper {
         self.tableView.dataSource = self
         self.tableView.delegate = self
         self.uiSpin.render(on: self) { $0.interpret(state:) }
-        AnyPublisher
-            .start(spin: self.uiSpin)
-            .disposed(by: &self.disposeBag)
+        self.uiSpin.start()
     }
     
     override func viewWillAppear(_ animated: Bool) {
