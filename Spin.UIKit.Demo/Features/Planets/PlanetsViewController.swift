@@ -15,7 +15,7 @@ import UIKit
 
 class PlanetsViewController: UIViewController, StoryboardBased, Stepper {
 
-    fileprivate var uiSpin: ReactiveUISpin<PlanetsFeature.State, PlanetsFeature.Event>!
+    fileprivate var uiSpin: UISpin<PlanetsFeature.State, PlanetsFeature.Event>!
 
     let steps = PublishRelay<Step>()
 
@@ -116,7 +116,7 @@ extension PlanetsViewController: UITableViewDelegate {
 }
 
 extension PlanetsViewController {
-    static func make(uiSpin: ReactiveUISpin<PlanetsFeature.State, PlanetsFeature.Event>) -> PlanetsViewController {
+    static func make(uiSpin: UISpin<PlanetsFeature.State, PlanetsFeature.Event>) -> PlanetsViewController {
         let viewController = PlanetsViewController.instantiate()
         viewController.uiSpin = uiSpin
         return viewController

@@ -12,7 +12,7 @@ import Spin_Combine
 
 class StarshipViewController: UIViewController, StoryboardBased {
 
-    fileprivate var uiSpin: CombineUISpin<StarshipFeature.State, StarshipFeature.Event>!
+    fileprivate var uiSpin: UISpin<StarshipFeature.State, StarshipFeature.Event>!
 
     @IBOutlet private weak var starshipNameLabel: UILabel!
     @IBOutlet private weak var starshipModelLabel: UILabel!
@@ -69,7 +69,7 @@ extension StarshipViewController {
 }
 
 extension StarshipViewController {
-    static func make(uiSpin: CombineUISpin<StarshipFeature.State, StarshipFeature.Event>) -> StarshipViewController {
+    static func make(uiSpin: UISpin<StarshipFeature.State, StarshipFeature.Event>) -> StarshipViewController {
         let viewController = StarshipViewController.instantiate()
         viewController.uiSpin = uiSpin
         return viewController

@@ -15,7 +15,7 @@ import UIKit
 
 class PeoplesViewController: UIViewController, StoryboardBased, Stepper {
 
-    fileprivate var uiSpin: RxUISpin<PeoplesFeature.State, PeoplesFeature.Event>!
+    fileprivate var uiSpin: UISpin<PeoplesFeature.State, PeoplesFeature.Event>!
 
     let steps = PublishRelay<Step>()
 
@@ -116,7 +116,7 @@ extension PeoplesViewController: UITableViewDelegate {
 }
 
 extension PeoplesViewController {
-    static func make(uiSpin: RxUISpin<PeoplesFeature.State, PeoplesFeature.Event>) -> PeoplesViewController {
+    static func make(uiSpin: UISpin<PeoplesFeature.State, PeoplesFeature.Event>) -> PeoplesViewController {
         let viewController = PeoplesViewController.instantiate()
         viewController.uiSpin = uiSpin
         return viewController

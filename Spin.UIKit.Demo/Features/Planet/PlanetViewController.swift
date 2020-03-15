@@ -12,7 +12,7 @@ import UIKit
 
 class PlanetViewController: UIViewController, StoryboardBased {
 
-    fileprivate var uiSpin: ReactiveUISpin<PlanetFeature.State, PlanetFeature.Event>!
+    fileprivate var uiSpin: UISpin<PlanetFeature.State, PlanetFeature.Event>!
 
     @IBOutlet private weak var planetNameLabel: UILabel!
     @IBOutlet private weak var planetDiameterLabel: UILabel!
@@ -69,7 +69,7 @@ extension PlanetViewController {
 }
 
 extension PlanetViewController {
-    static func make(uiSpin: ReactiveUISpin<PlanetFeature.State, PlanetFeature.Event>) -> PlanetViewController {
+    static func make(uiSpin: UISpin<PlanetFeature.State, PlanetFeature.Event>) -> PlanetViewController {
         let viewController = PlanetViewController.instantiate()
         viewController.uiSpin = uiSpin
         return viewController

@@ -14,7 +14,7 @@ import UIKit
 
 class StarshipsViewController: UIViewController, StoryboardBased, Stepper {
 
-    fileprivate var uiSpin: CombineUISpin<StarshipsFeature.State, StarshipsFeature.Event>!
+    fileprivate var uiSpin: UISpin<StarshipsFeature.State, StarshipsFeature.Event>!
 
     let steps = PublishRelay<Step>()
 
@@ -115,7 +115,7 @@ extension StarshipsViewController: UITableViewDelegate {
 }
 
 extension StarshipsViewController {
-    static func make(uiSpin: CombineUISpin<StarshipsFeature.State, StarshipsFeature.Event>) -> StarshipsViewController {
+    static func make(uiSpin: UISpin<StarshipsFeature.State, StarshipsFeature.Event>) -> StarshipsViewController {
         let viewController = StarshipsViewController.instantiate()
         viewController.uiSpin = uiSpin
         return viewController

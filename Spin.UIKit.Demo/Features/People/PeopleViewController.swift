@@ -14,7 +14,7 @@ import Spin_RxSwift
 
 class PeopleViewController: UIViewController, StoryboardBased {
 
-    fileprivate var uiSpin: RxUISpin<PeopleFeature.State, PeopleFeature.Event>!
+    fileprivate var uiSpin: UISpin<PeopleFeature.State, PeopleFeature.Event>!
 
     @IBOutlet private weak var peopleNameLabel: UILabel!
     @IBOutlet private weak var peopleGenderLabel: UILabel!
@@ -71,7 +71,7 @@ extension PeopleViewController {
 }
 
 extension PeopleViewController {
-    static func make(uiSpin: RxUISpin<PeopleFeature.State, PeopleFeature.Event>) -> PeopleViewController {
+    static func make(uiSpin: UISpin<PeopleFeature.State, PeopleFeature.Event>) -> PeopleViewController {
         let viewController = PeopleViewController.instantiate()
         viewController.uiSpin = uiSpin
         return viewController
