@@ -19,7 +19,7 @@ final class ServiceAssembly: Assembly {
         }
 
         container.register(String.self, name: "baseURL") { _  in
-            return "swapi.co"
+            return "my-json-server.typicode.com"
         }
     }
 }

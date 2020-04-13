@@ -28,6 +28,8 @@ extension ReactiveNetworkService: NetworkService {
     func fetchRx<EndpointType: Endpoint> (route: Route<EndpointType>) -> Single<EndpointType.ResponseModel> {
         guard let request = try? route.asURLRequest() else { return .error(NetworkError.badRequest) }
 
+        print(request)
+
         return Single<EndpointType.ResponseModel>.create { observer -> RxSwift.Disposable in
             let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
                 if let error = error {

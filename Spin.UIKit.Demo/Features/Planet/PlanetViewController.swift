@@ -7,7 +7,7 @@
 //
 
 import Reusable
-import Spin_ReactiveSwift
+import SpinReactiveSwift
 import UIKit
 
 class PlanetViewController: UIViewController, StoryboardBased {

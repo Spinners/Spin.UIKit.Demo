@@ -10,7 +10,7 @@ import Reusable
 import RxFlow
 import RxSwift
 import RxRelay
-import Spin_RxSwift
+import SpinRxSwift
 import UIKit
 
 class PeoplesViewController: UIViewController, StoryboardBased, Stepper {

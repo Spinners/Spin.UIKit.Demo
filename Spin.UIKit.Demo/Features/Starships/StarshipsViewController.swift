@@ -9,7 +9,7 @@
 import Reusable
 import RxFlow
 import RxRelay
-import Spin_Combine
+import SpinCombine
 import UIKit
 
 class StarshipsViewController: UIViewController, StoryboardBased, Stepper {

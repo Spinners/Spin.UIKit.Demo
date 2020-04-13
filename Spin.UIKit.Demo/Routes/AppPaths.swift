@@ -60,11 +60,11 @@ extension PeoplePath: Path {
     public var description: String {
         switch self {
         case .peoples:
-            return "/people/"
+            return "/peoples/"
         case .people(let id):
-            return "/people/\(id)/"
+            return "/peoples/\(id)/"
         case .peopleSearch(let query):
-            return "/people/?search=\(query)/"
+            return "/peoples/?search=\(query)/"
         }
     }
 }
@@ -102,11 +102,11 @@ extension VehiclesPath: Path {
         switch self {
             
         case .vehicles:
-            return "/vehicles/"
+            return "/vehicle/"
         case .vehicle(let id):
-            return "/vehicles/\(id)/"
+            return "/vehicle/\(id)/"
         case .vehicleSearch(let query):
-            return "/vehicles/?search=\(query)/"
+            return "/vehicle/?search=\(query)/"
         }
     }
 }

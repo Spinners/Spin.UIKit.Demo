@@ -14,7 +14,7 @@ enum Starships {
 extension Starships {
     enum Apis {
         static func load(baseUrl: String, networkService: NetworkService, page: Int?) -> AnyPublisher<ListResponse<Starship>, NetworkError> {
-            let route = Route<ListEndpoint<Starship>>(baseUrl: baseUrl, endpoint: ListEndpoint<Starship>(path: StarshipsPath.starships))
+            let route = Route<ListEndpoint<Starship>>(baseUrl: baseUrl, endpoint: ListEndpoint<Starship>(path: StarshipsPath.starships), scheme: .https)
             if let page = page {
                 route.set(parameter: ListRequest(page: page))
             }

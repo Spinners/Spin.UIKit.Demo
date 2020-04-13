@@ -10,7 +10,7 @@ import ReactiveSwift
 import Reusable
 import RxFlow
 import RxRelay
-import Spin_ReactiveSwift
+import SpinReactiveSwift
 import UIKit
 
 class PlanetsViewController: UIViewController, StoryboardBased, Stepper {

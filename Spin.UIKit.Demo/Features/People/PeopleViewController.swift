@@ -10,7 +10,7 @@ import UIKit
 import RxSwift
 import RxCocoa
 import Reusable
-import Spin_RxSwift
+import SpinRxSwift
 
 class PeopleViewController: UIViewController, StoryboardBased {
 

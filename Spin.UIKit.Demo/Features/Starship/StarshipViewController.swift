@@ -8,7 +8,7 @@
 
 import UIKit
 import Reusable
-import Spin_Combine
+import SpinCombine
 
 class StarshipViewController: UIViewController, StoryboardBased {
 

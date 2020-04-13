@@ -10,10 +10,9 @@ import Combine
 import Dispatch
 import ReactiveSwift
 import RxSwift
-import Spin_Swift
-import Spin_Combine
-import Spin_ReactiveSwift
-import Spin_RxSwift
+import SpinCombine
+import SpinReactiveSwift
+import SpinRxSwift
 import Swinject
 
 final class FeatureAssembly: Assembly {

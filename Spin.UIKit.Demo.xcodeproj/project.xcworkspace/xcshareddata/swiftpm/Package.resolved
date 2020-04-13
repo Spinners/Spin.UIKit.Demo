@@ -11,30 +11,12 @@
         }
       },
       {
-        "package": "CwlCatchException",
-        "repositoryURL": "https://github.com/mattgallagher/CwlCatchException.git",
-        "state": {
-          "branch": null,
-          "revision": "7cd2f8cacc4d22f21bc0b2309c3b18acf7957b66",
-          "version": "1.2.0"
-        }
-      },
-      {
-        "package": "CwlPreconditionTesting",
-        "repositoryURL": "https://github.com/mattgallagher/CwlPreconditionTesting.git",
-        "state": {
-          "branch": null,
-          "revision": "c228db5d2ad1b01ebc84435e823e6cca4e3db98b",
-          "version": "1.2.0"
-        }
-      },
-      {
         "package": "Nimble",
         "repositoryURL": "https://github.com/Quick/Nimble.git",
         "state": {
           "branch": null,
-          "revision": "b02b00b30b6353632aa4a5fb6124f8147f7140c0",
-          "version": "8.0.5"
+          "revision": "7fd118ec8795888bcbbebc1a41f6984454c4cd6f",
+          "version": "8.0.7"
         }
       },
       {
@@ -78,17 +60,17 @@
         "repositoryURL": "https://github.com/ReactiveX/RxSwift",
         "state": {
           "branch": null,
-          "revision": "c1bd31b397d87a54467af4161dde9d6b27720c19",
-          "version": "5.1.0"
+          "revision": "002d325b0bdee94e7882e1114af5ff4fe1e96afa",
+          "version": "5.1.1"
         }
       },
       {
         "package": "Spin.Swift",
         "repositoryURL": "https://github.com/Spinners/Spin.Swift",
         "state": {
-          "branch": null,
-          "revision": "1331b3ba5b653af2876c2da5079b5ad9be997042",
-          "version": "0.15.0"
+          "branch": "feature/add-carthage-support",
+          "revision": "270ddbaaa4ed37b0a906b541e46ad5a2f22f7caa",
+          "version": null
         }
       },
       {

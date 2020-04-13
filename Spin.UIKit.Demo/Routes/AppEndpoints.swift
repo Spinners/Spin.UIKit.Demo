@@ -10,7 +10,7 @@ struct ListEndpoint<Entity: Decodable>: Endpoint {
     typealias RequestModel = ListRequest
     typealias ResponseModel = ListResponse<Entity>
 
-    let prefixPath = "/api"
+    let prefixPath = "/Spinners/Spin.UIKit.Demo"
     let path: Path
     let httpMethod = HTTPMethod.get
     let parameterEncoding = ParameterEncoding.url
@@ -25,7 +25,7 @@ struct EntityEndpoint<Entity: Decodable>: Endpoint {
     typealias RequestModel = NoModel
     typealias ResponseModel = Entity
 
-    let prefixPath = "/api"
+    let prefixPath = "/Spinners/Spin.UIKit.Demo"
     let path: Path
     let httpMethod = HTTPMethod.get
     let parameterEncoding = ParameterEncoding.url
