@@ -863,8 +863,8 @@
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Spinners/Spin.Swift";
 			requirement = {
-				branch = "feature/add-carthage-support";
-				kind = branch;
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.16.0;
 			};
 		};
 		743BE45B23BD0A9F000BE177 /* XCRemoteSwiftPackageReference "Alamofire" */ = {

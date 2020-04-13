@@ -68,9 +68,9 @@
         "package": "Spin.Swift",
         "repositoryURL": "https://github.com/Spinners/Spin.Swift",
         "state": {
-          "branch": "feature/add-carthage-support",
-          "revision": "270ddbaaa4ed37b0a906b541e46ad5a2f22f7caa",
-          "version": null
+          "branch": null,
+          "revision": "f72c3dd6fdbcd400c12475c23f838eb78e183fa4",
+          "version": "0.16.0"
         }
       },
       {
