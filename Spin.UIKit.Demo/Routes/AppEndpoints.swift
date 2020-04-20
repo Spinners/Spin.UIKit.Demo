@@ -6,11 +6,11 @@
 //  Copyright © 2020 Spinners. All rights reserved.
 //
 
-struct ListEndpoint<Entity: Decodable>: Endpoint {
-    typealias RequestModel = ListRequest
-    typealias ResponseModel = ListResponse<Entity>
+struct TrendingEndpoint: Endpoint {
+    typealias RequestModel = TrendingRequest
+    typealias ResponseModel = TrendingResponse
 
-    let prefixPath = "/Spinners/Spin.UIKit.Demo"
+    let prefixPath = "/v1/gifs"
     let path: Path
     let httpMethod = HTTPMethod.get
     let parameterEncoding = ParameterEncoding.url
@@ -21,11 +21,11 @@ struct ListEndpoint<Entity: Decodable>: Endpoint {
     }
 }
 
-struct EntityEndpoint<Entity: Decodable>: Endpoint {
-    typealias RequestModel = NoModel
-    typealias ResponseModel = Entity
+struct GetByIdEndpoint: Endpoint {
+    typealias RequestModel = GetByIdRequest
+    typealias ResponseModel = GetByIdResponse
 
-    let prefixPath = "/Spinners/Spin.UIKit.Demo"
+    let prefixPath = "/v1/gifs"
     let path: Path
     let httpMethod = HTTPMethod.get
     let parameterEncoding = ParameterEncoding.url
