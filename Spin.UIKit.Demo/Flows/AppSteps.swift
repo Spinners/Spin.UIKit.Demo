@@ -8,13 +8,11 @@
 
 import RxFlow
 
-enum AppSteps: Step {
+enum AppStep: Step {
     case home
-    case planets
-    case planet(planet: Planet)
-    case peoples
-    case people(people: People)
-    case starships
-    case starship(starship: Starship)
-    case films
+}
+
+enum GifStep: Step {
+    case trending
+    case gif(gif: GifOverview)
 }

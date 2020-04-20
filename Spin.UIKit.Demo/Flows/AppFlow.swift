@@ -28,13 +28,11 @@ class AppFlow: Flow {
     }
     
     func navigate(to step: Step) -> FlowContributors {
-        guard let step = step as? AppSteps else { return .none }
+        guard let step = step as? AppStep else { return .none }
         
         switch step {
         case .home:
             return self.navigateToHome()
-        default:
-            return .none
         }
     }
 }
@@ -42,29 +40,29 @@ class AppFlow: Flow {
 extension AppFlow {
     func navigateToHome() -> FlowContributors {
 
-        let planetsFlow = self.resolver.resolve(PlanetsFlow.self)!
-        let peoplesFlow = self.resolver.resolve(PeoplesFlow.self)!
-        let starshipsFlow = self.resolver.resolve(StarshipsFlow.self)!
+        let flow1 = self.resolver.resolve(ReactiveSwiftNavigationFlow.self)!
+        let flow2 = self.resolver.resolve(CombineNavigationFlow.self)!
+        let flow3 = self.resolver.resolve(RxSwiftNavigationFlow.self)!
 
-        Flows.whenReady(flow1: planetsFlow, flow2: peoplesFlow, flow3: starshipsFlow) { [weak self] (planetsRoot, peoplesRoot, starshipsRoot) in
+        Flows.whenReady(flow1: flow1, flow2: flow2, flow3: flow3) { [weak self] (root1, root2, root3) in
             let tabBarItem1 = UITabBarItem(title: "Planets", image: UIImage(systemName: "mappin.and.ellipse"), selectedImage: nil)
-            planetsRoot.tabBarItem = tabBarItem1
-            planetsRoot.title = "Planets (Reactive)"
+            root1.tabBarItem = tabBarItem1
+            root1.title = "Trending (ReactiveSwift)"
             
             let tabBarItem2 = UITabBarItem(title: "Peoples", image: UIImage(systemName: "person"), selectedImage: nil)
-            peoplesRoot.tabBarItem = tabBarItem2
-            peoplesRoot.title = "Peoples (Rx)"
+            root2.tabBarItem = tabBarItem2
+            root2.title = "Trending (Combine)"
 
             let tabBarItem3 = UITabBarItem(title: "Starships", image: UIImage(systemName: "airplane"), selectedImage: nil)
-            starshipsRoot.tabBarItem = tabBarItem3
-            starshipsRoot.title = "Starships (Combine)"
+            root3.tabBarItem = tabBarItem3
+            root3.title = "Trending (RxSwift)"
 
-            self?.rootViewController.setViewControllers([planetsRoot, peoplesRoot, starshipsRoot], animated: false)
+            self?.rootViewController.setViewControllers([root1, root2, root3], animated: false)
         }
 
         return .multiple(flowContributors: [
-            .contribute(withNextPresentable: planetsFlow, withNextStepper: OneStepper(withSingleStep: AppSteps.planets)),
-            .contribute(withNextPresentable: peoplesFlow, withNextStepper: OneStepper(withSingleStep: AppSteps.peoples)),
-            .contribute(withNextPresentable: starshipsFlow, withNextStepper: OneStepper(withSingleStep: AppSteps.starships))])
+            .contribute(withNextPresentable: flow1, withNextStepper: OneStepper(withSingleStep: GifStep.trending)),
+            .contribute(withNextPresentable: flow2, withNextStepper: OneStepper(withSingleStep: GifStep.trending)),
+            .contribute(withNextPresentable: flow3, withNextStepper: OneStepper(withSingleStep: GifStep.trending))])
     }
 }

@@ -39,7 +39,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             window.rootViewController = root
         }
 
-        self.coordinator.coordinate(flow: appFlow, with: OneStepper(withSingleStep: AppSteps.home))
+        self.coordinator.coordinate(flow: appFlow, with: OneStepper(withSingleStep: AppStep.home))
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {
