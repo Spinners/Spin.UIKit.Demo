@@ -48,7 +48,7 @@ extension CombineNavigationFlow {
     }
 
     func navigateTo(gif: GifOverview) -> FlowContributors {
-        let viewController = self.resolver.resolve(ReactiveSwiftGifViewController.self, argument: gif)!
+        let viewController = self.resolver.resolve(CombineGifViewController.self, argument: gif)!
         self.rootViewController.pushViewController(viewController, animated: true)
         return .none
     }

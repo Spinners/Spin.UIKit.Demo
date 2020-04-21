@@ -108,8 +108,10 @@ extension RxSwiftGifViewController {
         self.gifTypeLabel.isHidden = false
         self.gifRatingLabel.isHidden = false
         self.gifUserLabel.isHidden = false
-        self.gifPlayer.url = URL(string: gif.images.fixedHeightData.mp4)!
-        self.gifPlayer.playFromBeginning()
+        if self.gifPlayer.url == nil {
+            self.gifPlayer.url = URL(string: gif.images.fixedHeightData.mp4)!
+            self.gifPlayer.playFromBeginning()
+        }
     }
 }
 

@@ -57,24 +57,24 @@ final class FeatureAssembly: Assembly {
             return viewController
         }
 
-//        // Gif Scene
-//        // (Combine implementation)
-//        container.register(CombineGifViewController.self) { (resolver, gif: GifOverview) in
-//            let gifSpin = resolver.resolve(CombineSpin<Gif.State, Gif.Event>.self, argument: gif)!
-//            let gifSpinUISpin = CombineUISpin(spin: gifSpin)
-//            let viewController = CombineSwiftGifViewController.make(uiSpin: gifSpinUISpin)
-//
-//            return viewController
-//        }
-//
-//        // Gif Scene
-//        // (RxSwift implementation)
-//        container.register(CombineGifViewController.self) { (resolver, gif: GifOverview) in
-//            let gifSpin = resolver.resolve(RxSpin<Gif.State, Gif.Event>.self, argument: gif)!
-//            let gifSpinUISpin = RxUISpin(spin: gifSpin)
-//            let viewController = RxSwiftGifViewController.make(uiSpin: gifSpinUISpin)
-//
-//            return viewController
-//        }
+        // Gif Scene
+        // (Combine implementation)
+        container.register(CombineGifViewController.self) { (resolver, gif: GifOverview) in
+            let gifSpin = resolver.resolve(CombineSpin<Gif.State, Gif.Event>.self, argument: gif)!
+            let gifSpinUISpin = CombineUISpin(spin: gifSpin)
+            let viewController = CombineGifViewController.make(uiSpin: gifSpinUISpin)
+
+            return viewController
+        }
+
+        // Gif Scene
+        // (RxSwift implementation)
+        container.register(RxSwiftGifViewController.self) { (resolver, gif: GifOverview) in
+            let gifSpin = resolver.resolve(RxSpin<Gif.State, Gif.Event>.self, argument: gif)!
+            let gifSpinUISpin = RxUISpin(spin: gifSpin)
+            let viewController = RxSwiftGifViewController.make(uiSpin: gifSpinUISpin)
+
+            return viewController
+        }
     }
 }
