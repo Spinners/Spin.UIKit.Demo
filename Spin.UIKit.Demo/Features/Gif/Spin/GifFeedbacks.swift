@@ -61,7 +61,7 @@ extension Gif {
 
         // Persist a favorite property when the state is .enablingFavorite
         // (Combine implementation)
-        static func persist(persistFavoriteFunction: (Bool, String) -> Void,
+        static func persist(persistFavoriteFunction: @escaping (Bool, String) -> Void,
                             state: Gif.State) -> AnyPublisher<Gif.Event, Never> {
             guard case let .enablingFavorite(gif, favorite) = state else { return Empty().eraseToAnyPublisher() }
 

@@ -7,6 +7,7 @@
 //
 
 import Dispatch
+import Foundation
 import ReactiveSwift
 import RxSwift
 import SpinCommon
@@ -60,13 +61,13 @@ class SpinAssembly: Assembly {
         // (ReactiveSwift implementation)
         container.register(ReactiveSpin<Gif.State, Gif.Event>.self) { (resolver, gif: GifOverview)
             -> ReactiveSpin<Gif.State, Gif.Event> in
-            let loadFavoriteFeedback = resolver.resolve(LoadGifReactiveSwiftFeedback.self)!
+            let loadGifFeedback = resolver.resolve(LoadGifReactiveSwiftFeedback.self, name: "ReactiveSwiftLoadFeedback")!
             let persistFavoriteFeedback = resolver.resolve(SetFavoriteReactiveSwiftFeedback.self, name: "ReactiveSwiftPersistFeedback")!
 
             // build Spin with a declarative "SwiftUI" pattern
             return
                 ReactiveSpin(initialState: .loading(id: gif.id), reducer: ReactiveReducer(Gif.reducer)) {
-                    ReactiveFeedback(effect: loadFavoriteFeedback)
+                    ReactiveFeedback(effect: loadGifFeedback)
                         .execute(on: QueueScheduler())
                     ReactiveFeedback(effect: persistFavoriteFeedback)
                         .execute(on: QueueScheduler())
@@ -77,16 +78,16 @@ class SpinAssembly: Assembly {
         // (Combine implementation)
         container.register(CombineSpin<Gif.State, Gif.Event>.self) { (resolver, gif: GifOverview)
             -> CombineSpin<Gif.State, Gif.Event> in
-            let loadFavoriteFeedback = resolver.resolve(LoadGifCombineFeedback.self)!
+            let loadGifFeedback = resolver.resolve(LoadGifCombineFeedback.self, name: "CombineLoadFeedback")!
             let persistFavoriteFeedback = resolver.resolve(SetFavoriteCombineFeedback.self, name: "CombinePersistFeedback")!
 
             // build Spin with a declarative "SwiftUI" pattern
             return
                 CombineSpin(initialState: .loading(id: gif.id), reducer: CombineReducer(Gif.reducer)) {
-                    CombineFeedback(effect: loadFavoriteFeedback)
-                        .execute(on: DispatchQueue(label: "background").eraseToAnyScheduler())
+                    CombineFeedback(effect: loadGifFeedback)
+                        .execute(on: DispatchQueue(label: "\(UUID())", qos: .userInitiated).eraseToAnyScheduler())
                     CombineFeedback(effect: persistFavoriteFeedback)
-                        .execute(on: DispatchQueue(label: "background").eraseToAnyScheduler())
+                        .execute(on: DispatchQueue(label: "\(UUID())", qos: .userInitiated).eraseToAnyScheduler())
             }
         }
 
@@ -94,13 +95,13 @@ class SpinAssembly: Assembly {
         // (RxSwift implementation)
         container.register(RxSpin<Gif.State, Gif.Event>.self) { (resolver, gif: GifOverview)
             -> RxSpin<Gif.State, Gif.Event> in
-            let loadFavoriteFeedback = resolver.resolve(LoadGifRxSwiftFeedback.self)!
+            let loadGifFeedback = resolver.resolve(LoadGifRxSwiftFeedback.self, name: "RxSwiftLoadFeedback")!
             let persistFavoriteFeedback = resolver.resolve(SetFavoriteRxSwiftFeedback.self, name: "RxSwiftPersistFeedback")!
 
             // build Spin with a declarative "SwiftUI" pattern
             return
                 RxSpin(initialState: .loading(id: gif.id), reducer: RxReducer(Gif.reducer)) {
-                    RxFeedback(effect: loadFavoriteFeedback)
+                    RxFeedback(effect: loadGifFeedback)
                         .execute(on: SerialDispatchQueueScheduler(qos: .userInitiated))
                     RxFeedback(effect: persistFavoriteFeedback)
                         .execute(on: SerialDispatchQueueScheduler(qos: .userInitiated))

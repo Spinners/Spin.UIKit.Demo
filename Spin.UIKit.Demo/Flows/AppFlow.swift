@@ -45,15 +45,15 @@ extension AppFlow {
         let flow3 = self.resolver.resolve(RxSwiftNavigationFlow.self)!
 
         Flows.whenReady(flow1: flow1, flow2: flow2, flow3: flow3) { [weak self] (root1, root2, root3) in
-            let tabBarItem1 = UITabBarItem(title: "Planets", image: UIImage(systemName: "mappin.and.ellipse"), selectedImage: nil)
+            let tabBarItem1 = UITabBarItem(title: "Trending (ReactiveSwift)", image: UIImage(systemName: "speedometer"), selectedImage: nil)
             root1.tabBarItem = tabBarItem1
             root1.title = "Trending (ReactiveSwift)"
             
-            let tabBarItem2 = UITabBarItem(title: "Peoples", image: UIImage(systemName: "person"), selectedImage: nil)
+            let tabBarItem2 = UITabBarItem(title: "Trending (Combine)", image: UIImage(systemName: "speedometer"), selectedImage: nil)
             root2.tabBarItem = tabBarItem2
             root2.title = "Trending (Combine)"
 
-            let tabBarItem3 = UITabBarItem(title: "Starships", image: UIImage(systemName: "airplane"), selectedImage: nil)
+            let tabBarItem3 = UITabBarItem(title: "Trending (RxSwift)", image: UIImage(systemName: "speedometer"), selectedImage: nil)
             root3.tabBarItem = tabBarItem3
             root3.title = "Trending (RxSwift)"
 

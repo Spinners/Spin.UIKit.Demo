@@ -9,9 +9,9 @@
 import Foundation
 
 class FavoriteService {
-    private var storage = [String: Bool]()
 
-    init() {}
+    init() {
+    }
 
     func set(favorite: Bool, for resource: String) {
         sleep(1)

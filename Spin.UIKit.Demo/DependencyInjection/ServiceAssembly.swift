@@ -10,9 +10,9 @@ import Swinject
 
 final class ServiceAssembly: Assembly {
     func assemble(container: Container) {
-        container.register(FavoriteService.self, factory: { _ in
+        container.register(FavoriteService.self) { _ in
             return FavoriteService()
-        })
+        }.inObjectScope(.transient)
 
         container.register(NetworkService.self) { _ in
             return ReactiveNetworkService()

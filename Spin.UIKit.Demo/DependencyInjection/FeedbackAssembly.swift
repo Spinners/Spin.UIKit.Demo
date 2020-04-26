@@ -49,21 +49,21 @@ final class FeedbackAssembly: Assembly {
 
         // Load Feedback for Gif
         // (ReactiveSwift implementation)
-        container.register(LoadGifReactiveSwiftFeedback.self) { resolver in
+        container.register(LoadGifReactiveSwiftFeedback.self, name: "ReactiveSwiftLoadFeedback") { resolver in
             let loadEntityFunction = resolver.resolve(GifReactiveSwiftEntity.self)!
             return partial(Gif.Feedbacks.load, arg1: loadEntityFunction, arg2: .partial)
         }
 
         // Load Feedback for Gif
         // (Combine implementation)
-        container.register(LoadGifCombineFeedback.self) { resolver in
+        container.register(LoadGifCombineFeedback.self, name: "CombineLoadFeedback") { resolver in
             let loadEntityFunction = resolver.resolve(GifCombineEntity.self)!
             return partial(Gif.Feedbacks.load, arg1: loadEntityFunction, arg2: .partial)
         }
 
         // Load Feedback for Gif
         // (RxSwift implementation)
-        container.register(LoadGifRxSwiftFeedback.self) { resolver in
+        container.register(LoadGifRxSwiftFeedback.self, name: "RxSwiftLoadFeedback") { resolver in
             let loadEntityFunction = resolver.resolve(GifRxSwiftEntity.self)!
             return partial(Gif.Feedbacks.load, arg1: loadEntityFunction, arg2: .partial)
         }

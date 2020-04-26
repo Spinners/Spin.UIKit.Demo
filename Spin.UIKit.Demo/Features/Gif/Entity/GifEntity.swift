@@ -34,7 +34,9 @@ extension Gif {
             return loadApisFunction(gifId).map { getByIdResponse -> (GifDetail, Bool) in
                 let isFavorite = isFavoriteFunction(getByIdResponse.data.url)
                 return (getByIdResponse.data, isFavorite)
-            }.eraseToAnyPublisher()
+            }
+            .handleEvents() // without this instruction there is a memory leak with the FavoriteService. Don't know why, makes no sense.
+            .eraseToAnyPublisher()
         }
 
         // Loads the Gif detail from Api & Favorite Service

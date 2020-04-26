@@ -35,4 +35,3 @@ struct GetByIdEndpoint: Endpoint {
         self.path = path
     }
 }
-
