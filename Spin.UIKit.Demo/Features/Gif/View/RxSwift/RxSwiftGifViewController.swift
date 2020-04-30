@@ -6,7 +6,6 @@
 //  Copyright © 2019 WarpFactor. All rights reserved.
 //
 
-import Player
 import Reusable
 import SpinRxSwift
 import UIKit
@@ -20,25 +19,11 @@ class RxSwiftGifViewController: UIViewController, StoryboardBased {
     @IBOutlet private weak var gifUserLabel: UILabel!
     @IBOutlet private weak var gifFavoriteSwitch: UISwitch!
     @IBOutlet private weak var gifFavoriteIsLoadingActivity: UIActivityIndicatorView!
-    @IBOutlet private weak var playerView: UIView!
+    @IBOutlet private weak var playerView: PlayerUIView!
     @IBOutlet private weak var failedLabel: UILabel!
-
-    private lazy var gifPlayer: Player = {
-        let player = Player()
-        player.playbackLoops = true
-        return player
-    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // embed the Gif player in the View hierarchy
-        self.gifPlayer.playbackDelegate = self
-        self.gifPlayer.view.frame = self.playerView.bounds
-
-        self.addChild(self.gifPlayer)
-        self.playerView.addSubview(self.gifPlayer.view)
-        self.gifPlayer.didMove(toParent: self)
 
         self.uiSpin.render(on: self) { $0.interpret(state:) }
         self.uiSpin.start()
@@ -46,17 +31,6 @@ class RxSwiftGifViewController: UIViewController, StoryboardBased {
 
     @IBAction func changeFavorite(_ sender: UISwitch) {
         self.uiSpin.emit(.setFavorite(favorite: sender.isOn))
-    }
-}
-
-extension RxSwiftGifViewController: PlayerPlaybackDelegate {
-    func playerCurrentTimeDidChange(_ player: Player) {}
-    func playerPlaybackWillStartFromBeginning(_ player: Player) {}
-    func playerPlaybackWillLoop(_ player: Player) {}
-    func playerPlaybackDidLoop(_ player: Player) {}
-    
-    func playerPlaybackDidEnd(_ player: Player) {
-        player.playFromBeginning()
     }
 }
 
@@ -108,10 +82,8 @@ extension RxSwiftGifViewController {
         self.gifTypeLabel.isHidden = false
         self.gifRatingLabel.isHidden = false
         self.gifUserLabel.isHidden = false
-        if self.gifPlayer.url == nil {
-            self.gifPlayer.url = URL(string: gif.images.fixedHeightData.mp4)!
-            self.gifPlayer.playFromBeginning()
-        }
+        self.playerView.url = gif.images.fixedHeightData.mp4
+        self.playerView.playFromBeginning()
     }
 }
 

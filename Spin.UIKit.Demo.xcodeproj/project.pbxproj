@@ -70,7 +70,6 @@
 		74607E1B244CFD6F00E2F9E8 /* GifApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74607E1A244CFD6F00E2F9E8 /* GifApi.swift */; };
 		74607E1D244CFF6600E2F9E8 /* Images.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74607E1C244CFF6600E2F9E8 /* Images.swift */; };
 		74607E1F244D016600E2F9E8 /* GifEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74607E1E244D016600E2F9E8 /* GifEntity.swift */; };
-		74607E22244D10AB00E2F9E8 /* Player in Frameworks */ = {isa = PBXBuildFile; productRef = 74607E21244D10AB00E2F9E8 /* Player */; };
 		74607E25244D2FF300E2F9E8 /* CombineGifViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74607E23244D2FF300E2F9E8 /* CombineGifViewController.swift */; };
 		74607E26244D2FF300E2F9E8 /* CombineGifViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 74607E24244D2FF300E2F9E8 /* CombineGifViewController.storyboard */; };
 		74607E29244D2FFD00E2F9E8 /* RxSwiftGifViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 74607E27244D2FFD00E2F9E8 /* RxSwiftGifViewController.storyboard */; };
@@ -79,6 +78,7 @@
 		747B70BD2445030600C863C2 /* SpinCommon in Frameworks */ = {isa = PBXBuildFile; productRef = 747B70BC2445030600C863C2 /* SpinCommon */; };
 		747B70BF2445030600C863C2 /* SpinReactiveSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 747B70BE2445030600C863C2 /* SpinReactiveSwift */; };
 		747B70C12445030600C863C2 /* SpinRxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 747B70C02445030600C863C2 /* SpinRxSwift */; };
+		74BE7D52245A5C0C00489801 /* PlayerUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74BE7D51245A5C0C00489801 /* PlayerUIView.swift */; };
 		74D643182449252200878A7E /* GetByIdRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74D643172449252200878A7E /* GetByIdRequest.swift */; };
 		74D6431A2449258E00878A7E /* GetByIdResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74D643192449258E00878A7E /* GetByIdResponse.swift */; };
 		74D6431C2449260B00878A7E /* GifOverview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74D6431B2449260B00878A7E /* GifOverview.swift */; };
@@ -161,6 +161,7 @@
 		74607E24244D2FF300E2F9E8 /* CombineGifViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = CombineGifViewController.storyboard; sourceTree = "<group>"; };
 		74607E27244D2FFD00E2F9E8 /* RxSwiftGifViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = RxSwiftGifViewController.storyboard; sourceTree = "<group>"; };
 		74607E28244D2FFD00E2F9E8 /* RxSwiftGifViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RxSwiftGifViewController.swift; sourceTree = "<group>"; };
+		74BE7D51245A5C0C00489801 /* PlayerUIView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerUIView.swift; sourceTree = "<group>"; };
 		74D643172449252200878A7E /* GetByIdRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetByIdRequest.swift; sourceTree = "<group>"; };
 		74D643192449258E00878A7E /* GetByIdResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetByIdResponse.swift; sourceTree = "<group>"; };
 		74D6431B2449260B00878A7E /* GifOverview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GifOverview.swift; sourceTree = "<group>"; };
@@ -174,7 +175,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				74607E22244D10AB00E2F9E8 /* Player in Frameworks */,
 				743BE45D23BD0A9F000BE177 /* Alamofire in Frameworks */,
 				743BE46323BD0BC8000BE177 /* ReactiveSwift in Frameworks */,
 				743BE46C23BD0F2B000BE177 /* RxCocoa in Frameworks */,
@@ -241,6 +241,7 @@
 		743BE49723BD4085000BE177 /* Tools */ = {
 			isa = PBXGroup;
 			children = (
+				74BE7D51245A5C0C00489801 /* PlayerUIView.swift */,
 				743BE49B23BD4085000BE177 /* UIViewController+Rx.swift */,
 				743BE49C23BD4085000BE177 /* String+URLComponents.swift */,
 				7404A04623DCFEFE000B75DD /* Partial.swift */,
@@ -568,7 +569,6 @@
 				747B70BC2445030600C863C2 /* SpinCommon */,
 				747B70BE2445030600C863C2 /* SpinReactiveSwift */,
 				747B70C02445030600C863C2 /* SpinRxSwift */,
-				74607E21244D10AB00E2F9E8 /* Player */,
 			);
 			productName = Spin.UIKit.Demo;
 			productReference = 743BE43B23BCF52A000BE177 /* Spin.UIKit.Demo.app */;
@@ -628,7 +628,6 @@
 				743BE46423BD0C00000BE177 /* XCRemoteSwiftPackageReference "Swinject" */,
 				743BE46723BD0EF9000BE177 /* XCRemoteSwiftPackageReference "RxFlow" */,
 				743BE46A23BD0F2B000BE177 /* XCRemoteSwiftPackageReference "RxSwift" */,
-				74607E20244D10AB00E2F9E8 /* XCRemoteSwiftPackageReference "Player" */,
 			);
 			productRefGroup = 743BE43C23BCF52A000BE177 /* Products */;
 			projectDirPath = "";
@@ -720,6 +719,7 @@
 				743BE50223BD45B0000BE177 /* ServiceAssembly.swift in Sources */,
 				743BE56A23BD4889000BE177 /* FeatureAssembly.swift in Sources */,
 				743BE4C623BD41D0000BE177 /* AppEndpoints.swift in Sources */,
+				74BE7D52245A5C0C00489801 /* PlayerUIView.swift in Sources */,
 				743BE50423BD45B0000BE177 /* ApisAssembly.swift in Sources */,
 				743BE4B423BD4101000BE177 /* Policy.swift in Sources */,
 				74607DF9244CE68D00E2F9E8 /* RxSwiftNavigationFlow.swift in Sources */,
@@ -1044,14 +1044,6 @@
 				minimumVersion = 5.1.0;
 			};
 		};
-		74607E20244D10AB00E2F9E8 /* XCRemoteSwiftPackageReference "Player" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/piemonte/Player.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 0.13.2;
-			};
-		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -1094,11 +1086,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 743BE46A23BD0F2B000BE177 /* XCRemoteSwiftPackageReference "RxSwift" */;
 			productName = RxRelay;
-		};
-		74607E21244D10AB00E2F9E8 /* Player */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 74607E20244D10AB00E2F9E8 /* XCRemoteSwiftPackageReference "Player" */;
-			productName = Player;
 		};
 		747B70BA2445030600C863C2 /* SpinCombine */ = {
 			isa = XCSwiftPackageProductDependency;

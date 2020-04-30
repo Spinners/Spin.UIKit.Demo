@@ -91,7 +91,7 @@
                                     </view>
                                 </subviews>
                             </stackView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="inR-TB-rsx">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="inR-TB-rsx" customClass="PlayerUIView" customModule="Spin_UIKit_Demo" customModuleProvider="target">
                                 <rect key="frame" x="20" y="374" width="374" height="200"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <constraints>

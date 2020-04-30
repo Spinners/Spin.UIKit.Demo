@@ -20,15 +20,6 @@
         }
       },
       {
-        "package": "Player",
-        "repositoryURL": "https://github.com/piemonte/Player.git",
-        "state": {
-          "branch": null,
-          "revision": "84c6b8faa601efb925a1ae3f3ae8a7dd23b25caf",
-          "version": "0.13.2"
-        }
-      },
-      {
         "package": "Quick",
         "repositoryURL": "https://github.com/Quick/Quick.git",
         "state": {
