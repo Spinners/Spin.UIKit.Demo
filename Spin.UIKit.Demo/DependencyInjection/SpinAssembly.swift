@@ -66,11 +66,12 @@ class SpinAssembly: Assembly {
 
             // build Spin with a declarative "SwiftUI" pattern
             return
-                ReactiveSpin(initialState: .loading(id: gif.id), reducer: ReactiveReducer(Gif.reducer)) {
+                ReactiveSpin(initialState: .loading(id: gif.id)) {
                     ReactiveFeedback(effect: loadGifFeedback)
                         .execute(on: QueueScheduler())
                     ReactiveFeedback(effect: persistFavoriteFeedback)
                         .execute(on: QueueScheduler())
+                    ReactiveReducer(Gif.reducer)
             }
         }
 
@@ -83,11 +84,12 @@ class SpinAssembly: Assembly {
 
             // build Spin with a declarative "SwiftUI" pattern
             return
-                CombineSpin(initialState: .loading(id: gif.id), reducer: CombineReducer(Gif.reducer)) {
+                CombineSpin(initialState: .loading(id: gif.id)) {
                     CombineFeedback(effect: loadGifFeedback)
                         .execute(on: DispatchQueue(label: "\(UUID())", qos: .userInitiated).eraseToAnyScheduler())
                     CombineFeedback(effect: persistFavoriteFeedback)
                         .execute(on: DispatchQueue(label: "\(UUID())", qos: .userInitiated).eraseToAnyScheduler())
+                    CombineReducer(Gif.reducer)
             }
         }
 
@@ -100,11 +102,12 @@ class SpinAssembly: Assembly {
 
             // build Spin with a declarative "SwiftUI" pattern
             return
-                RxSpin(initialState: .loading(id: gif.id), reducer: RxReducer(Gif.reducer)) {
+                RxSpin(initialState: .loading(id: gif.id)) {
                     RxFeedback(effect: loadGifFeedback)
                         .execute(on: SerialDispatchQueueScheduler(qos: .userInitiated))
                     RxFeedback(effect: persistFavoriteFeedback)
                         .execute(on: SerialDispatchQueueScheduler(qos: .userInitiated))
+                    RxReducer(Gif.reducer)
             }
         }
     }
