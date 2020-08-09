@@ -11,30 +11,12 @@
         }
       },
       {
-        "package": "Nimble",
-        "repositoryURL": "https://github.com/Quick/Nimble.git",
-        "state": {
-          "branch": null,
-          "revision": "7fd118ec8795888bcbbebc1a41f6984454c4cd6f",
-          "version": "8.0.7"
-        }
-      },
-      {
-        "package": "Quick",
-        "repositoryURL": "https://github.com/Quick/Quick.git",
-        "state": {
-          "branch": null,
-          "revision": "33682c2f6230c60614861dfc61df267e11a1602f",
-          "version": "2.2.0"
-        }
-      },
-      {
         "package": "ReactiveSwift",
         "repositoryURL": "https://github.com/ReactiveCocoa/ReactiveSwift",
         "state": {
           "branch": null,
-          "revision": "e27ccdbf4ec36f154b60b91a0d7e0110c4e882cb",
-          "version": "6.2.1"
+          "revision": "3f4351d04115fd8797802d9b2d17b812cd761602",
+          "version": "6.3.0"
         }
       },
       {
@@ -69,8 +51,8 @@
         "repositoryURL": "https://github.com/Spinners/Spin.Swift",
         "state": {
           "branch": null,
-          "revision": "aef71f25c5e29725ea78e9fad59bff85bd4d8c90",
-          "version": "0.17.0"
+          "revision": "d7df7deb3ecccd30fd3539dd83372002cf8a2d58",
+          "version": "0.18.0"
         }
       },
       {

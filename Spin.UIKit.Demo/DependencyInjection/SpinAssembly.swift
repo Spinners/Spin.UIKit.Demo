@@ -28,7 +28,7 @@ class SpinAssembly: Assembly {
                 Spinner
                     .initialState(.idle)
                     .feedback(ReactiveFeedback(effect: loadFeedback, on: QueueScheduler()))
-                    .reducer(ReactiveReducer(Trending.reducer))
+                    .reducer(Reducer(Trending.reducer))
         }
 
         // Trending Spin
@@ -41,7 +41,7 @@ class SpinAssembly: Assembly {
                 Spinner
                     .initialState(.idle)
                     .feedback(CombineFeedback(effect: loadFeedback, on: DispatchQueue(label: "background").eraseToAnyScheduler()))
-                    .reducer(CombineReducer(Trending.reducer))
+                    .reducer(Reducer(Trending.reducer))
         }
 
         // Trending Spin
@@ -54,7 +54,7 @@ class SpinAssembly: Assembly {
                 Spinner
                     .initialState(.idle)
                     .feedback(RxFeedback(effect: loadFeedback, on: SerialDispatchQueueScheduler(qos: .userInitiated)))
-                    .reducer(RxReducer(Trending.reducer))
+                    .reducer(Reducer(Trending.reducer))
         }
         
         // Gif Spin
@@ -71,7 +71,7 @@ class SpinAssembly: Assembly {
                         .execute(on: QueueScheduler())
                     ReactiveFeedback(effect: persistFavoriteFeedback)
                         .execute(on: QueueScheduler())
-                    ReactiveReducer(Gif.reducer)
+                    Reducer(Gif.reducer)
             }
         }
 
@@ -89,7 +89,7 @@ class SpinAssembly: Assembly {
                         .execute(on: DispatchQueue(label: "\(UUID())", qos: .userInitiated).eraseToAnyScheduler())
                     CombineFeedback(effect: persistFavoriteFeedback)
                         .execute(on: DispatchQueue(label: "\(UUID())", qos: .userInitiated).eraseToAnyScheduler())
-                    CombineReducer(Gif.reducer)
+                    Reducer(Gif.reducer)
             }
         }
 
@@ -107,7 +107,7 @@ class SpinAssembly: Assembly {
                         .execute(on: SerialDispatchQueueScheduler(qos: .userInitiated))
                     RxFeedback(effect: persistFavoriteFeedback)
                         .execute(on: SerialDispatchQueueScheduler(qos: .userInitiated))
-                    RxReducer(Gif.reducer)
+                    Reducer(Gif.reducer)
             }
         }
     }
