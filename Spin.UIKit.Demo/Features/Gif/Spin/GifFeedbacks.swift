@@ -34,7 +34,7 @@ extension Gif {
 
             return loadEntityFunction(id)
                 .map { .load(gif: $0.0, favorite: $0.1) }
-                .replaceError(with: Gif.Event.failLoad)
+                .catch { _ in Just<Gif.Event>(.failLoad).eraseToAnyPublisher() }
                 .eraseToAnyPublisher()
         }
 

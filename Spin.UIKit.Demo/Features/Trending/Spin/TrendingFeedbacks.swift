@@ -42,7 +42,7 @@ extension Trending {
                                     previousPage: $0.1,
                                     nextPage: $0.2,
                                     totalPage: $0.3) }
-                .replaceError(with: Trending.Event.failLoad)
+                .catch { _ in Just<Trending.Event>(.failLoad).eraseToAnyPublisher() }
                 .eraseToAnyPublisher()
         }
 
