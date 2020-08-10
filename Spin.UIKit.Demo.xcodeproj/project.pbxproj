@@ -58,7 +58,6 @@
 		743BE56523BD4845000BE177 /* ReactiveSwiftNavigationFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 743BE56023BD4845000BE177 /* ReactiveSwiftNavigationFlow.swift */; };
 		743BE56623BD4845000BE177 /* AppFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 743BE56123BD4845000BE177 /* AppFlow.swift */; };
 		743BE56A23BD4889000BE177 /* FeatureAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 743BE56823BD4889000BE177 /* FeatureAssembly.swift */; };
-		743BE56B23BD4889000BE177 /* FeedbackAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 743BE56923BD4889000BE177 /* FeedbackAssembly.swift */; };
 		743BE56D23BD4962000BE177 /* FlowAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 743BE56C23BD4962000BE177 /* FlowAssembly.swift */; };
 		74607DF7244CE68200E2F9E8 /* CombineNavigationFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74607DF6244CE68200E2F9E8 /* CombineNavigationFlow.swift */; };
 		74607DF9244CE68D00E2F9E8 /* RxSwiftNavigationFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74607DF8244CE68D00E2F9E8 /* RxSwiftNavigationFlow.swift */; };
@@ -143,7 +142,6 @@
 		743BE56023BD4845000BE177 /* ReactiveSwiftNavigationFlow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReactiveSwiftNavigationFlow.swift; sourceTree = "<group>"; };
 		743BE56123BD4845000BE177 /* AppFlow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppFlow.swift; sourceTree = "<group>"; };
 		743BE56823BD4889000BE177 /* FeatureAssembly.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeatureAssembly.swift; sourceTree = "<group>"; };
-		743BE56923BD4889000BE177 /* FeedbackAssembly.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedbackAssembly.swift; sourceTree = "<group>"; };
 		743BE56C23BD4962000BE177 /* FlowAssembly.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlowAssembly.swift; sourceTree = "<group>"; };
 		74607DF6244CE68200E2F9E8 /* CombineNavigationFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CombineNavigationFlow.swift; sourceTree = "<group>"; };
 		74607DF8244CE68D00E2F9E8 /* RxSwiftNavigationFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxSwiftNavigationFlow.swift; sourceTree = "<group>"; };
@@ -361,7 +359,6 @@
 				743BE4FC23BD45B0000BE177 /* ServiceAssembly.swift */,
 				743BE4FE23BD45B0000BE177 /* ApisAssembly.swift */,
 				743BE50123BD45B0000BE177 /* EntityAssembly.swift */,
-				743BE56923BD4889000BE177 /* FeedbackAssembly.swift */,
 				740481D123EA33A100AAB59E /* SpinAssembly.swift */,
 				743BE56823BD4889000BE177 /* FeatureAssembly.swift */,
 				743BE56C23BD4962000BE177 /* FlowAssembly.swift */,
@@ -691,7 +688,6 @@
 				743BE4B123BD4101000BE177 /* ReactiveNetworkService.swift in Sources */,
 				7404A04723DCFEFE000B75DD /* Partial.swift in Sources */,
 				743BE4B323BD4101000BE177 /* Route+URLRequestConvertible.swift in Sources */,
-				743BE56B23BD4889000BE177 /* FeedbackAssembly.swift in Sources */,
 				743BE55823BD477F000BE177 /* TrendingState.swift in Sources */,
 				743BE53B23BD477F000BE177 /* GifState.swift in Sources */,
 				74607E03244CEB2900E2F9E8 /* RxSwiftTrendingViewController.swift in Sources */,
@@ -993,7 +989,7 @@
 			repositoryURL = "https://github.com/Spinners/Spin.Swift";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 0.18.0;
+				minimumVersion = 0.19.0;
 			};
 		};
 		743BE45B23BD0A9F000BE177 /* XCRemoteSwiftPackageReference "Alamofire" */ = {

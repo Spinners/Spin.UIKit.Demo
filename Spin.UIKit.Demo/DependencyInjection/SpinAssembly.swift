@@ -21,39 +21,43 @@ class SpinAssembly: Assembly {
         // Trending Spin
         // (ReactiveSwift implementation)
         container.register(ReactiveSpin<Trending.State, Trending.Event>.self) { resolver -> ReactiveSpin<Trending.State, Trending.Event> in
-            let loadFeedback = resolver.resolve(TrendingReactiveSwiftFeedback.self)!
-            
+            let loadEntityFunction = resolver.resolve(TrendingReactiveSwiftEntity.self)!
+
             // build Spin with a Builder pattern
             return
                 Spinner
                     .initialState(.idle)
-                    .feedback(ReactiveFeedback(effect: loadFeedback, on: QueueScheduler()))
+                    .feedback(ReactiveFeedback(effect: Trending.Feedbacks.loadPage, on: QueueScheduler(), dep1: loadEntityFunction))
                     .reducer(Reducer(Trending.reducer))
         }
 
         // Trending Spin
         // (Combine implementation)
         container.register(CombineSpin<Trending.State, Trending.Event>.self) { resolver -> CombineSpin<Trending.State, Trending.Event> in
-            let loadFeedback = resolver.resolve(TrendingCombineFeedback.self)!
-            
+            let loadEntityFunction = resolver.resolve(TrendingCombineEntity.self)!
+
             // build Spin with a Builder pattern
             return
                 Spinner
                     .initialState(.idle)
-                    .feedback(CombineFeedback(effect: loadFeedback, on: DispatchQueue(label: "background").eraseToAnyScheduler()))
+                    .feedback(CombineFeedback(effect: Trending.Feedbacks.loadPage,
+                                              on: DispatchQueue(label: "background").eraseToAnyScheduler(),
+                                              dep1: loadEntityFunction))
                     .reducer(Reducer(Trending.reducer))
         }
 
         // Trending Spin
         // (RxSwift implementation)
         container.register(RxSpin<Trending.State, Trending.Event>.self) { resolver -> RxSpin<Trending.State, Trending.Event> in
-            let loadFeedback = resolver.resolve(TrendingRxSwiftFeedback.self)!
+            let loadEntityFunction = resolver.resolve(TrendingRxSwiftEntity.self)!
 
             // build Spin with a Builder pattern
             return
                 Spinner
                     .initialState(.idle)
-                    .feedback(RxFeedback(effect: loadFeedback, on: SerialDispatchQueueScheduler(qos: .userInitiated)))
+                    .feedback(RxFeedback(effect: Trending.Feedbacks.loadPage,
+                                         on: SerialDispatchQueueScheduler(qos: .userInitiated),
+                                         dep1: loadEntityFunction))
                     .reducer(Reducer(Trending.reducer))
         }
         
@@ -61,15 +65,15 @@ class SpinAssembly: Assembly {
         // (ReactiveSwift implementation)
         container.register(ReactiveSpin<Gif.State, Gif.Event>.self) { (resolver, gif: GifOverview)
             -> ReactiveSpin<Gif.State, Gif.Event> in
-            let loadGifFeedback = resolver.resolve(LoadGifReactiveSwiftFeedback.self, name: "ReactiveSwiftLoadFeedback")!
-            let persistFavoriteFeedback = resolver.resolve(SetFavoriteReactiveSwiftFeedback.self, name: "ReactiveSwiftPersistFeedback")!
+            let loadEntityFunction = resolver.resolve(GifReactiveSwiftEntity.self)!
+            let favoriteService = resolver.resolve(FavoriteService.self)!
 
             // build Spin with a declarative "SwiftUI" pattern
             return
                 ReactiveSpin(initialState: .loading(id: gif.id)) {
-                    ReactiveFeedback(effect: loadGifFeedback)
+                    ReactiveFeedback(effect: Gif.Feedbacks.load, dep1: loadEntityFunction)
                         .execute(on: QueueScheduler())
-                    ReactiveFeedback(effect: persistFavoriteFeedback)
+                    ReactiveFeedback(effect: Gif.Feedbacks.persist, dep1: favoriteService.set(favorite:for:))
                         .execute(on: QueueScheduler())
                     Reducer(Gif.reducer)
             }
@@ -79,15 +83,15 @@ class SpinAssembly: Assembly {
         // (Combine implementation)
         container.register(CombineSpin<Gif.State, Gif.Event>.self) { (resolver, gif: GifOverview)
             -> CombineSpin<Gif.State, Gif.Event> in
-            let loadGifFeedback = resolver.resolve(LoadGifCombineFeedback.self, name: "CombineLoadFeedback")!
-            let persistFavoriteFeedback = resolver.resolve(SetFavoriteCombineFeedback.self, name: "CombinePersistFeedback")!
+            let loadEntityFunction = resolver.resolve(GifCombineEntity.self)!
+            let favoriteService = resolver.resolve(FavoriteService.self)!
 
             // build Spin with a declarative "SwiftUI" pattern
             return
                 CombineSpin(initialState: .loading(id: gif.id)) {
-                    CombineFeedback(effect: loadGifFeedback)
+                    CombineFeedback(effect: Gif.Feedbacks.load, dep1: loadEntityFunction)
                         .execute(on: DispatchQueue(label: "\(UUID())", qos: .userInitiated).eraseToAnyScheduler())
-                    CombineFeedback(effect: persistFavoriteFeedback)
+                    CombineFeedback(effect: Gif.Feedbacks.persist, dep1: favoriteService.set(favorite:for:))
                         .execute(on: DispatchQueue(label: "\(UUID())", qos: .userInitiated).eraseToAnyScheduler())
                     Reducer(Gif.reducer)
             }
@@ -97,15 +101,15 @@ class SpinAssembly: Assembly {
         // (RxSwift implementation)
         container.register(RxSpin<Gif.State, Gif.Event>.self) { (resolver, gif: GifOverview)
             -> RxSpin<Gif.State, Gif.Event> in
-            let loadGifFeedback = resolver.resolve(LoadGifRxSwiftFeedback.self, name: "RxSwiftLoadFeedback")!
-            let persistFavoriteFeedback = resolver.resolve(SetFavoriteRxSwiftFeedback.self, name: "RxSwiftPersistFeedback")!
+            let loadEntityFunction = resolver.resolve(GifRxSwiftEntity.self)!
+            let favoriteService = resolver.resolve(FavoriteService.self)!
 
             // build Spin with a declarative "SwiftUI" pattern
             return
                 RxSpin(initialState: .loading(id: gif.id)) {
-                    RxFeedback(effect: loadGifFeedback)
+                    RxFeedback(effect: Gif.Feedbacks.load, dep1: loadEntityFunction)
                         .execute(on: SerialDispatchQueueScheduler(qos: .userInitiated))
-                    RxFeedback(effect: persistFavoriteFeedback)
+                    RxFeedback(effect: Gif.Feedbacks.persist, dep1: favoriteService.set(favorite:for:))
                         .execute(on: SerialDispatchQueueScheduler(qos: .userInitiated))
                     Reducer(Gif.reducer)
             }
